@@ -62,7 +62,8 @@ module TestHelper
      begin
        require 'httpclient'
        client = HTTPClient.new
-       reset_response =  client.get("#{base_url}/reset").body.content
+       reset_response =  client.get("#{base_url}/reset").body
+       reset_response =  reset_response.content if reset_database.respond_to?("content")
        raise "Reset database failed: #{reset_database}" unless reset_response == "Database Reset OK"
      rescue => e
        debug e
