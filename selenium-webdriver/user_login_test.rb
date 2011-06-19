@@ -20,14 +20,12 @@ specification "User Management" do
   story "[480] A registered user can login" do
     login_as("bob", "test")
     save_page("C:\\tmp.html")
-#    assert_link_present_with_text("Logout")
-    assert_link_present_with_text("logout")
+    assert_link_present_with_text("Logout")
   end
 
   story "[480] Admin user can login" do
     login_as("admin", "test")
-#    assert_link_present_with_text("Control Panel")
-    assert_link_present_with_text("control panel")
+    assert_link_present_with_text("Control Panel")
   end
 
   story "[480] Admin user can login - invalid password" do

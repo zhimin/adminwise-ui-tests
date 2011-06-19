@@ -15,4 +15,9 @@ Impression
 
 * A lot slower
 
-* Can't find links after styling cases
+* Can't find links after styling cases 
+    in source 'Control Panel', style to 'CONTROL PANEL'  
+    web-driver reads
+      "control panel"
+* assert_link change to 
+    @driver.find_element(:link_text, "logout")

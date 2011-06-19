@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'rwebspec-webdriver'
+require 'selenium-webdriver'
 require 'httpclient'
 require 'timeout'
 
@@ -24,8 +24,8 @@ module TestHelper
   #   login_as("homer", "Password")
   #   login_as("bart")  # the password will be default to 'iTest2'
   #   login("lisa")     # same as login_as
-  def login_as(username, password = "test")
-    home_page = expect_page HomePage
+  def login_as(username, password = "test")    
+    home_page = HomePage.new(@driver)
     home_page.enter_login(username)
     home_page.enter_password(password)
     home_page.click_login
@@ -33,8 +33,9 @@ module TestHelper
   alias login login_as
 
   def logout
-    failsafe { click_link("logout") }
-    # failsafe { click_link("Logout") }
+    # NOTES WebDriver: logout
+    #  failsafe { @driver.find_element(:link_text, "Logout").click }
+    failsafe { @driver.find_element(:link_text, "logout").click }
   end
 
 
@@ -53,8 +54,8 @@ module TestHelper
 
   def reset_database_via_ui
     base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
-    goto_url("#{base_url}/reset")
-    goto_page("/")
+    @driver.navigate.to("#{base_url}/reset")
+    @driver.navigate.to("#{base_url}/")
   end
 
   def reset_database_silient
