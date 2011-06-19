@@ -1,5 +1,5 @@
-Notes on porting Watir to selenium-webdriver
-
+Notes on porting Watir to selenium-webdriver (IE)
+--------------------------------------------
 1. Change test_helper, include rwebpec-webdriver
 
      require 'rwebspec-webdriver'
@@ -8,7 +8,12 @@ Notes on porting Watir to selenium-webdriver
 
 3. In after(:all) block, add close_browser, as webdriver-selenium does not reuse existing browser
 
-4. 
+4. Change link "Events" (displayed in upcase style) to 
+       click_link("EVENTS") 
+   Sample of "LIBRARY", "MEMBERSHIPS"
+
+5.  Change link "Control Panel" (displayed in upcase style) to
+      click_link("control panel")
 
 Impression
 ----------

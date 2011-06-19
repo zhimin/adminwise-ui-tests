@@ -17,7 +17,11 @@ specification "Library: Add resourses" do
 
   before(:each) do
     visit "/home"
-    click_link("Library")
+    # click_link("Library") # works for Watir
+#    browser.find_elements(:tag_name, "a").each do |x| 
+#      debug "|" + x.text + "|"
+#    end
+    click_link("LIBRARY")
   end
 
   after(:each) do    
@@ -34,7 +38,7 @@ specification "Library: Add resourses" do
     new_resource_page.select_subject("Families")
     new_resource_page.click_create
     click_button("Save")
-    click_link("Library")
+    click_link("LIBRARY")
     enter_text("q", "The Other Country")
     click_button("search")
     try { page_text.should include("matches for 'The Other Country'")}

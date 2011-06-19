@@ -32,7 +32,7 @@ specification "Memebership" do
   end
   
   story "[493] Admin user can create a new family member" do
-    click_link("Membership")
+    click_link("MEMBERSHIP")
     click_link("Add member")
     enter_text("member[fname]", "Cindy")
     enter_text("member[lname]", "Fu")
@@ -66,7 +66,7 @@ specification "Memebership" do
     click_radio_option("member[member_type]", "school")
     select_option("member[aware_from]", "conference/ workshop")
     click_button("Create Member")
-    click_link("Membership")
+    click_link("MEMBERSHIP")
     page_text.should include("CareLink Pty Ltd")
   end
 

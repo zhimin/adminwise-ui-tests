@@ -11,7 +11,7 @@ class LibraryBorrowPage < RWebSpec::AbstractWebPage
   end
   
   def enter_resource(resource)
-    text_field(:id, "resource_textbox_q").set(resource)
+    enter_text_with_id("resource_textbox_q", resource)
   end
 
   def click_find_resource
@@ -29,7 +29,7 @@ class LibraryBorrowPage < RWebSpec::AbstractWebPage
   end
 
   def enter_member_name(name)
-    text_field(:id, "member_textbox_q").set(name)
+    enter_text_with_id("member_textbox_q", name)
   end
 
 end
