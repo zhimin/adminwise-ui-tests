@@ -1,0 +1,41 @@
+<?xml version="1.1" encoding="US-ASCII"?>
+<project>
+  <name>AdminWise</name>
+  <default_browser>Internet Explorer</default_browser>
+  <framework>Watir</framework>
+  <environments>
+    <entry name="dev" default="false">
+      <base_url>http://10.0.0.3:3000</base_url>
+    </entry>
+    <entry name="development" default="false">
+      <base_url>http://localhost:3000</base_url>
+    </entry>
+    <entry name="integration" default="false">
+      <base_url>http://adminwise.agileway.net</base_url>
+    </entry>
+    <entry name="special" default="false">
+      <base_url>http://adminwise.macmini</base_url>
+    </entry>
+    <entry name="test" default="false">
+      <base_url>http://adminwise.heroku.com</base_url>
+    </entry>
+  </environments>
+  <exclude_dirs></exclude_dirs>
+  <exclude_files></exclude_files>
+  <test_named_as>test_suite</test_named_as>
+  <spec_template></spec_template>
+  <page_template></page_template>
+  <storywise_url>http://storywise.agileway.net</storywise_url>
+  <jira_url>http://jira.atlassian.com</jira_url>
+  <jira_project>DEMO</jira_project>
+  <jira_login>soaptester</jira_login>
+  <jira_password>soaptester</jira_password>
+  <heart_beat>
+    <spec_suite></spec_suite>
+    <environment></environment>
+    <start_time></start_time>
+    <repeat></repeat>
+    <end_repeat></end_repeat>
+    <emails></emails>
+  </heart_beat>
+</project>
