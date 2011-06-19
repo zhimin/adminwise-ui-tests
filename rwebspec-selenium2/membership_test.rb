@@ -48,7 +48,7 @@ specification "Memebership" do
     click_radio_option("member[doing_aba]", "true")
     select_option("member[aware_from]", "family/ friend")
     click_button("Create Member")
-    click_link("Membership")
+    click_link("MEMBERSHIP")
     page_text.should include("Cindy Fu")
   end
 
