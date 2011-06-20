@@ -12,7 +12,6 @@ specification "Memebership" do
 
   after(:all) do
     logout unless debugging?
-    close_browser unless debugging?
   end
 
   before(:each) do
@@ -33,40 +32,42 @@ specification "Memebership" do
   
   story "[493] Admin user can create a new family member" do
     click_link("Membership")
-    click_link("Add member")
-    enter_text("member[fname]", "Cindy")
-    enter_text("member[lname]", "Fu")
-    enter_text("member[street_addr]", "25 John Drive")
-    enter_text("member[suburb]", "Ashgrove")
-    enter_text("member[state]", "QLD")
-    enter_text("member[postcode]", "4051")
-    enter_text("member[phone]", "33440566")
-    enter_text("member[mobile]", "0411231764")
-    enter_text("member[email]", "cindy@agileway.com.au")
-    click_radio_option("member[member_type]", "family_1")
-    click_radio_option("member[mail_out]", "true")
-    click_radio_option("member[doing_aba]", "true")
-    select_option("member[aware_from]", "family/ friend")
-    click_button("Create Member")
-    click_link("Membership")
+    membership_page = expect_page MembershipPage
+    membership_page.add_member
+    membership_page.enter_first_name("Cindy")
+    membership_page.enter_last_name("Fu")
+    membership_page.enter_street_address("25 John Drive")
+    membership_page.enter_suburb("Ashgrove")
+    membership_page.enter_state("QLD")
+    membership_page.enter_postcode("4051")
+    membership_page.enter_phone("33440566")
+    membership_page.enter_mobile("0411231764")
+    membership_page.enter_email("cindy@agileway.com.au")
+    membership_page.click_member_type("family_1")
+    membership_page.click_mail_out("true")
+    membership_page.click_doing_aba("true")
+    membership_page.select_aware_from("family/ friend")
+    membership_page.click_create_member
+    membership_page.click_membership
     page_text.should include("Cindy Fu")
   end
 
   story "[494] Admin user can create a new organisation member" do
-    click_link("Add member")
-    enter_text("member[oname]", "CareLink Pty Ltd")
-    enter_text("member[fname]", "Michele")
-    enter_text("member[lname]", "Wind")
-    enter_text("member[street_addr]", "36 Steven Road")
-    enter_text("member[suburb]", "Stafford")
-    enter_text("member[state]", "QLD")
-    enter_text("member[postcode]", "4054")
-    enter_text("member[phone]", "3972 5844")
-    enter_text("member[email]", "mwind@carelink.com.au")
-    click_radio_option("member[member_type]", "school")
-    select_option("member[aware_from]", "conference/ workshop")
-    click_button("Create Member")
-    click_link("Membership")
+    membership_page = expect_page MembershipPage
+    membership_page.click_add_member
+    membership_page.enter_organisation_name("CareLink Pty Ltd")
+    membership_page.enter_first_name("Michele")
+    membership_page.enter_last_name("Wind")
+    membership_page.enter_street_address("36 Steven Road")
+    membership_page.enter_suburb("Stafford")
+    membership_page.enter_state("QLD")
+    membership_page.enter_postcode("4054")
+    membership_page.enter_phone("3972 5844")
+    membership_page.enter_email("mwind@carelink.com.au")
+    membership_page.click_member_type("school")
+    membership_page.select_aware_from("conference/ workshop")
+    membership_page.click_create_member
+    membership_page.click_membership
     page_text.should include("CareLink Pty Ltd")
   end
 
