@@ -4,7 +4,7 @@ specification "Create a new user as admin" do
   include TestHelper
 
   before(:all) do
-    open_browser
+    @driver = Watir::Browser.new
     reset_database
   end
 
@@ -14,16 +14,16 @@ specification "Create a new user as admin" do
 
   story "[482] Create new user, then login" do
     login_as("admin")
-    click_link("Control Panel")
-    click_link("Manage Users")
-    click_link("Add new user")
+    @driver.link(:text, "Control Panel").click
+    @driver.link(:text, "Manage Users").click
+    @driver.link(:text, "Add new user").click
     
-    create_user_page = expect_page CreateUserPage
+    create_user_page = CreateUserPage.new(@driver)
     create_user_page.enter_username("mike")
     create_user_page.enter_email("mike@gmail.com")
     create_user_page.enter_password("pass")
     create_user_page.click_create
-    page_text.should contain("mike") # checkout; after create see new user
+    @driver.text.should contain("mike") # checkout; after create see new user
     
     logout
     login_as("mike", "pass")

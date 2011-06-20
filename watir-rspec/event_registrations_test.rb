@@ -6,7 +6,7 @@ test_suite "Event Registrations" do
   include TestHelper
 
   before(:all) do
-    open_browser
+    @driver = Watir::Browser.new
     reset_database
     fail_safe { logout }
     $pending_count = 1 # default
@@ -33,12 +33,12 @@ test_suite "Event Registrations" do
     event_registration_page.click_find
     sleep 3
     event_registration_page.click_register
-    page_text.should contain("Address line1 can't be blank")
+    @driver.text.should contain("Address line1 can't be blank")
     enter_text("person[address_line1]", "10 Pember St")
     event_registration_page.click_register
     event_registration_confirmation_page = expect_page EventRegistrationConfirmationPage
     event_registration_confirmation_page.click_confirm
-    page_text.should include("Your registration for CITCON 2011 has been received")
+    @driver.text.should include("Your registration for CITCON 2011 has been received")
     # use this global variable to detect this test has been run or not
     $pending_count += 1
   end
@@ -63,7 +63,7 @@ test_suite "Event Registrations" do
     event_registration_page.click_register
     event_registration_confirmation_page = expect_page EventRegistrationConfirmationPage
     event_registration_confirmation_page.click_confirm
-    page_text.should include("Your registration for CITCON 2011 has been received")
+    @driver.text.should include("Your registration for CITCON 2011 has been received")
 
     visit "/"
     refresh
@@ -71,7 +71,7 @@ test_suite "Event Registrations" do
     click_link("Events")
     click_link("CITCON 2011")
     click_link("Pending #{$pending_count}")
-    page_text.should contain("Eileen Fa")
+    @driver.text.should contain("Eileen Fa")
   end
 
 

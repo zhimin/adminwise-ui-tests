@@ -4,12 +4,11 @@ test_suite "Events" do
   include TestHelper
 
   before(:all) do
-    open_browser
+    @driver = Watir::Browser.new
     reset_database
     failsafe{ logout }
     login_as("admin")
   end
-
 
   before(:each) do
     visit "/"
@@ -22,7 +21,7 @@ test_suite "Events" do
   # Press key Ctrl+Shift+T, then enter 123 quickly navigate you here
   story "[487] Can create a new event" do
     click_link("Events")
-    event_list_page = expect_page EventListPage
+    event_list_page = EventListPage.new(@driver)
     event_page = event_list_page.click_new
     event_page.enter_name("ABA Workshop")
     event_page.enter_venue("QUT")

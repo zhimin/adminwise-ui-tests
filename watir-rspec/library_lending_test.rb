@@ -4,7 +4,7 @@ specification "Library: Borrowing and Lending" do
   include TestHelper
 
   before(:all) do
-    open_browser
+    @driver = Watir::Browser.new
     reset_database
     failsafe{ logout }
     login_as("admin")
@@ -27,15 +27,15 @@ specification "Library: Borrowing and Lending" do
 
 
   story "[491] Admin user can process a member borrowing a book" do
-    library_page = expect_page LibraryPage
+    library_page = LibraryPage.new(@driver)
     library_page.click_borrow
-    library_borrow_page = expect_page LibraryBorrowPage
+    library_borrow_page = LibraryBorrowPage.new(@driver)
     library_borrow_page.enter_member_name("30008")
     library_borrow_page.click_find_member
     library_borrow_page.enter_resource("100001")
     library_borrow_page.click_find_resource
     library_borrow_page.click_select
-    library_borrow_page = expect_page LibraryBorrowPage
+    library_borrow_page =  LibraryBorrowPage.new(@driver)
     library_borrow_page.click_process
     # back to empty borrow page
 
@@ -43,27 +43,26 @@ specification "Library: Borrowing and Lending" do
     library_borrow_page.click_find_member
     sleep 0.5
     click_link("1 Rentals")
-    expect_page MemberBorrowHistoryPage
+    MemberBorrowHistoryPage.new(@driver)
     #
   end
 
   story "[492] Admin user can process returning a book" do
     library_page = expect_page LibraryPage
     library_page.click_borrow
-    library_borrow_page = expect_page LibraryBorrowPage
+    library_borrow_page = LibraryBorrowPage(@driver)
     library_borrow_page.enter_member_name("30008")
     library_borrow_page.click_find_member
     library_borrow_page.enter_resource("100001")
     library_borrow_page.click_find_resource
     try { library_borrow_page.click_select }
-    library_borrow_page = expect_page LibraryBorrowPage
+    library_borrow_page = LibraryBorrowPage(@driver)
     library_borrow_page.click_process
 
     #   search 100001
     #   assert status checkedout, using id
     click_link("Library")
-    library_page = expect_page LibraryPage
-    library_page = expect_page LibraryPage
+    library_page = LibraryPage.new(@driver)
     library_page.enter_query("100001")
     library_page.click_search
     sleep 0.5
@@ -71,10 +70,10 @@ specification "Library: Borrowing and Lending" do
     cell(:id, "item_status_100001").text.strip.should == "Checked out"
 
     click_link("Library")
-    library_page = expect_page LibraryPage
+    library_page = LibraryPage.new(@driver)
     library_page.click_return
     sleep 0.5
-    library_return_page = expect_page LibraryReturnPage
+    library_return_page =  LibraryReturnPage.new(@driver)
     library_return_page.enter_resource("100001")
     library_return_page.click_find
 		
@@ -82,7 +81,7 @@ specification "Library: Borrowing and Lending" do
     library_return_page.click_process
 
     click_link("Library")
-    library_page = expect_page LibraryPage
+    library_page = LibraryPage.new(@driver)
     library_page.enter_query("100001")
     library_page.click_search
     sleep 1

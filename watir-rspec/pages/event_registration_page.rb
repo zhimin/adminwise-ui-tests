@@ -28,19 +28,19 @@ class EventRegistrationPage < AbstractPage
   
   # function(parameter))
   def enter_person_title(person_title)
-    @browser.text_field(:name, "person[title]").set person_title
+    @driver.text_field(:name, "person[title]").set person_title
   end
   
   def enter_first_name(person_first_name)
-    @browser.text_field(:name, "person[first_name]").set person_first_name
+    @driver.text_field(:name, "person[first_name]").set person_first_name
   end
   
   def enter_last_name(person_last_name)
-    @browser.text_field(:name, "person[last_name]").set person_last_name
+    @driver.text_field(:name, "person[last_name]").set person_last_name
   end
   
   def enter_organisation(person_organisation)
-    @browser.text_field(:name, "person[organisation]").set person_organisation
+    @driver.text_field(:name, "person[organisation]").set person_organisation
   end
   
   def select_person_occupation(person_occupation)
@@ -48,23 +48,23 @@ class EventRegistrationPage < AbstractPage
   end
   
   def enter_person_email(person_email)
-    @browser.text_field(:name, "person[email]").set person_email
+    @driver.text_field(:name, "person[email]").set person_email
   end
   
   def enter_person_phone(person_phone)
-    @browser.text_field(:name, "person[phone]").set person_phone
+    @driver.text_field(:name, "person[phone]").set person_phone
   end
   
   def enter_address_line1(person_address_line1)
-    @browser.text_field(:name, "person[address_line1]").set address_line1
+    @driver.text_field(:name, "person[address_line1]").set address_line1
   end
   
   def enter_person_suburb(person_suburb)
-    @browser.text_field(:name, "person[suburb]").set person_suburb
+    @driver.text_field(:name, "person[suburb]").set person_suburb
   end
   
   def enter_postcode(person_postcode)
-    @browser.text_field(:name, "person[postcode]").set person_postcode
+    @driver.text_field(:name, "person[postcode]").set person_postcode
   end
   
   def uncheck_checkbox_email_notification
@@ -76,7 +76,7 @@ class EventRegistrationPage < AbstractPage
   end
   
   def click_register
-    @browser.button(:id, "registerBtn").click
+    @driver.button(:id, "registerBtn").click
   end
   
   def uncheck_checkbox_registration_email_notificaton

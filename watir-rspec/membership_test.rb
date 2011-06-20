@@ -21,7 +21,7 @@ specification "Memebership" do
   story "Admin user can search an existing member by surname " do
     enter_text("search", "Smith")
     click_button("Search")
-    page_text.should include("David Smith")
+    @driver.text.should include("David Smith")
   end
   
   story "Admin user can search an existing member by membership number" do
@@ -48,7 +48,7 @@ specification "Memebership" do
     select_option("member[aware_from]", "family/ friend")
     click_button("Create Member")
     click_link("Membership")
-    page_text.should include("Cindy Fu")
+    @driver.text.should include("Cindy Fu")
   end
 
   story "[494] Admin user can create a new organisation member" do
@@ -66,7 +66,7 @@ specification "Memebership" do
     select_option("member[aware_from]", "conference/ workshop")
     click_button("Create Member")
     click_link("Membership")
-    page_text.should include("CareLink Pty Ltd")
+    @driver.text.should include("CareLink Pty Ltd")
   end
 
 end

@@ -4,7 +4,7 @@ specification "Professionals" do
   include TestHelper
 
   before(:all) do
-    open_browser
+    @driver = Watir::Browser.new
     reset_database
     failsafe{ logout }
     login_as("admin")
@@ -28,8 +28,8 @@ specification "Professionals" do
     new_professional_page.enter_contact("Jenny")
     new_professional_page.enter_organisation_name("Focus Speech")
     new_professional_page.click_create
-    try(10) { page_text.should contain("Professionals List") }
-    page_text.should contain("Jane Steel")
+    try(10) { @driver.text.should contain("Professionals List") }
+    @driver.text.should contain("Jane Steel")
   end
   
   story "[497] Admin user sort professional by category" do

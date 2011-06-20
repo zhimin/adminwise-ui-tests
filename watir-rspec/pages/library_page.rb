@@ -7,15 +7,15 @@ class LibraryPage < AbstractPage
   end
 
   def click_borrow
-    @browser.link(:text, "Borrow").click
+    @driver.link(:text, "Borrow").click
   end
 
   def add_new_resources
-    @browser.link(:text, "Add new resources").click
+    @driver.link(:text, "Add new resources").click
   end
 
   def enter_query(q)
-    @browser.text_field(:name, "q").set q
+    @driver.text_field(:name, "q").set q
   end
 
   def click_search
@@ -23,11 +23,11 @@ class LibraryPage < AbstractPage
   end
 
   def click_return
-    @browser.link(:text, "Return").click
+    @driver.link(:text, "Return").click
   end
 
   def add_manually
-    @browser.link(:text, "Add New resource manually").click
+    @driver.link(:text, "Add New resource manually").click
   end
 
 end

@@ -4,7 +4,7 @@ specification "Library: Add resourses" do
   include TestHelper
 
   before(:all) do
-    open_browser
+    @driver = Watir::Browser.new
     reset_database
     failsafe{ logout }
     login_as("admin")
@@ -25,10 +25,10 @@ specification "Library: Add resourses" do
   end
 
   story "[489] Admin user can add a new library resource manually" do
-    library_page = expect_page LibraryPage
+    library_page = LibraryPage.new(@driver)
     library_page.add_new_resources
     library_page.add_manually
-    new_resource_page = expect_page NewResourcePage
+    new_resource_page = NewResourcePage.new(@driver)
     new_resource_page.enter_title("The Other Country")
     new_resource_page.enter_authors("Michael Whelan")
     new_resource_page.select_subject("Families")
@@ -37,7 +37,7 @@ specification "Library: Add resourses" do
     click_link("Library")
     enter_text("q", "The Other Country")
     click_button("search")
-    try { page_text.should include("matches for 'The Other Country'")}
+    try { @driver.text.should include("matches for 'The Other Country'")}
   end
 
 =begin
@@ -53,7 +53,7 @@ specification "Library: Add resourses" do
       click_link("Library")
       enter_text("q", "Unit Testing")
       click_button("search")
-      try { page_text.should include("Pragmatic Unit Testing in Java with JUnit")}
+      try { @driver.text.should include("Pragmatic Unit Testing in Java with JUnit")}
     else
       puts "Amazon ECS is not installed or configured, amazon search test ignored"
     end

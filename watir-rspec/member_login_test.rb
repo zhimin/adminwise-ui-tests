@@ -4,7 +4,7 @@ specification "Memeber Login" do
   include TestHelper
 
   before(:all) do
-    open_browser
+    @driver = Watir::Browser.new
     reset_database
     failsafe{ logout }
     login_as("admin", "test")

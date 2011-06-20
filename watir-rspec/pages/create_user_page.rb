@@ -17,6 +17,6 @@ class CreateUserPage < AbstractPage
   end
 
   def click_create
-    click_button("Create User")
+    @driver.button(:value, "Create User").click
   end
 end
