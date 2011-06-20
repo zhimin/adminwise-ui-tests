@@ -1,0 +1,22 @@
+<?xml version="1.1" encoding="US-ASCII"?>
+<workspace>
+  <project_name>AdminWise</project_name>
+  <project_file>E:\xiangmu\adminwise-ui-tests\watir-rspec\adminwise-watir.tpr</project_file>
+  <opened_files>
+    <entry name="$PROJECT_DIR$/pages/abstract_page.rb"/>
+    <entry name="$PROJECT_DIR$/create_user_test.rb"/>
+    <entry name="$PROJECT_DIR$/test_helper.rb"/>
+  </opened_files>
+  <recent_files>
+    <entry name="$PROJECT_DIR$/pages/event_page.rb"/>
+    <entry name="$PROJECT_DIR$/user_login_test.rb"/>
+    <entry name="$PROJECT_DIR$/pages/abstract_page.rb"/>
+    <entry name="$PROJECT_DIR$/pages/home_page.rb"/>
+    <entry name="$PROJECT_DIR$/test_helper.rb"/>
+    <entry name="$PROJECT_DIR$/professionals_test.rb"/>
+    <entry name="$PROJECT_DIR$/profile_test.rb"/>
+    <entry name="$PROJECT_DIR$/create_user_test.rb"/>
+  </recent_files>
+  <test_suites>
+  </test_suites>
+</workspace>

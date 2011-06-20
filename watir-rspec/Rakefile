@@ -1,0 +1,127 @@
+# You need Ruby (Rake, RWebSpec, ci_reporter gems installed)
+#   Simplest way on Windows is to install RubyShell (http://testwisely.com/downloads)
+
+require 'rubygems'
+gem 'ci_reporter'
+gem 'rspec'
+require "spec/rake/spectask"
+require 'ci/reporter/rake/rspec' # use this if you're using RSpec
+
+BUILDWISE_URL = ENV["BUILDWISE_MASTER"] || "http://localhost:3618"
+BUILDWISE_PROJECT_IDENTIFIER = "adminwise"
+
+$test_dir = File.dirname(__FILE__)
+task :default => ["go_all"]
+load File.join($test_dir, "buildwise.rake")
+
+# List tests you want to exclude
+#
+def excluded_test_files
+  ["ignore_spec.rb", "bad_test.rb"].collect { |x| "#{$test_dir}/x" }
+end
+
+def all_specs
+  Dir.glob("#{$test_dir}/*_spec.rb") + Dir.glob("#{$test_dir}/*_test.rb")
+end
+
+desc "run all tests in this folder"
+Spec::Rake::SpecTask.new("test:ui") do |t|
+  specs_to_be_executed = []
+  ordered_specs = buildwise_ui_test_order(BUILDWISE_PROJECT_IDENTIFIER)
+  puts "[ORDER 1]: call buildwise #{ordered_specs}"
+  ordered_specs = ordered_specs.collect { |x| "#{$test_dir}/#{x}" } rescue nil
+  puts "[ORDER 2]: add full path #{ordered_specs.inspect}"
+  if ordered_specs.nil? || ordered_specs.compact.empty? || ordered_specs.class != Array
+    specs_to_be_executed = all_specs
+  else
+    unknown_specs = all_specs - ordered_specs
+    ordered_specs.each do |x|
+      specs_to_be_executed << x if all_specs.include?(x)
+    end
+  end
+  puts "[ORDER 3]: about to exclude #{specs_to_be_executed}"
+  specs_to_be_executed -= excluded_test_files
+
+  puts "[ORDER 4] Final ordering : #{specs_to_be_executed}"
+  t.spec_files = FileList[specs_to_be_executed]
+end
+
+desc "run selected quick tests"
+Spec::Rake::SpecTask.new("test:ui:quick") do |t|
+  quick_specs = ["membership_test.rb", "event_test.rb"]
+  ordered_specs = buildwise_ui_test_order(BUILDWISE_PROJECT_IDENTIFIER)
+	puts "XXX: #{ordered_specs.inspect}"
+	specs_to_be_executed = ordered_specs & quick_specs
+	specs_to_be_executed = specs_to_be_executed.collect { |x| "#{$test_dir}/#{x}" } rescue nil
+  t.spec_files = FileList[specs_to_be_executed]
+end
+
+task :go_all => ["ci:setup:rspec"] do
+  build_id = buildwise_start_build(:project_name => "adminwise",
+                                   :working_dir => File.expand_path(File.join(File.dirname(__FILE__), "test", "acceptance")),
+                                   :spec_dir => ["."],
+                                   :excluded => excluded_test_files || []
+  )
+  puts "[Rake] new build id =>|#{build_id}|"
+  begin
+    FileUtils.mkdir_p("spec/reports")
+    puts "[Rake] Invoke"
+    Rake::Task["test:ui"].invoke
+    puts "[Rake] Invoke Finish"
+  ensure
+    puts "Finished: Notify build status"
+    sleep 1 # wait a couple of seconds to finish writing last test results xml file out
+    puts "[Rake] finish the build"
+    buildwise_finish_build(build_id)
+  end
+end
+
+
+task :go_quick => ["ci:setup:rspec"] do
+  build_id = buildwise_start_build(:project_name => "adminwise",
+                                   :working_dir => File.expand_path(File.join(File.dirname(__FILE__), "test", "acceptance")),
+                                   :spec_dir => ["."],
+                                   :excluded => excluded_test_files || []
+  )
+  puts "[Rake] new build id =>|#{build_id}|"
+  begin
+    FileUtils.mkdir_p("spec/reports")
+    puts "[Rake] Invoke Quick Build"
+    Rake::Task["test:ui:quick"].invoke
+    puts "[Rake] Invoke Finish"
+  ensure
+    puts "Finished: Notify build status"
+    sleep 1 # wait a couple of seconds to finish writing last test results xml file out
+    puts "[Rake] finish the build"
+    buildwise_finish_build(build_id)
+  end
+end
+
+
+task :go_grid => ["ci:setup:rspec"] do
+  build_id = buildwise_start_build(:project_name => "adminwise-full",
+                                   :working_dir => File.expand_path(File.dirname(__FILE__)),
+                                   :spec_dir => ["."],
+                                   :excluded => excluded_test_files || [],
+                                   :distributed => true
+  )
+
+  the_build_status = buildwise_build_ui_test_status(build_id)
+  start_time = Time.now
+
+  puts "[Rake] Keep checking build |#{build_id} | #{the_build_status}"
+  while ((Time.now - start_time ) < 15 * 60)
+    the_build_status = buildwise_build_ui_test_status(build_id)
+    puts "[Rake] #{Time.now} Checking build status: |#{the_build_status}|"
+    if the_build_status == "OK"
+      exit 0
+    elsif the_build_status == "Failed"
+      exit -1
+    else 
+	    puts "Keep Checking ..."
+      sleep 30 # check build status every 1 minute
+    end
+  end  
+  puts "UI Test execution expired"
+  exit -2
+end
