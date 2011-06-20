@@ -6,7 +6,7 @@ test_suite "Events" do
   before(:all) do
     @driver = Watir::Browser.new
     reset_database
-    failsafe{ logout }
+    logout
     login_as("admin")
   end
 
@@ -20,7 +20,7 @@ test_suite "Events" do
 
   # Press key Ctrl+Shift+T, then enter 123 quickly navigate you here
   story "[487] Can create a new event" do
-    click_link("Events")
+    @driver.link(:text,"Events").click
     event_list_page = EventListPage.new(@driver)
     event_page = event_list_page.click_new
     event_page.enter_name("ABA Workshop")
@@ -28,16 +28,16 @@ test_suite "Events" do
     event_page.enter_presenters("Many")
     event_page.enter_date("10/12/2010")
     event_page.click_create
-    assert_text_present("3 events")
+    @driver.text.should include("3 events")
   end
 
   test "[488] Can edit an existing event" do
-    click_link("Events")
+    @driver.link(:text,"Events").click
     event_list_page = expect_page EventListPage
     event_page = event_list_page.edit(1)
     event_page.enter_name("2010 Agileway Testing Conference")
     event_page.click_update
-    assert_text_present("2010 Agileway Testing Conference")
+    @driver.text.should include("2010 Agileway Testing Conference")
   end
 
 

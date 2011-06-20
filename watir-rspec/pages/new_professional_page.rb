@@ -1,4 +1,4 @@
-require 'rwebspec'
+
 
 class NewProfessionalPage < AbstractPage
 
@@ -13,16 +13,16 @@ class NewProfessionalPage < AbstractPage
   def enter_contact(professional_contact)
     @driver.text_field(:name, "professional[contact_person]").set professional_contact
   end
-  
-    def enter_organisation_name(professional_organis)
+
+  def enter_organisation_name(professional_organis)
     @driver.text_field(:name, "professional[organisation]").set professional_organis
   end
-  
+
   def click_create
-    click_button("Create")
+    @driver.button(:value, "Create").click
   end
-  
-  def select_category(professional_category)  
+
+  def select_category(professional_category)
     @driver.select_list(:name, "professional[category]").set professional_category
   end
 

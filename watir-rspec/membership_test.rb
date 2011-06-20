@@ -6,7 +6,7 @@ specification "Memebership" do
   before(:all) do
     open_browser
     reset_database
-    failsafe{ logout }
+    logout
     login_as("admin", "test")
   end
 
@@ -19,20 +19,20 @@ specification "Memebership" do
   end
 
   story "Admin user can search an existing member by surname " do
-    enter_text("search", "Smith")
-    click_button("Search")
-    page_text.should include("David Smith")
+    @driver.text_field(:name, "search").set "Smith"
+    @driver.button(:value, "Search").click
+    @driver.text.should include("David Smith")
   end
   
   story "Admin user can search an existing member by membership number" do
-    enter_text("search", "30002")
+    @driver.text_field(:name, "search").set "30002"
     click_button("Search")
     assert_link_present_with_text("David Smith")
   end
   
   story "[493] Admin user can create a new family member" do
-    click_link("Membership")
-    membership_page = expect_page MembershipPage
+    @driver.link(:text,"Membership").click
+    membership_page =  MembershipPage.new(@driver)
     membership_page.add_member
     membership_page.enter_first_name("Cindy")
     membership_page.enter_last_name("Fu")
@@ -49,11 +49,11 @@ specification "Memebership" do
     membership_page.select_aware_from("family/ friend")
     membership_page.click_create_member
     membership_page.click_membership
-    page_text.should include("Cindy Fu")
+    @driver.text.should include("Cindy Fu")
   end
 
   story "[494] Admin user can create a new organisation member" do
-    membership_page = expect_page MembershipPage
+    membership_page = MembershipPage.new(@driver)
     membership_page.click_add_member
     membership_page.enter_organisation_name("CareLink Pty Ltd")
     membership_page.enter_first_name("Michele")
@@ -68,7 +68,7 @@ specification "Memebership" do
     membership_page.select_aware_from("conference/ workshop")
     membership_page.click_create_member
     membership_page.click_membership
-    page_text.should include("CareLink Pty Ltd")
+    @driver.text.should include("CareLink Pty Ltd")
   end
 
 end

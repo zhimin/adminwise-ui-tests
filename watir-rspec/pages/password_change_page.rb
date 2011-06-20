@@ -18,5 +18,9 @@ class PasswordChangePage < AbstractPage
   def enter_confirm(confirm_pass)
     @driver.text_field(:name, "user[password_confirmation]").set confirm_pass
   end
+  
+  def click_change
+    @driver.button(:value, "Change").click
+  end
 
 end

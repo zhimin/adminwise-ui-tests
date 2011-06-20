@@ -23,7 +23,7 @@ specification "Create a new user as admin" do
     create_user_page.enter_email("mike@gmail.com")
     create_user_page.enter_password("pass")
     create_user_page.click_create
-    @driver.text.should contain("mike") # checkout; after create see new user
+    @driver.text.should include("mike") # checkout; after create see new user
     
     logout
     login_as("mike", "pass")

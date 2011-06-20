@@ -1,5 +1,3 @@
-require 'rwebspec'
-
 class MembershipPage < RWebSpec::AbstractWebPage
 
   def initialize(browser)
@@ -7,43 +5,43 @@ class MembershipPage < RWebSpec::AbstractWebPage
   end
 
   def add_member
-    click_link("Add member")
+    @driver.link(:text,"Add member").click
   end
 
   def enter_first_name(member_fname)
-    enter_text("member[fname]", member_fname)
+    @driver.text_field(:name, "member[fname]").set member_fname
   end
 
   def enter_last_name(member_lname)
-    enter_text("member[lname]", member_lname)
+    @driver.text_field(:name, "member[lname]").set member_lname
   end
 
   def enter_street_address(member_street_addr)
-    enter_text("member[street_addr]", member_street_addr)
+    @driver.text_field(:name, "member[street_addr]").set member_street_addr
   end
 
   def enter_suburb(member_suburb)
-    enter_text("member[suburb]", member_suburb)
+    @driver.text_field(:name, "member[suburb]").set member_suburb
   end
 
   def enter_state(member_state)
-    enter_text("member[state]", member_state)
+    @driver.text_field(:name, "member[state]").set member_state
   end
 
   def enter_postcode(member_postcode)
-    enter_text("member[postcode]", member_postcode)
+    @driver.text_field(:name, "member[postcode]").set member_postcode
   end
 
   def enter_phone(member_phone)
-    enter_text("member[phone]", member_phone)
+    @driver.text_field(:name, "member[phone]").set member_phone
   end
 
   def enter_mobile(member_mobile)
-    enter_text("member[mobile]", member_mobile)
+    @driver.text_field(:name, "member[mobile]").set member_mobile
   end
 
   def enter_email(member_email)
-    enter_text("member[email]", member_email)
+    @driver.text_field(:name, "member[email]").set member_email
   end
 
   def click_member_type(member_member_type)
@@ -63,22 +61,22 @@ class MembershipPage < RWebSpec::AbstractWebPage
   end
 
   def click_create_member
-    click_button("Create Member")
+    @driver.button(:value, "Create Member").click
   end
 
   def click_membership
-    click_link("Membership")
+    @driver.link(:text, "Membership").click
   end
 
   def click_add_member
-    click_link("Add member")
+    @driver.link(:text,"Add member")
   end
 
   def enter_organisation_name(member_oname)
-    enter_text("member[oname]", member_oname)
+    @driver.text_field(:name, "member[oname]", member_oname)
   end
 
   def enter_first_name(member_fname)
-    enter_text("member[fname]", member_fname)
+    @driver.text_field(:name, "member[fname]", member_fname)
   end
 end

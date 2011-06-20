@@ -6,19 +6,19 @@ test_suite "Event Registrations as Admin" do
   before(:all) do
     @driver = Watir::Browser.new
     reset_database
-    failsafe{ logout }
+    logout
     login_as("admin")
   end
 
   before(:each) do
     visit "/home"
-    click_link("Events")
+    @driver.link(:text, "Events").click
     event_list_page = EventListPage.new(@driver)
     @driver.link(:text, "ABIQ 2011 Autism Conference").click
   end
 
   after(:each) do
-    fail_safe { logout } unless debugging?
+    logout  unless debugging?
   end
 
   after(:all) do
@@ -36,7 +36,7 @@ test_suite "Event Registrations as Admin" do
     sleep 1
     event_registration_page.click_register
     @driver.text.should contain("Address line1 can't be blank")
-    enter_text("person[address_line1]", "10 Pember St")
+    @driver.text_field(:name, "person[address_line1]").set "10 Pember St"
     event_registration_page.click_register
 
     @driver.button(:value, "Confirm").click
@@ -44,7 +44,7 @@ test_suite "Event Registrations as Admin" do
   end
 
 #  test "Admin user can register a staff " do
-#    click_link("Register staff")
+#    @driver.link(:text,"Register staff")
 #  end
 
 

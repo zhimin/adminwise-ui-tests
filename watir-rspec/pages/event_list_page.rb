@@ -12,7 +12,7 @@ class EventListPage < AbstractPage
   end
   
   def click_new
-    @drver.link(:text, "New event").click
+    @driver.link(:text, "New event").click
     EventPage.new(@browser) 
   end
 end

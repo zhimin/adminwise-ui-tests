@@ -36,7 +36,7 @@ module TestHelper
   alias login login_as
 
   def logout
-    failsafe { link(:text, "Logout").click }
+    begin; @driver.link(:text, "Logout").click;  rescue => e; end
   end
 
 
@@ -58,7 +58,12 @@ module TestHelper
     @driver.goto("#{base_url}/reset")
     @driver.goto("#{base_url}/")
   end
-
+  
+  def visit(page)
+    base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
+    @driver.goto("#{base_url}#{page}")
+  end
+  
   def reset_database_silient
      # Option 2: using HTTP to call reset_database URL directly
      base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL

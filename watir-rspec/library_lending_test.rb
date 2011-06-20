@@ -17,11 +17,11 @@ specification "Library: Borrowing and Lending" do
 
   before(:each) do
     visit "/home"
-    click_link("Library")
+    @driver.link(:text,"Library")
   end
 
   after(:each) do
-    #click_link("Logout") unless debugging?
+    #@driver.link(:text,"Logout") unless debugging?
     goto_page("/home") unless debugging?
   end
 
@@ -42,7 +42,7 @@ specification "Library: Borrowing and Lending" do
     library_borrow_page.enter_member_name("30008")
     library_borrow_page.click_find_member
     sleep 0.5
-    click_link("1 Rentals")
+    @driver.link(:text,"1 Rentals")
     MemberBorrowHistoryPage.new(@driver)
     #
   end
@@ -61,15 +61,15 @@ specification "Library: Borrowing and Lending" do
 
     #   search 100001
     #   assert status checkedout, using id
-    click_link("Library")
+    @driver.link(:text,"Library")
     library_page = LibraryPage.new(@driver)
     library_page.enter_query("100001")
     library_page.click_search
     sleep 0.5
-    click_link("Let Me Hear Your Voice: A Family's Triumph over Autism")
+    @driver.link(:text,"Let Me Hear Your Voice: A Family's Triumph over Autism")
     cell(:id, "item_status_100001").text.strip.should == "Checked out"
 
-    click_link("Library")
+    @driver.link(:text,"Library")
     library_page = LibraryPage.new(@driver)
     library_page.click_return
     sleep 0.5
@@ -80,12 +80,12 @@ specification "Library: Borrowing and Lending" do
     try { assert_link_present_with_text("Let Me Hear Your Voice: A Family's Triumph over Autism") }
     library_return_page.click_process
 
-    click_link("Library")
+    @driver.link(:text,"Library")
     library_page = LibraryPage.new(@driver)
     library_page.enter_query("100001")
     library_page.click_search
     sleep 1
-    click_link("Let Me Hear Your Voice: A Family's Triumph over Autism")
+    @driver.link(:text,"Let Me Hear Your Voice: A Family's Triumph over Autism")
     cell(:id, "item_status_100001").text.strip.should == "Available"
   end
 

@@ -19,15 +19,15 @@ specification "Memeber Login" do
   end
 
   story "[495] Admin can generate a login for an existing member" do
-    click_link("Membership")
-    click_link("David Smith")
+    @driver.link(:text,"Membership").click
+    @driver.link(:text,"David Smith").click
     click_button("Generate login")
     sleep 1
-    click_link("dsmith") # click new link to member login
+    @driver.link(:text,"dsmith").click # click new link to member login
     assert_link_present_with_text("David Smith")
 
-    click_link("Member logins")
-    enter_text("search", "dsmith")
+    @driver.link(:text,"Member logins").click
+    @driver.text_field(:name, "search").set "dsmith"
     click_button("Search")
     assert_link_present_with_text("dsmith")
   end

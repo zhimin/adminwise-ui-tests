@@ -17,7 +17,7 @@ specification "Library: Add resourses" do
 
   before(:each) do
     visit "/home"
-    click_link("Library")
+    @driver.link(:text, "Library").click
   end
 
   after(:each) do    
@@ -34,8 +34,8 @@ specification "Library: Add resourses" do
     new_resource_page.select_subject("Families")
     new_resource_page.click_create
     click_button("Save")
-    click_link("Library")
-    enter_text("q", "The Other Country")
+    @driver.link(:text,"Library").click
+    @driver.text_field(:name, "q").set "The Other Country"
     click_button("search")
     try { @driver.text.should include("matches for 'The Other Country'")}
   end
@@ -45,13 +45,13 @@ specification "Library: Add resourses" do
     library_page = expect_page LibraryPage
     library_page.add_new_resources
     if page_text.include?("OR")
-      enter_text("q", "Web Test Automation")
+      @driver.text_field(:name, "q", "Web Test Automation")
       click_button("search")
       try(10) {    link(:text => "Add", :index => 1).click }
       click_button("Create")
       click_button("Save")
-      click_link("Library")
-      enter_text("q", "Unit Testing")
+      @driver.link(:text,"Library")
+      @driver.text_field(:name, "q", "Unit Testing")
       click_button("search")
       try { @driver.text.should include("Pragmatic Unit Testing in Java with JUnit")}
     else

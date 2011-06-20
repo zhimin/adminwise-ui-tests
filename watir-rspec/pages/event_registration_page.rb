@@ -23,7 +23,7 @@ class EventRegistrationPage < AbstractPage
   end
 
   def select_is_member(is_member)
-    click_radio_option("is_member", is_member)
+    @driver.radio(:name, "is_member", is_member).set
   end
   
   # function(parameter))
@@ -44,7 +44,7 @@ class EventRegistrationPage < AbstractPage
   end
   
   def select_person_occupation(person_occupation)
-      select_option("person[occupation]", person_occupation)
+    @driver.select_list(:name, "person[occupation]").set person_occupation
   end
   
   def enter_person_email(person_email)
@@ -68,7 +68,8 @@ class EventRegistrationPage < AbstractPage
   end
   
   def uncheck_checkbox_email_notification
-      uncheck_checkbox("event_registration[email_notification]", "1")
+    # @driver.checkbox(:name, "CHECKBOX_ID").clear
+    uncheck_checkbox("event_registration[email_notification]", "1")
   end
   
   def uncheck_event_registration_emal_notification
@@ -80,11 +81,11 @@ class EventRegistrationPage < AbstractPage
   end
   
   def uncheck_checkbox_registration_email_notificaton
-      uncheck_checkbox("event_registration[email_notification]", "1")
+    uncheck_checkbox("event_registration[email_notification]", "1")
   end
 
   def click_confirm
-      click_button("Confirm")
+    @driver.button(:value, "Confirm").click
   end
 
 end
