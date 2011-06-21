@@ -12,6 +12,7 @@ specification "Memeber Login" do
 
   after(:all) do
     logout unless debugging?
+    @driver.close unless debugging?
   end
 
   before(:each) do

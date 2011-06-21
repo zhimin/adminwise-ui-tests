@@ -6,13 +6,13 @@ specification "Library: Add resourses" do
   before(:all) do
     @driver = Watir::Browser.new
     reset_database
-    failsafe{ logout }
+     logout 
     login_as("admin")
   end
 
   after(:all) do
-    failsafe{ logout }
-    #close_browser unless debugging?
+   logout unless debugging?
+    @driver.close unless debugging?
   end
 
   before(:each) do
@@ -33,10 +33,10 @@ specification "Library: Add resourses" do
     new_resource_page.enter_authors("Michael Whelan")
     new_resource_page.select_subject("Families")
     new_resource_page.click_create
-    click_button("Save")
+    @driver.button(:value, "Save").click
     @driver.link(:text,"Library").click
     @driver.text_field(:name, "q").set "The Other Country"
-    click_button("search")
+    @driver.button(:value, "search").click
     try { @driver.text.should include("matches for 'The Other Country'")}
   end
 

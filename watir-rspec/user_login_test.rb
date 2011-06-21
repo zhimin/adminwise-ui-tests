@@ -5,16 +5,16 @@ specification "User Management" do
 
   before(:all) do
     @driver = Watir::Browser.new
-    failsafe{ logout }
+    logout
     reset_database
   end
 
   after(:each) do
-    failsafe{ logout } unless debugging?
+    logout unless debugging?
   end
 
   after(:all) do
-    # close_browser if is_windows? and is_firefox?
+    @driver.close unless debugging?
   end
 
   story "[480] A registered user can login" do

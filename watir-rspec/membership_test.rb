@@ -4,7 +4,7 @@ specification "Memebership" do
   include TestHelper
 
   before(:all) do
-    open_browser
+    @driver = Watir::Browser.new
     reset_database
     logout
     login_as("admin", "test")
@@ -12,6 +12,7 @@ specification "Memebership" do
 
   after(:all) do
     logout unless debugging?
+    @driver.close unless debugging?
   end
 
   before(:each) do
@@ -26,7 +27,7 @@ specification "Memebership" do
   
   story "Admin user can search an existing member by membership number" do
     @driver.text_field(:name, "search").set "30002"
-    click_button("Search")
+    @driver.button(:value, "Search").click
     assert_link_present_with_text("David Smith")
   end
   

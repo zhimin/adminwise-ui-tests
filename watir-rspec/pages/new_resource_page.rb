@@ -7,11 +7,11 @@ class NewResourcePage < AbstractPage
   end
 
   def select_subject(resource_subject)
-    select_option("resource[subject]", resource_subject)
+    @driver.select_list(:name, "resource[subject]").set resource_subject
   end
   
   def click_create
-    click_button("Create")
+    @driver.button(:value, "Create").click
   end
 
   def enter_title(title)

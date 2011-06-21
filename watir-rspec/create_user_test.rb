@@ -10,6 +10,7 @@ specification "Create a new user as admin" do
 
   after(:all) do
     logout unless debugging?
+    @driver.close unless debugging?
   end
 
   story "[482] Create new user, then login" do

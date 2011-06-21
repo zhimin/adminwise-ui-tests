@@ -12,6 +12,7 @@ test_suite "Events" do
 
   before(:each) do
     visit "/"
+    @driver.link(:text, "Events").click
   end
 
   after(:all) do
@@ -20,7 +21,6 @@ test_suite "Events" do
 
   # Press key Ctrl+Shift+T, then enter 123 quickly navigate you here
   story "[487] Can create a new event" do
-    @driver.link(:text,"Events").click
     event_list_page = EventListPage.new(@driver)
     event_page = event_list_page.click_new
     event_page.enter_name("ABA Workshop")
@@ -32,8 +32,7 @@ test_suite "Events" do
   end
 
   test "[488] Can edit an existing event" do
-    @driver.link(:text,"Events").click
-    event_list_page = expect_page EventListPage
+    event_list_page =  EventListPage.new(@driver)
     event_page = event_list_page.edit(1)
     event_page.enter_name("2010 Agileway Testing Conference")
     event_page.click_update

@@ -3,7 +3,7 @@
 class EventPage < AbstractPage
 
   def initialize(browser)
-    super(browser, "") # <= 
+    super(browser, "") # <=
   end
 
   def enter_venue(event_venue)
@@ -11,7 +11,7 @@ class EventPage < AbstractPage
   end
 
   def click_create
-    click_button("Create")
+    @driver.button(:value, "Create").click
   end
 
   def enter_presenters(event_presenters)
@@ -21,9 +21,9 @@ class EventPage < AbstractPage
   def enter_date(event_date_from)
     @driver.text_field(:name, "event[date_from]").set event_date_from
   end
-  
+
   def click_update
-    click_button("Update")
+    @driver.button(:value, "Update").click
   end
 
   def enter_name(name)

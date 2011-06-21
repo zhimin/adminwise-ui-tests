@@ -26,6 +26,8 @@ Impression
 
 2. Now open a new browser every single time, although can add extract test logic to reuse existing browser window (but RWebSpec with built-in support)
   
+    click_button("Create") => @driver.button(:value, "Create").click
+
 3. Lack of useful utils such as 
      fallsafe{ }
      try {}
@@ -37,3 +39,8 @@ Impression
      membership_page = expect MembershipPage => membership_page = MembershipPage.new(@driver)
 
 6. Add 'visit' in test_helper, as it is easy to goto the page in site, and handel different environment server URL
+
+7. Assertiong changes:
+    page_text.should contain("Something")
+    @driver.text.should include("Something")
+

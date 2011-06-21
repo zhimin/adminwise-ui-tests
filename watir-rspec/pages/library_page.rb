@@ -19,7 +19,7 @@ class LibraryPage < AbstractPage
   end
 
   def click_search
-    click_button("search")
+    @driver.button(:value, "search").click
   end
 
   def click_return

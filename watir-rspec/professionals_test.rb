@@ -17,7 +17,7 @@ specification "Professionals" do
     
   after(:all) do
     logout  unless debugging?
-    # close_browser if is_windows? and is_firefox?
+    @driver.close unless debugging?
   end
 
   story "[496] Admin User can add a professional" do
@@ -28,8 +28,8 @@ specification "Professionals" do
     new_professional_page.enter_contact("Jenny")
     new_professional_page.enter_organisation_name("Focus Speech")
     new_professional_page.click_create
-    try(10) { @driver.text.should contain("Professionals List") }
-    @driver.text.should contain("Jane Steel")
+    try(10) { @driver.text.should include("Professionals List") }
+    @driver.text.should include("Jane Steel")
   end
   
   story "[497] Admin user sort professional by category" do

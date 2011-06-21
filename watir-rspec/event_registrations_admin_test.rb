@@ -22,7 +22,7 @@ test_suite "Event Registrations as Admin" do
   end
 
   after(:all) do
-    # close_browser if is_windows? and is_firefox?
+    @driver.close unless debugging?
   end
 
   test "[483] Admin User can register on behalf someone" do
@@ -35,7 +35,7 @@ test_suite "Event Registrations as Admin" do
     event_registration_page.click_find
     sleep 1
     event_registration_page.click_register
-    @driver.text.should contain("Address line1 can't be blank")
+    @driver.text.should include("Address line1 can't be blank")
     @driver.text_field(:name, "person[address_line1]").set "10 Pember St"
     event_registration_page.click_register
 

@@ -10,8 +10,8 @@ specification "User Profile" do
   end
 
   after(:all) do
-    begin; logout;  rescue => e; end  unless debugging?
-    close_browser unless debugging?
+    logout  unless debugging?
+    @driver.close unless debugging?
   end
 
   story "[481] User can change password" do

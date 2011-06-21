@@ -1,4 +1,4 @@
-class MembershipPage < RWebSpec::AbstractWebPage
+class MembershipPage < AbstractPage
 
   def initialize(browser)
     super(browser, "") # <= TEXT UNIQUE TO THIS PAGE
@@ -45,19 +45,19 @@ class MembershipPage < RWebSpec::AbstractWebPage
   end
 
   def click_member_type(member_member_type)
-    click_radio_option("member[member_type]", member_member_type)
+    @driver.radio(:name, "member[member_type]", member_member_type).set
   end
 
   def click_mail_out(member_mail_out)
-    click_radio_option("member[mail_out]", member_mail_out)
+    @driver.radio(:name, "member[mail_out]", member_mail_out).set
   end
 
   def click_doing_aba(member_doing_aba)
-    click_radio_option("member[doing_aba]", member_doing_aba)
+    @driver.radio(:name, "member[doing_aba]", member_doing_aba)
   end
 
   def select_aware_from(member_aware_from)
-    select_option("member[aware_from]", member_aware_from)
+    @driver.select_list(:name, "member[aware_from]").set member_aware_from
   end
 
   def click_create_member
@@ -73,10 +73,10 @@ class MembershipPage < RWebSpec::AbstractWebPage
   end
 
   def enter_organisation_name(member_oname)
-    @driver.text_field(:name, "member[oname]", member_oname)
+    @driver.text_field(:name, "member[oname]").set member_oname
   end
 
   def enter_first_name(member_fname)
-    @driver.text_field(:name, "member[fname]", member_fname)
+    @driver.text_field(:name, "member[fname]").set member_fname
   end
 end

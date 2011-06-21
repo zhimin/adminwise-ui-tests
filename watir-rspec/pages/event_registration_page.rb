@@ -15,7 +15,7 @@ class EventRegistrationPage < AbstractPage
   end
   
   def click_find
-    click_button("Find")
+    @driver.button(:value, "Find").click
   end
   
   def click_register
@@ -56,7 +56,7 @@ class EventRegistrationPage < AbstractPage
   end
   
   def enter_address_line1(person_address_line1)
-    @driver.text_field(:name, "person[address_line1]").set address_line1
+    @driver.text_field(:name, "person[address_line1]").set person_address_line1
   end
   
   def enter_person_suburb(person_suburb)
@@ -68,12 +68,11 @@ class EventRegistrationPage < AbstractPage
   end
   
   def uncheck_checkbox_email_notification
-    # @driver.checkbox(:name, "CHECKBOX_ID").clear
-    uncheck_checkbox("event_registration[email_notification]", "1")
+    @driver.checkbox(:name, "event_registration[email_notification]", "1").clear
   end
   
   def uncheck_event_registration_emal_notification
-      uncheck_checkbox("event_registration[email_notification]", "1")
+    @driver.checkbox(:name, "event_registration[email_notification]", "1").clear
   end
   
   def click_register
@@ -81,7 +80,7 @@ class EventRegistrationPage < AbstractPage
   end
   
   def uncheck_checkbox_registration_email_notificaton
-    uncheck_checkbox("event_registration[email_notification]", "1")
+    @driver.checkbox(:name, "event_registration[email_notification]", "1").clear
   end
 
   def click_confirm
