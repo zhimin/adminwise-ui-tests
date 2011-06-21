@@ -34,7 +34,7 @@ test_suite "Event Registrations" do
     sleep 3
     event_registration_page.click_register
     @driver.text.should include("Address line1 can't be blank")
-    @driver.text_field(:name, "person[address_line1]", "10 Pember St")
+    @driver.text_field(:name, "person[address_line1]").set("10 Pember St")
     event_registration_page.click_register
     event_registration_confirmation_page = EventRegistrationConfirmationPage.new(@driver)
     event_registration_confirmation_page.click_confirm

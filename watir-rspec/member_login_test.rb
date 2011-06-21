@@ -6,7 +6,7 @@ specification "Memeber Login" do
   before(:all) do
     @driver = Watir::Browser.new
     reset_database
-    failsafe{ logout }
+    logout
     login_as("admin", "test")
   end
 
@@ -22,14 +22,14 @@ specification "Memeber Login" do
   story "[495] Admin can generate a login for an existing member" do
     @driver.link(:text,"Membership").click
     @driver.link(:text,"David Smith").click
-    click_button("Generate login")
+    @driver.button(:value, "Generate login").click
     sleep 1
     @driver.link(:text,"dsmith").click # click new link to member login
     assert_link_present_with_text("David Smith")
 
     @driver.link(:text,"Member logins").click
     @driver.text_field(:name, "search").set "dsmith"
-    click_button("Search")
+    @driver.button(:value, "Search").click
     assert_link_present_with_text("dsmith")
   end
 

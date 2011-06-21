@@ -21,7 +21,7 @@ specification "Library: Add resourses" do
   end
 
   after(:each) do    
-    goto_page("/home") unless debugging?
+    visit("/home") unless debugging?
   end
 
   story "[489] Admin user can add a new library resource manually" do

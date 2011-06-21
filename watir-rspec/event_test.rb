@@ -17,6 +17,7 @@ test_suite "Events" do
 
   after(:all) do
     logout unless debugging?
+    @driver.close unless debugging?
   end
 
   # Press key Ctrl+Shift+T, then enter 123 quickly navigate you here
