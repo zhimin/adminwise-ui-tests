@@ -1,15 +1,26 @@
-h2. Test Framework Comparison: Selenium2, Watir and RWebSpec
+h3. Test Framework Comparison: Selenium2, Watir and RWebSpec
 
-h3. Behaviour Driven Development Framework: <a href="http://rspec.info" target="_blank">RSpec</a>
+If you are undecided on choosing which test frameworks for your project: Watir or Selenium2, the you might find this useful. Here you can find folders with test scripts in four syntax variations, 
+ 
+* Watir with RWebSpec
+* Selenium2 with RWebSpec
+* Watir with RSpec
+* Selenium2 with RSpec
+
+All four test projects can be opened and run in TestWise2, you can easily to try out and compare yourself.
+
+h4. Behaviour Driven Development Framework: <a href="http://rspec.info" target="_blank">RSpec</a>
 
 
-h3. Selenium2 (selenium-webdriver) vs Watir
+h4. Selenium2 (selenium-webdriver) vs Watir
 
-Verdict: 
+Next major version of Selenum2 (also known as webdriver) is still in Beta, it is supported in multiple programming languages. Here we only compares its Ruby version (a popular and concise scripting language, perfect for test scripts) against Watir (Web application testing in Ruby) 
 
-h3. RWebSpec vs Watir vs Selenium2
+Verdict: Watir
 
-RWebSpec provides an high level abstract of testing syntax, i.e., if you develop test in RWebSpec, it will be easy to switch between Watir and Selenium2. 
+h4. RWebSpec vs Watir vs Selenium2
+
+RWebSpec provides an high level abstract of testing syntax on top of Watir or Selenium2, i.e., if you develop test in RWebSpec, it will be easy to switch between Watir and Selenium2. Besides, with of loss of flexibility, you can use native Watir with RWebSpec or Selenium2 with RWebSpec.
 
 Also RWebSpec provides other benefits
 
