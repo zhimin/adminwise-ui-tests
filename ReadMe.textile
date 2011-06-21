@@ -1,0 +1,37 @@
+h2. Test Framework Comparison: Selenium2, Watir and RWebSpec
+
+h3. Behaviour Driven Development Framework: <a href="http://rspec.info" target="_blank">RSpec</a>
+
+
+h3. Selenium2 (selenium-webdriver) vs Watir
+
+Verdict: 
+
+h3. RWebSpec vs Watir vs Selenium2
+
+RWebSpec provides an high level abstract of testing syntax, i.e., if you develop test in RWebSpec, it will be easy to switch between Watir and Selenium2. 
+
+Also RWebSpec provides other benefits
+
+<ul>
+<li>Built-in Pages-objects support
+  <pre>expect_page SignUpPage</pre></li>
+
+<li>More intuitive test steps, no need of reference to browser object.
+<p>
+  <pre>enter_text("user", "testwise")
+click_button("Login")</pre>
+Watir version:
+  <pre>browser.text_field(:name, "user").set("testwise")
+browser.button(:value, "Login").click</pre>
+</p></li>
+<li>Common test helper methods
+<pre>try(10) { click_button("Next" } # for AJAX testing, try click the button upto 10 seconds
+ 	fail_safe { logout } # if already logged out, it's OK, don't throw error</pre>	
+</li>
+<li>Test data generator
+<pre>random_number(100, 999) # generate a number bigger than 100 but less than  999
+random_string_in(["Australia", "USA"]) 
+</li>
+<li>IDE Support in TestWise, can see current line under execution highlighted</li>
+</ul>
