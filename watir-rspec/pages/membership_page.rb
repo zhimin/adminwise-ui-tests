@@ -69,7 +69,7 @@ class MembershipPage < AbstractPage
   end
 
   def click_add_member
-    @driver.link(:text,"Add member")
+    @driver.link(:text,"Add member").click
   end
 
   def enter_organisation_name(member_oname)

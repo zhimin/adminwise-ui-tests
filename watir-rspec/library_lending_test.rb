@@ -66,7 +66,7 @@ specification "Library: Borrowing and Lending" do
     library_page.enter_query("100001")
     library_page.click_search
     sleep 0.5
-    @driver.link(:text,"Let Me Hear Your Voice: A Family's Triumph over Autism")
+    @driver.link(:text,"Let Me Hear Your Voice: A Family's Triumph over Autism").click
     @driver.cell(:id, "item_status_100001").text.strip.should == "Checked out"
 
     @driver.link(:text,"Library")
