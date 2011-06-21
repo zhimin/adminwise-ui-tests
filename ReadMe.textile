@@ -7,9 +7,11 @@ If you are undecided on choosing which test frameworks for your project: Watir o
 * Watir with RSpec
 * Selenium2 with RSpec
 
-All four test projects can be opened and run in TestWise2, you can easily to try out and compare yourself.
+All four test projects can be opened and run in <a href="http://testwisely.com" target="_blank">TestWise2</a>, you can easily to try out and compare yourself.
 
 h4. Behaviour Driven Development Framework: <a href="http://rspec.info" target="_blank">RSpec</a>
+
+RSpec is a Behaviour-Driven Development framework in Ruby, it helps on executable documentation in Acceptance Test-Driven. In simple words, you can write acceptance UI tests in RSpec, and it will be the living specification.
 
 
 h4. Selenium2 (selenium-webdriver) vs Watir
