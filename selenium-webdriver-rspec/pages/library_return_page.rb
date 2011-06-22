@@ -11,7 +11,7 @@ class LibraryReturnPage < AbstractPage
   end
   
   def enter_resource(resource)
-    enter_text("item_physical_id", resource)
+    @driver.find_element(:name, "item_physical_id").send_keys resource
   end
   
   def click_find

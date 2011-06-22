@@ -6,43 +6,47 @@ class MembershipPage < AbstractPage
   end
 
   def add_member
-    @driver.find_element(:link_text, "Add member")
+    @driver.find_element(:link_text, "Add member").click
   end
 
+  def click_add_member
+    @driver.find_element(:link_text, "Add member").click
+  end
+  
   def enter_first_name(member_fname)
-    enter_text("member[fname]", member_fname)
+    @driver.find_element(:name, "member[fname]").send_keys(member_fname)
   end
 
   def enter_last_name(member_lname)
-    enter_text("member[lname]", member_lname)
+    @driver.find_element(:name, "member[lname]").send_keys(member_lname)
   end
 
   def enter_street_address(member_street_addr)
-    enter_text("member[street_addr]", member_street_addr)
+    @driver.find_element(:name, "member[street_addr]").send_keys(member_street_addr)
   end
 
   def enter_suburb(member_suburb)
-    enter_text("member[suburb]", member_suburb)
+    @driver.find_element(:name, "member[suburb]").send_keys(member_suburb)
   end
 
   def enter_state(member_state)
-    enter_text("member[state]", member_state)
+    @driver.find_element(:name, "member[state]").send_keys(member_state)
   end
 
   def enter_postcode(member_postcode)
-    enter_text("member[postcode]", member_postcode)
+    @driver.find_element(:name, "member[postcode]").send_keys(member_postcode)
   end
 
   def enter_phone(member_phone)
-    enter_text("member[phone]", member_phone)
+    @driver.find_element(:name, "member[phone]").send_keys(member_phone)
   end
 
   def enter_mobile(member_mobile)
-    enter_text("member[mobile]", member_mobile)
+    @driver.find_element(:name, "member[mobile]").send_keys(member_mobile)
   end
 
   def enter_email(member_email)
-    enter_text("member[email]", member_email)
+    @driver.find_element(:name, "member[email]").send_keys(member_email)
   end
 
   def click_member_type(member_member_type)
@@ -66,18 +70,14 @@ class MembershipPage < AbstractPage
   end
 
   def click_membership
-    @driver.find_element(:link_text, "Membership")
-  end
-
-  def click_add_member
-    @driver.find_element(:link_text, "Add member")
+    @driver.find_element(:link_text, "Membership").click
   end
 
   def enter_organisation_name(member_oname)
-    enter_text("member[oname]", member_oname)
+    @driver.find_element(:name, "member[oname]").send_keys(member_oname)
   end
 
   def enter_first_name(member_fname)
-    enter_text("member[fname]", member_fname)
+    @driver.find_element(:name, "member[fname]").send_keys(member_fname)
   end
 end

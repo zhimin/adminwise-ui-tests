@@ -22,8 +22,14 @@ class EventRegistrationPage < AbstractPage
     @driver.find_element(:id, "registerBtn").click
   end
 
-  def select_is_member(is_member)
-    click_radio_option("is_member", is_member)
+  def select_is_member(is_member)    
+    radio_buttons_with_same_name = @driver.find_elements(:name, "is_member")
+    if is_member && is_member.downcase == "yes" then
+      radio_buttons_with_same_name[1].set
+    else
+      radio_buttons_with_same_name[0].set
+    end
+    # click_radio_option("is_member", is_member)
   end
 
   # function(parameter))

@@ -34,7 +34,7 @@ test_suite "Event Registrations" do
     sleep 3
     event_registration_page.click_register
     @driver.page_source.should include("Address line1 can't be blank")
-    enter_text("person[address_line1]", "10 Pember St")
+    @driver.find_element(:name, "person[address_line1]").send_keys("10 Pember St")
     event_registration_page.click_register
     event_registration_confirmation_page = EventRegistrationConfirmationPage.new(@driver)
     event_registration_confirmation_page.click_confirm
@@ -68,9 +68,9 @@ test_suite "Event Registrations" do
     visit "/"
     refresh
     login_as("admin")
-    @driver.find_element(:link_text, "Events")
-    @driver.find_element(:link_text, "CITCON 2011")
-    @driver.find_element(:link_text, "Pending #{$pending_count}")
+    @driver.find_element(:link_text, "Events").click
+    @driver.find_element(:link_text, "CITCON 2011").click
+    @driver.find_element(:link_text, "Pending #{$pending_count}").click
     @driver.page_source.should include("Eileen Fa")
   end
 

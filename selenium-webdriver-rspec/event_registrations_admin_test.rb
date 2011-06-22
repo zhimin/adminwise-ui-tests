@@ -13,9 +13,9 @@ test_suite "Event Registrations as Admin" do
 
   before(:each) do
     visit "/home"
-    @driver.find_element(:link_text, "Events").click
+    @driver.find_element(:link_text, "EVENTS").click
     event_list_page = EventListPage.new(@driver)
-    @driver.find_element(:link_text, "ABIQ 2011 Autism Conference")
+    @driver.find_element(:link_text, "ABIQ 2011 Autism Conference").click
   end
 
   after(:each) do
@@ -27,7 +27,7 @@ test_suite "Event Registrations as Admin" do
   end
 
   test "[483] Admin User can register on behalf someone" do
-    @driver.find_element(:link_text, "Register on applicant's behalf")
+    @driver.find_element(:link_text, "Register on applicant's behalf").click
     event_registration_page = EventRegistrationPage.new(@driver)
     event_registration_page.select_is_member("yes")
     sleep 0.5

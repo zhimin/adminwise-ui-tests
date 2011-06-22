@@ -51,7 +51,7 @@ specification "Library: Add resourses" do
       try(10) {    link(:text => "Add", :index => 1).click }
       click_button("Create")
       click_button("Save")
-      @driver.find_element(:link_text, "Library")
+      @driver.find_element(:link_text, "Library").click
       enter_text("q", "Unit Testing")
       click_button("search")
       try { @driver.page_source.should include("Pragmatic Unit Testing in Java with JUnit")}

@@ -15,11 +15,11 @@ class NewResourcePage < AbstractPage
   end
 
   def enter_title(title)
-    enter_text("resource[title]", title)
+    @driver.find_element(:name, "resource[title]").send_keys(title)
   end
   
   def enter_authors(resource_authors)
-    enter_text("resource[authors]", resource_authors)
+    @driver.find_element(:name, "resource[authors]").send_keys(resource_authors)
   end
 
 end

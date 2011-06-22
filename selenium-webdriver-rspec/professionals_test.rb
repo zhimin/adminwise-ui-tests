@@ -34,10 +34,10 @@ specification "Professionals" do
   end
   
   story "[497] Admin user sort professional by category" do
-    @driver.find_element(:link_text, "Category").click  
-    try(3) { cell(:id, "category_0").text.should == "Speech Pathlogists" }
-    @driver.find_element(:link_text, "Category").click  
-    try(3) { cell(:id, "category_0").text.should == "Auditory Integration Training" }
+    @driver.find_element(:link_text, "CATEGORY").click # NOTEs [Watir]  'Category' 
+    try(3) { @driver.find_element(:id, "category_0").text.should == "Speech Pathlogists" }
+    @driver.find_element(:link_text, "CATEGORY").click  
+    try(3) { @driver.find_element(:id, "category_0").text.should == "Auditory Integration Training" }
   end
   
 end

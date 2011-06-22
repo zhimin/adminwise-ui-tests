@@ -1,2 +1,4 @@
 rwebspec-watir/adminwise.tws
+selenium-webdriver-rspec/adminwise-selenium-webdriver.tws
+watir-rspec/adminwise-watir.tws
 *.tws

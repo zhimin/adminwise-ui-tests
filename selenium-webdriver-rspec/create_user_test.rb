@@ -36,7 +36,7 @@ specification "Create a new user as admin" do
     logout
     login_as("mike", "pass")
     
-    @driver.find_element(:link_text, "logout")
+    @driver.find_element(:link_text, "logout").click
     # assert_link_present_with_text("Logout") # checkpoint: login sucessuflly
   end
 
