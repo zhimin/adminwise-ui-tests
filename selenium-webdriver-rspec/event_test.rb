@@ -4,42 +4,42 @@ test_suite "Events" do
   include TestHelper
 
   before(:all) do
-    open_browser
+    @driver = Selenium::WebDriver.for(:ie) 
+    @driver.navigate.to($ITEST2_PROJECT_BASE_URL || $BASE_URL)
     reset_database
-    failsafe{ logout }
+    fail_safe{ logout }
     login_as("admin")
   end
 
 
   before(:each) do
     visit "/"
+    @driver.find_element(:link_text, "EVENTS").click
   end
 
   after(:all) do
     logout unless debugging?
-    close_browser unless debugging?
+    @driver.quit unless debugging?
   end
 
   # Press key Ctrl+Shift+T, then enter 123 quickly navigate you here
   story "[487] Can create a new event" do
-    click_link("Events")
-    event_list_page = expect_page EventListPage
+    event_list_page =  EventListPage.new(@driver)
     event_page = event_list_page.click_new
     event_page.enter_name("ABA Workshop")
     event_page.enter_venue("QUT")
     event_page.enter_presenters("Many")
     event_page.enter_date("10/12/2010")
     event_page.click_create
-    assert_text_present("3 events")
+    @driver.page_source.should include("3 events")
   end
 
   test "[488] Can edit an existing event" do
-    click_link("Events")
-    event_list_page = expect_page EventListPage
+    event_list_page = EventListPage.new(@driver)
     event_page = event_list_page.edit(1)
     event_page.enter_name("2010 Agileway Testing Conference")
     event_page.click_update
-    assert_text_present("2010 Agileway Testing Conference")
+    @driver.page_source.should include("2010 Agileway Testing Conference")
   end
 
 

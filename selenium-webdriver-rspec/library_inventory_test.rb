@@ -4,20 +4,21 @@ specification "Library: Add resourses" do
   include TestHelper
 
   before(:all) do
-    open_browser
+    @driver = Selenium::WebDriver.for(:ie) 
+    @driver.navigate.to($ITEST2_PROJECT_BASE_URL || $BASE_URL)
     reset_database
-    failsafe{ logout }
+    fail_safe{ logout }
     login_as("admin")
   end
 
   after(:all) do
-    failsafe{ logout }
-    close_browser unless debugging?
+    fail_safe{ logout }
+    @driver.quit unless debugging?
   end
 
   before(:each) do
     visit "/home"
-    click_link("Library")
+    @driver.find_element(:link_text, "Library").click
   end
 
   after(:each) do    
@@ -25,24 +26,24 @@ specification "Library: Add resourses" do
   end
 
   story "[489] Admin user can add a new library resource manually" do
-    library_page = expect_page LibraryPage
+    library_page = LibraryPage.new(@driver)
     library_page.add_new_resources
     library_page.add_manually
-    new_resource_page = expect_page NewResourcePage
+    new_resource_page = NewResourcePage.new(@driver)
     new_resource_page.enter_title("The Other Country")
     new_resource_page.enter_authors("Michael Whelan")
     new_resource_page.select_subject("Families")
     new_resource_page.click_create
     click_button("Save")
-    click_link("Library")
-    enter_text("q", "The Other Country")
+    @driver.find_element(:link_text, "Library").click
+    @driver.find_element(:name, "q").send_keys "The Other Country"
     click_button("search")
-    try { page_text.should include("matches for 'The Other Country'")}
+    try { @driver.page_source.should include("matches for 'The Other Country'")}
   end
 
 =begin
   story"[490] Admin user can add new resource via amazon"do
-    library_page = expect_page LibraryPage
+    library_page = LibraryPage.new(@driver)
     library_page.add_new_resources
     if page_text.include?("OR")
       enter_text("q", "Web Test Automation")
@@ -50,10 +51,10 @@ specification "Library: Add resourses" do
       try(10) {    link(:text => "Add", :index => 1).click }
       click_button("Create")
       click_button("Save")
-      click_link("Library")
+      @driver.find_element(:link_text, "Library")
       enter_text("q", "Unit Testing")
       click_button("search")
-      try { page_text.should include("Pragmatic Unit Testing in Java with JUnit")}
+      try { @driver.page_source.should include("Pragmatic Unit Testing in Java with JUnit")}
     else
       puts "Amazon ECS is not installed or configured, amazon search test ignored"
     end

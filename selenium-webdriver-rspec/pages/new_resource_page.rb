@@ -1,6 +1,6 @@
 # load File.dirname(__FILE__) + '/maybe_your_template_page.rb'
 
-class NewResourcePage < RWebSpec::AbstractWebPage
+class NewResourcePage < AbstractPage
 
   def initialize(browser)
     super(browser, "") # <= 

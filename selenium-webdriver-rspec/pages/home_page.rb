@@ -3,7 +3,7 @@ class HomePage < AbstractPage
 
   def initialize(browser, identity_text='')
     super(browser)
-    assert_text_present(identity_text) unless identity_text.blank?
+    @driver.page_source.should(identity_text) unless identity_text.blank?
   end
   
   def enter_password(password)

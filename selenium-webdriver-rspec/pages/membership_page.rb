@@ -1,13 +1,12 @@
-require 'rwebspec'
 
-class MembershipPage < RWebSpec::AbstractWebPage
+class MembershipPage < AbstractPage
 
   def initialize(browser)
     super(browser, "") # <= TEXT UNIQUE TO THIS PAGE
   end
 
   def add_member
-    click_link("Add member")
+    @driver.find_element(:link_text, "Add member")
   end
 
   def enter_first_name(member_fname)
@@ -67,11 +66,11 @@ class MembershipPage < RWebSpec::AbstractWebPage
   end
 
   def click_membership
-    click_link("Membership")
+    @driver.find_element(:link_text, "Membership")
   end
 
   def click_add_member
-    click_link("Add member")
+    @driver.find_element(:link_text, "Add member")
   end
 
   def enter_organisation_name(member_oname)

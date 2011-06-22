@@ -1,18 +1,18 @@
 # load File.dirname(__FILE__) + '/maybe_your_template_page.rb'
 
-class EventListPage < RWebSpec::AbstractWebPage
+class EventListPage < AbstractPage
 
   def initialize(browser)
     super(browser, "Listing events") # <= 
   end
 
   def edit(index)
-    click_link_with_id("edit_#{index}")
-    expect_page EventPage 
+    @driver.find_element(:id,"edit_#{index}").click
+    EventPage.new(@driver)
   end
   
   def click_new
-    click_link("New event")
-    expect_page EventPage 
+    @driver.find_element(:link_text, "New event").click
+    EventPage.new(@driver) 
   end
 end

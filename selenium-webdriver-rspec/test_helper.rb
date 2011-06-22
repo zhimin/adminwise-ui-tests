@@ -24,7 +24,7 @@ module TestHelper
   #   login_as("homer", "Password")
   #   login_as("bart")  # the password will be default to 'iTest2'
   #   login("lisa")     # same as login_as
-  def login_as(username, password = "test")    
+  def login_as(username, password = "test")
     home_page = HomePage.new(@driver)
     home_page.enter_login(username)
     home_page.enter_password(password)
@@ -34,8 +34,8 @@ module TestHelper
 
   def logout
     # NOTES WebDriver: logout
-    #  failsafe { @driver.find_element(:link_text, "Logout").click }
-    failsafe { @driver.find_element(:link_text, "logout").click }
+    #  fail_safe { @driver.find_element(:link_text, "Logout").click }
+    fail_safe { @driver.find_element(:link_text, "logout").click }
   end
 
 
@@ -59,17 +59,67 @@ module TestHelper
   end
 
   def reset_database_silient
-     # Option 2: using HTTP to call reset_database URL directly
-     base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
-     begin
-       require 'httpclient'
-       client = HTTPClient.new
-       reset_response =  client.get("#{base_url}/reset").body
-       reset_response =  reset_response.content if reset_database.respond_to?("content")
-       raise "Reset database failed: #{reset_database}" unless reset_response == "Database Reset OK"
-     rescue => e
-       debug e
-       raise "failed to reset the database: #{base_url}, #{e}"
-     end
-   end
+    # Option 2: using HTTP to call reset_database URL directly
+    base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
+    begin
+      require 'httpclient'
+      client = HTTPClient.new
+      reset_response =  client.get("#{base_url}/reset").body
+      reset_response =  reset_response.content if reset_database.respond_to?("content")
+      raise "Reset database failed: #{reset_database}" unless reset_response == "Database Reset OK"
+    rescue => e
+      debug e
+      raise "failed to reset the database: #{base_url}, #{e}"
+    end
+  end
+
+
+  # Copy from RWebSpec
+  def visit(page)
+    base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
+    @driver.navigate.to("#{base_url}#{page}")
+  end
+    
+  def debugging?
+    $ITEST2_DEBUGGING && $ITEST2_RUNNING_AS == "test_case"
+  end
+
+  def fail_safe(&block)
+    begin
+      yield
+    rescue => e
+    end
+  end
+  
+  def assert_link_present_with_text(link_text)
+    the_link = @driver.find_element(:link_text, link_text)
+    raise ("can't find the link containing text: #{link_text}") unless the_link
+  end
+
+  # Try the operation up to specified timeout (in seconds), and sleep given interval (in seconds).
+  # Error will be ignored until timeout
+  # Example
+  #    try { click_link('waiting')}
+  #    try(10, 2) { click_button('Search' } # try to click the 'Search' button upto 10 seconds, try every 2 seconds
+  #    try { click_button('Search' }
+  def try(timeout = 30, polling_interval = 1, & block)
+    start_time = Time.now
+
+    last_error = nil
+    until (duration = Time.now - start_time) > timeout
+      begin
+        yield
+        last_error = nil
+        return true
+      rescue => e
+        last_error = e
+      end
+      sleep polling_interval
+    end
+
+    raise "Timeout after #{duration.to_i} seconds with error: #{last_error}." if last_error
+    raise "Timeout after #{duration.to_i} seconds."
+  end
+
+
 end

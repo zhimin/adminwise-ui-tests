@@ -4,28 +4,29 @@ specification "User Profile" do
   include TestHelper
 
   before(:all) do
-    open_browser
+    @driver = Selenium::WebDriver.for(:ie) 
+    @driver.navigate.to($ITEST2_PROJECT_BASE_URL || $BASE_URL)
     reset_database
-    failsafe{ logout }
+    fail_safe{ logout }
   end
 
   after(:all) do
     fail_safe { logout } unless debugging?
-    close_browser unless debugging?
+    @driver.quit unless debugging?
   end
 
   story "[481] User can change password" do
     login_as("bob", "test")
-    click_link("Profile")
-    click_link("Change password")
+    @driver.find_element(:link_text, "profile").click # NOTES [Watir] 'Profile'
+    @driver.find_element(:link_text, "Change password").click
     
-    password_change_page = expect_page PasswordChangePage
+    password_change_page = PasswordChangePage.new(@driver)
     password_change_page.enter_current("password")
     password_change_page.enter_new("newpass")
     password_change_page.enter_confirm("newpass2")
-    password_change_page.click_button("Change")
+    password_change_page.click_change
     
-    page_text.should contain("Password doesn't match confirmation")
+    @driver.page_source.should include("Password doesn't match confirmation")
     password_change_page.enter_confirm("newpass")
     password_change_page.click_button("Change")
 

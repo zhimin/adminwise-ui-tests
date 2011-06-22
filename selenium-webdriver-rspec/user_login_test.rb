@@ -4,39 +4,39 @@ specification "User Management" do
   include TestHelper
 
   before(:all) do
-    open_browser
-    failsafe{ logout }
+    @driver = Selenium::WebDriver.for(:ie) 
+    @driver.navigate.to($ITEST2_PROJECT_BASE_URL || $BASE_URL)
+    fail_safe{ logout }
     reset_database
   end
 
   after(:each) do
-    failsafe{ logout } unless debugging?
+    fail_safe{ logout } unless debugging?
   end
 
   after(:all) do
-    close_browser unless debugging?
+    @driver.close unless debugging?
   end
 
   story "[480] A registered user can login" do
     login_as("bob", "test")
-    save_page("C:\\tmp.html")
-    assert_link_present_with_text("Logout")
+    assert_link_present_with_text("logout") # NOTE [Watir] link shown as Logout
   end
 
   story "[480] Admin user can login" do
     login_as("admin", "test")
-    assert_link_present_with_text("Control Panel")
+    assert_link_present_with_text("control panel") # NOTE [Watir] link shown as Control Panel
   end
 
   story "[480] Admin user can login - invalid password" do
     login_as("admin", "badpass")
-    page_text.should contain("Invalid email or password.")
+    @driver.page_source.should include("Invalid email or password.")
   end
 
   story "[480] Admin user can login - try go the protected url" do
     visit "/events"
     sleep 1
-    page_text.should contain("You need to sign in or sign up before continuing.")
+    @driver.page_source.should include("You need to sign in or sign up before continuing.")
   end
   
 end

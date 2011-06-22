@@ -1,6 +1,4 @@
-require 'rwebspec'
-
-class EventRegistrationConfirmationPage < RWebSpec::AbstractWebPage
+class EventRegistrationConfirmationPage < AbstractPage
 
   def initialize(browser)
     super(browser, "") # <= TEXT UNIQUE TO THIS PAGE

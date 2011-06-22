@@ -1,21 +1,21 @@
 # load File.dirname(__FILE__) + '/maybe_your_template_page.rb'
 
-class LibraryPage < RWebSpec::AbstractWebPage
+class LibraryPage < AbstractPage
 
   def initialize(browser)
     super(browser, "") # <=
   end
 
   def click_borrow
-    click_link("Borrow")
+    @driver.find_element(:link_text, "Borrow").click
   end
 
   def add_new_resources
-    click_link("Add new resources")
+    @driver.find_element(:link_text, "Add new resources").click
   end
 
   def enter_query(q)
-    enter_text("q", q)
+    @driver.find_element(:name, "q").send_keys(q)
   end
 
   def click_search
@@ -23,11 +23,11 @@ class LibraryPage < RWebSpec::AbstractWebPage
   end
 
   def click_return
-    click_link("Return")
+    @driver.find_element(:link_text, "Return").click
   end
 
   def add_manually
-    click_link("Add New resource manually")
+    @driver.find_element(:link_text, "Add New resource manually").click
   end
 
 end

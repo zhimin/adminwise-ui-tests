@@ -1,6 +1,6 @@
 # load File.dirname(__FILE__) + '/maybe_your_template_page.rb'
 
-class LibraryBorrowPage < RWebSpec::AbstractWebPage
+class LibraryBorrowPage < AbstractPage
 
   def initialize(browser)
     super(browser, "") # <=
@@ -11,7 +11,7 @@ class LibraryBorrowPage < RWebSpec::AbstractWebPage
   end
   
   def enter_resource(resource)
-    text_field(:id, "resource_textbox_q").set(resource)
+    @driver.find_element(:id, "resource_textbox_q").send_keys(resource)
   end
 
   def click_find_resource
@@ -20,7 +20,7 @@ class LibraryBorrowPage < RWebSpec::AbstractWebPage
 
   def click_select
     sleep 1
-    click_link("Select")
+    @driver.find_element(:link_text, "Select").click
   end
 
   def click_process
@@ -29,7 +29,7 @@ class LibraryBorrowPage < RWebSpec::AbstractWebPage
   end
 
   def enter_member_name(name)
-    text_field(:id, "member_textbox_q").set(name)
+    @driver.find_element(:id, "member_textbox_q").send_keys(name)
   end
 
 end

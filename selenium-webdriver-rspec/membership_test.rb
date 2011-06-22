@@ -4,14 +4,16 @@ specification "Memebership" do
   include TestHelper
 
   before(:all) do
-    open_browser
+    @driver = Selenium::WebDriver.for(:ie) 
+    @driver.navigate.to($ITEST2_PROJECT_BASE_URL || $BASE_URL)
     reset_database
-    failsafe{ logout }
+    fail_safe{ logout }
     login_as("admin", "test")
   end
 
   after(:all) do
     logout unless debugging?
+    @driver.quit
   end
 
   before(:each) do
@@ -19,20 +21,20 @@ specification "Memebership" do
   end
 
   story "Admin user can search an existing member by surname " do
-    enter_text("search", "Smith")
-    click_button("Search")
-    page_text.should include("David Smith")
+    @driver.find_element(:name, "search").send_keys("Smith")
+    click_button("Search")    
+    @driver.page_source.should include("David Smith")
   end
   
   story "Admin user can search an existing member by membership number" do
-    enter_text("search", "30002")
+    @driver.find_element(:name, "search").send_keys("30002")
     click_button("Search")
     assert_link_present_with_text("David Smith")
   end
   
   story "[493] Admin user can create a new family member" do
-    click_link("Membership")
-    membership_page = expect_page MembershipPage
+    @driver.find_element(:link_text, "Membership")
+    membership_page = MembershipPage.new(@driver)
     membership_page.add_member
     membership_page.enter_first_name("Cindy")
     membership_page.enter_last_name("Fu")
@@ -49,11 +51,11 @@ specification "Memebership" do
     membership_page.select_aware_from("family/ friend")
     membership_page.click_create_member
     membership_page.click_membership
-    page_text.should include("Cindy Fu")
+    @driver.page_source.should include("Cindy Fu")
   end
 
   story "[494] Admin user can create a new organisation member" do
-    membership_page = expect_page MembershipPage
+    membership_page =  MembershipPage.new(@driver)
     membership_page.click_add_member
     membership_page.enter_organisation_name("CareLink Pty Ltd")
     membership_page.enter_first_name("Michele")
@@ -68,7 +70,7 @@ specification "Memebership" do
     membership_page.select_aware_from("conference/ workshop")
     membership_page.click_create_member
     membership_page.click_membership
-    page_text.should include("CareLink Pty Ltd")
+    @driver.page_source.should include("CareLink Pty Ltd")
   end
 
 end

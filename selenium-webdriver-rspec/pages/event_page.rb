@@ -1,13 +1,13 @@
 # load File.dirname(__FILE__) + '/maybe_your_template_page.rb'
 
-class EventPage < RWebSpec::AbstractWebPage
+class EventPage < AbstractPage
 
   def initialize(browser)
     super(browser, "") # <= 
   end
 
   def enter_venue(event_venue)
-    enter_text("event[venue]", event_venue)
+    @driver.find_element(:name, "event[venue]").send_keys(event_venue)
   end
 
   def click_create
@@ -15,18 +15,19 @@ class EventPage < RWebSpec::AbstractWebPage
   end
 
   def enter_presenters(event_presenters)
-    enter_text("event[presenters]", event_presenters)
+    @driver.find_element(:name, "event[presenters]").send_keys(event_presenters)
   end
 
   def enter_date(event_date_from)
-    enter_text("event[date_from]", event_date_from)
+    @driver.find_element(:name, "event[date_from]").send_keys(event_date_from)
   end
   
   def click_update
     click_button("Update")
   end
-    def enter_name(name)
-    enter_text("event[name]", name)
+  
+  def enter_name(name)
+    @driver.find_element(:name, "event[name]").send_keys(name)
   end
 
 end

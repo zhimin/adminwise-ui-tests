@@ -5,6 +5,7 @@ class AbstractPage
   
   def initialize(driver, text = nil)
     @driver = driver
+    # @driver.page_source.should include(text) if @driver && text
   end
 
   

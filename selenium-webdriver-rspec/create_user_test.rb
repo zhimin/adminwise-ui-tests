@@ -11,23 +11,18 @@ specification "Create a new user as admin" do
 
   after(:all) do
     logout unless debugging?
-    close_browser unless debugging?
+    @driver.quit unless debugging?
   end
 
   story "[482] Create new user, then login" do
     login_as("admin")
     
- #   @driver.find_elements(:tag_name, "a").each do |elem| 
-#      puts elem.text 
-#    end
-
-    
-    #@driver.find_element(:link_text, "Control Panel").click
-    #@driver.find_element(:link_text, "Manage Users").click
-    #@driver.find_element(:link_text, "Add new user").click
+  #   @driver.find_elements(:tag_name, "a").each do |elem| 
+  #      puts elem.text 
+  #    end
  
     # WebDriver set the low case
-    @driver.find_element(:link_text, "control panel").click
+    @driver.find_element(:link_text, "control panel").click # NOTES [Watir] 'Control Panel'
     @driver.find_element(:link_text, "Manage Users").click
     @driver.find_element(:link_text, "Add new user").click
     
@@ -36,7 +31,7 @@ specification "Create a new user as admin" do
     create_user_page.enter_email("mike@gmail.com")
     create_user_page.enter_password("pass")
     create_user_page.click_create
-    @driver.page_source.should contain("mike") # checkout; after create see new user
+    @driver.page_source.should include("mike") # checkout; after create see new user
     
     logout
     login_as("mike", "pass")
