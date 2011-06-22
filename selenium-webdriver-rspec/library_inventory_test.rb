@@ -18,7 +18,7 @@ specification "Library: Add resourses" do
 
   before(:each) do
     visit "/home"
-    @driver.find_element(:link_text, "Library").click
+    @driver.find_element(:link_text, "LIBRARY").click
   end
 
   after(:each) do    

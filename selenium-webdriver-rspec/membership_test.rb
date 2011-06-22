@@ -33,7 +33,7 @@ specification "Memebership" do
   end
   
   story "[493] Admin user can create a new family member" do
-    @driver.find_element(:link_text, "Membership")
+    @driver.find_element(:link_text, "MEMBERSHIP").click # NOTES [Watir] 'Membership'
     membership_page = MembershipPage.new(@driver)
     membership_page.add_member
     membership_page.enter_first_name("Cindy")
