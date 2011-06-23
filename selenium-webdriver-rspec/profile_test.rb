@@ -4,7 +4,7 @@ specification "User Profile" do
   include TestHelper
 
   before(:all) do
-    @driver = Selenium::WebDriver.for(:ie) 
+    @driver = Selenium::WebDriver.for(:chrome) 
     @driver.navigate.to($ITEST2_PROJECT_BASE_URL || $BASE_URL)
     reset_database
     fail_safe{ logout }
