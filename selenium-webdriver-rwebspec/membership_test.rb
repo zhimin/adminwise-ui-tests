@@ -12,6 +12,7 @@ specification "Memebership" do
 
   after(:all) do
     logout unless debugging?
+    close_browser unless debugging?
   end
 
   before(:each) do
