@@ -19,7 +19,6 @@ class LibraryBorrowPage < RWebSpec::AbstractWebPage
   end
 
   def click_select
-    sleep 1
     click_link("Select")
   end
 
