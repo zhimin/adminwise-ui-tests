@@ -8,7 +8,6 @@ specification "Correspondence" do
     reset_database
     failsafe{ logout }
     login_as("admin")
-    open_browser
   end
   
   before(:each) do
@@ -26,11 +25,11 @@ specification "Correspondence" do
     close_browser unless debugging?
   end
 
-  story "Can create a new correspondence" do
+  story "[501]Can create a new correspondence" do
     page_text.should include("Ashgrove State School")
   end
   
-  story "can edit existing correspondence" do
+  story "[502]can edit existing correspondence" do
     click_link("Edit")
     enter_text("correspondence[description]", "Wrote a cover letter and post out the information booklet to Ashgrove West State School Support Services")
     click_button("Update")

@@ -18,13 +18,13 @@ specification "Memebership" do
     visit "/home"
   end
 
-  story "Admin user can search an existing member by surname " do
+  story "[504]Admin user can search an existing member by surname " do
     enter_text("search", "Smith")
     click_button("Search")
     page_text.should include("David Smith")
   end
   
-  story "Admin user can search an existing member by membership number" do
+  story "[503]Admin user can search an existing member by membership number" do
     enter_text("search", "30002")
     click_button("Search")
     assert_link_present_with_text("David Smith")

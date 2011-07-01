@@ -8,7 +8,6 @@ specification "Create a new call register" do
     reset_database
     failsafe{ logout }
     login_as("admin")
-    open_browser
   end
 
   after(:all) do
@@ -25,11 +24,11 @@ specification "Create a new call register" do
     answer_call_page.click_hang_up
   end
 
-  story "Can create a new call register" do
+  story "[499]Can create a new call register" do
     page_text.should include("Jesse Stewart")
   end
 
-  story "Can edit existing call register" do
+  story "[500]Can edit existing call register" do
     click_link("Call register list")
     click_link("Edit")
     # link(:text => "Edit", :index => 5).click

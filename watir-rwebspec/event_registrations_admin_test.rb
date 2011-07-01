@@ -18,7 +18,8 @@ test_suite "Event Registrations as Admin" do
   end
 
   after(:each) do
-    fail_safe { logout } unless debugging?
+    #fail_safe { logout } unless debugging?
+
   end
 
   after(:all) do
@@ -36,16 +37,32 @@ test_suite "Event Registrations as Admin" do
     sleep 1
     event_registration_page.click_register
     page_text.should contain("Address line1 can't be blank")
-    enter_text("person[address_line1]", "10 Pember St")
+    event_registration_page.enter_address_line1("10 Pember St")
     event_registration_page.click_register
-
+    page_text.should include("Confirm your registration details")
     click_button("Confirm")
     page_text.should include("Your registration for ABIQ 2011 Autism Conference has been received")
   end
 
-#  test "Admin user can register a staff " do
-#    click_link("Register staff")
-#  end
-
+  test "[498]Admin user can register a staff " do
+    click_link("Register staff")
+    register_speakers_page = expect_page RegisterSpeakersPage
+    register_speakers_page.enter_title("Mrs")
+    register_speakers_page.enter_first_name("Lianne")
+    register_speakers_page.enter_last_name("Kerr")
+    register_speakers_page.enter_organisation("ABIQ")
+    register_speakers_page.select_occupation("Parent of ASD child")
+    register_speakers_page.enter_email("lkerr2@eq.edu.au")
+    register_speakers_page.enter_phone("0414 756 436")
+    register_speakers_page.enter_address_line1("8/34 Down Road")
+    register_speakers_page.enter_suburb("Kuraby")
+    register_speakers_page.enter_state("QLD")
+    register_speakers_page.enter_postcode("4013")
+    register_speakers_page.enter_country("Australia")
+    register_speakers_page.check_day_1
+    register_speakers_page.select_level("Volunteer")
+    register_speakers_page.click_register
+    page_text.should include("Staff registration details confirmation")
+  end
 
 end
