@@ -31,7 +31,7 @@ specification "Memebership" do
   end
   
   story "[493] Admin user can create a new family member" do
-    click_link("Membership")
+    click_link("MEMBERSHIP")
     membership_page = expect_page MembershipPage
     membership_page.add_member
     membership_page.enter_first_name("Cindy")
