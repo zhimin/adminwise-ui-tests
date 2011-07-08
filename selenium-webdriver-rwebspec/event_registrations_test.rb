@@ -27,7 +27,7 @@ test_suite "Event Registrations" do
     visit "/events/register/2"
     event_registration_page = expect_page EventRegistrationPage
     event_registration_page.select_is_member("yes")
-    try { event_registration_page.enter_member_id("30002") }
+    try(3) { event_registration_page.enter_member_id("30002") }
     event_registration_page.enter_member_surname("Smith")
     event_registration_page.click_find
     sleep 3

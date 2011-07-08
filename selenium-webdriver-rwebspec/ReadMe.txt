@@ -15,6 +15,7 @@ Notes on porting Watir to selenium-webdriver (IE)
 5.  Change link "Control Panel" (displayed in upcase style) to
       click_link("control panel")
 
+6. click_button seem not working reliably.
 Impression
 ----------
 
