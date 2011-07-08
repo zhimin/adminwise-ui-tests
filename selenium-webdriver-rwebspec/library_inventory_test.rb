@@ -11,7 +11,6 @@ specification "Library: Add resourses" do
   end
 
   after(:all) do
-    failsafe{ logout }
     close_browser unless debugging?
   end
 
@@ -41,7 +40,7 @@ specification "Library: Add resourses" do
     click_link("LIBRARY")
     enter_text("q", "The Other Country")
     click_button("search")
-    try { page_text.should include("matches for 'The Other Country'")}
+    try(3) { page_text.should include("matches for 'The Other Country'")}
   end
 
 =begin
