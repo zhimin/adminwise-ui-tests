@@ -18,7 +18,7 @@ class NewProfessionalPage < AbstractPage
   end
   
   def click_create
-    @driver.find_element(:value, "Create").click
+    @driver.find_element(:name, "commit").click # Watir button:value is better
     # click_button("Create")
   end
 

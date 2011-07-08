@@ -23,14 +23,15 @@ specification "Memeber Login" do
   story "[495] Admin can generate a login for an existing member" do
     @driver.find_element(:link_text, "MEMBERSHIP").click # NOTES [Watir] 'Membership'
     @driver.find_element(:link_text, "David Smith").click
-    click_button("Generate login")
+    @driver.find_element(:id, "generate_login").click
     sleep 1
     @driver.find_element(:link_text, "dsmith").click # click new link to member login
     assert_link_present_with_text("David Smith")
 
     @driver.find_element(:link_text, "Member logins").click
-    @driver.find_element(:name, "search").send_keys("dsmith")    
-    click_button("Search")
+    member_logins_page = MemberLoginsPage.new(@driver)
+    member_logins_page.enter_query("dsmith")    
+    member_logins_page.click_search
     assert_link_present_with_text("dsmith")
   end
 

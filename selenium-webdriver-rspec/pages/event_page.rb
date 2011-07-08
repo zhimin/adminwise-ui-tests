@@ -11,7 +11,7 @@ class EventPage < AbstractPage
   end
 
   def click_create
-    click_button("Create")
+    @driver.find_element(:id, "event_submit").click
   end
 
   def enter_presenters(event_presenters)

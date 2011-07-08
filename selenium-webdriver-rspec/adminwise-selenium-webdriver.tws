@@ -1,49 +1,30 @@
 <?xml version="1.1" encoding="US-ASCII"?>
 <workspace>
   <project_name>AdminWise-Selenium2</project_name>
-  <project_file>C:/work/adminwise-ui-tests/selenium-webdriver-rspec/adminwise-selenium-webdriver.tpr</project_file>
+  <project_file>C:\work\adminwise-ui-tests\selenium-webdriver-rspec\adminwise-selenium-webdriver.tpr</project_file>
   <opened_files>
-<<<<<<< HEAD
-  </opened_files>
-  <recent_files>
+    <entry name="$PROJECT_DIR$/member_login_test.rb"/>
     <entry name="$PROJECT_DIR$/event_registrations_admin_test.rb"/>
-    <entry name="$PROJECT_DIR$/event_registrations_test.rb"/>
-    <entry name="$PROJECT_DIR$/create_user_test.rb"/>
-    <entry name="$PROJECT_DIR$/pages/abstract_page.rb"/>
-    <entry name="$PROJECT_DIR$/Rakefile"/>
-    <entry name="$PROJECT_DIR$/profile_test.rb"/>
-    <entry name="$PROJECT_DIR$/pages/password_change_page.rb"/>
-    <entry name="$PROJECT_DIR$/user_login_test.rb"/>
-=======
-    <entry name="$PROJECT_DIR$/pages/membership_page.rb"/>
-    <entry name="$PROJECT_DIR$/create_user_test.rb"/>
-    <entry name="$PROJECT_DIR$/library_lending_test.rb"/>
+    <entry name="$PROJECT_DIR$/library_inventory_test.rb"/>
   </opened_files>
   <recent_files>
-    <entry name="$PROJECT_DIR$/pages/membership_page.rb"/>
+    <entry name="$PROJECT_DIR$/member_login_test.rb"/>
+    <entry name="$PROJECT_DIR$/pages/new_resource_page.rb"/>
+    <entry name="$PROJECT_DIR$/pages/password_change_page.rb"/>
+    <entry name="$PROJECT_DIR$/pages/new_professional_page.rb"/>
+    <entry name="$PROJECT_DIR$/pages/member_logins_page.rb"/>
+    <entry name="$PROJECT_DIR$/professionals_test.rb"/>
     <entry name="$PROJECT_DIR$/membership_test.rb"/>
     <entry name="$PROJECT_DIR$/library_lending_test.rb"/>
-    <entry name="$PROJECT_DIR$/create_user_test.rb"/>
-    <entry name="$PROJECT_DIR$/professionals_test.rb"/>
-    <entry name="C:/calc.rb"/>
-    <entry name="C:/calc.rb"/>
-    <entry name="C:/calc.rb"/>
-    <entry name="$PROJECT_DIR$/event_test.rb"/>
-    <entry name="$PROJECT_DIR$/event_registrations_admin_test.rb"/>
-    <entry name="$PROJECT_DIR$/pages/event_registration_page.rb"/>
-    <entry name="$PROJECT_DIR$/event_registrations_test.rb"/>
->>>>>>> 7f289fdb43be49a2aa4ed743a9d858adb98423ee
     <entry name="$PROJECT_DIR$/library_inventory_test.rb"/>
-    <entry name="$PROJECT_DIR$/member_login_test.rb"/>
-<<<<<<< HEAD
-    <entry name="$PROJECT_DIR$/library_lending_test.rb"/>
+    <entry name="$PROJECT_DIR$/pages/library_borrow_page.rb"/>
+    <entry name="$PROJECT_DIR$/pages/event_page.rb"/>
     <entry name="$PROJECT_DIR$/event_test.rb"/>
     <entry name="$PROJECT_DIR$/pages/event_registration_page.rb"/>
-    <entry name="$PROJECT_DIR$/test_helper.rb"/>
-=======
-    <entry name="$PROJECT_DIR$/pages/password_change_page.rb"/>
->>>>>>> 7f289fdb43be49a2aa4ed743a9d858adb98423ee
+    <entry name="$PROJECT_DIR$/pages/event_registration_confirmation_page.rb"/>
+    <entry name="$PROJECT_DIR$/event_registrations_test.rb"/>
   </recent_files>
   <test_suites>
+    <entry files="event_registrations_test.rb,event_test.rb,library_inventory_test.rb,library_lending_test.rb,membership_test.rb,member_login_test.rb,professionals_test.rb" name="Failed-IE"/>
   </test_suites>
 </workspace>

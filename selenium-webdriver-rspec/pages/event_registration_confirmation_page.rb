@@ -5,7 +5,7 @@ class EventRegistrationConfirmationPage < AbstractPage
   end
 
   def click_confirm
-    click_button("Confirm")
+    @driver.find_element(:id, "confirmBtn").click
   end
 
 end
