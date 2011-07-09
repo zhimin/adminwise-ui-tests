@@ -28,11 +28,11 @@ specification "User Profile" do
     
     @driver.page_source.should include("Password doesn't match confirmation")
     password_change_page.enter_confirm("newpass")
-    password_change_page.click_button("Change")
+    password_change_page.click_change
 
     logout
     login_as("bob", "newpass")
-    assert_link_present_with_text("Profile") # login Ok
+    assert_link_present_with_text("profile") # login Ok
   end
 
 end

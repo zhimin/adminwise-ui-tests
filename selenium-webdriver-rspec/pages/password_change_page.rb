@@ -15,6 +15,7 @@ class PasswordChangePage < AbstractPage
   end
 
   def enter_confirm(confirm_pass)
+    @driver.find_element(:name, "user[password_confirmation]").clear
     @driver.find_element(:name, "user[password_confirmation]").send_keys(confirm_pass)
   end
   
