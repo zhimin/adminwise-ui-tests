@@ -44,7 +44,8 @@ module TestHelper
     begin
       Timeout::timeout(3) {
         reset_database_silient
-      }
+    }
+    @driver.goto("#{base_url}/")
     rescue Timeout::Error => e
       puts "Reset database via HttpClient: #{e}"
       reset_database_via_ui
@@ -70,12 +71,12 @@ module TestHelper
     begin
       require 'httpclient'
       client = HTTPClient.new
-      puts "BASEURL: #{base_url}"
       reset_response =  client.get("#{base_url}/reset").body
+      puts "BASEURL: #{base_url} | #{reset_response}"
       return if reset_response == "Database Reset OK"
       raise "Reset database failed: #{reset_database}"
     rescue => e
-      debug e
+      puts  e
       raise "failed to reset the database: #{base_url}, #{e}"
     end
   end

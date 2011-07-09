@@ -44,24 +44,24 @@ test_suite "Event Registrations as Admin" do
     page_text.should include("Your registration for ABIQ 2011 Autism Conference has been received")
   end
 
-  test "[498]Admin user can register a staff " do
+  test "[498] Admin user can register a staff " do
     click_link("Register staff")
-    register_speakers_page = expect_page RegisterSpeakersPage
-    register_speakers_page.enter_title("Mrs")
-    register_speakers_page.enter_first_name("Lianne")
-    register_speakers_page.enter_last_name("Kerr")
-    register_speakers_page.enter_organisation("ABIQ")
-    register_speakers_page.select_occupation("Parent of ASD child")
-    register_speakers_page.enter_email("lkerr2@eq.edu.au")
-    register_speakers_page.enter_phone("0414 756 436")
-    register_speakers_page.enter_address_line1("8/34 Down Road")
-    register_speakers_page.enter_suburb("Kuraby")
-    register_speakers_page.enter_state("QLD")
-    register_speakers_page.enter_postcode("4013")
-    register_speakers_page.enter_country("Australia")
-    register_speakers_page.check_day_1
-    register_speakers_page.select_level("Volunteer")
-    register_speakers_page.click_register
+    register_staff_page = expect_page RegisterStaffPage
+    register_staff_page.enter_title("Mrs")
+    register_staff_page.enter_first_name("Lianne")
+    register_staff_page.enter_last_name("Kerr")
+    register_staff_page.enter_organisation("ABIQ")
+    register_staff_page.select_occupation("Parent of ASD child")
+    register_staff_page.enter_email("lkerr2@eq.edu.au")
+    register_staff_page.enter_phone("0414 756 436")
+    register_staff_page.enter_address_line1("8/34 Down Road")
+    register_staff_page.enter_suburb("Kuraby")
+    register_staff_page.enter_state("QLD")
+    register_staff_page.enter_postcode("4013")
+    register_staff_page.enter_country("Australia")
+    register_staff_page.check_day_1
+    register_staff_page.select_level("Volunteer")
+    register_staff_page.click_register
     page_text.should include("Staff registration details confirmation")
   end
 
