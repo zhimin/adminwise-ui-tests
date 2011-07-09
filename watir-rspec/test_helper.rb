@@ -66,13 +66,14 @@ module TestHelper
 
   def reset_database_silient
     # Option 2: using HTTP to call reset_database URL directly
-    base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
+    base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL 
     begin
       require 'httpclient'
       client = HTTPClient.new
+      puts "BASEURL: #{base_url}"
       reset_response =  client.get("#{base_url}/reset").body
-      reset_response =  reset_response.content if reset_database.respond_to?("content")
-      raise "Reset database failed: #{reset_database}" unless reset_response == "Database Reset OK"
+      return if reset_response == "Database Reset OK"
+      raise "Reset database failed: #{reset_database}"
     rescue => e
       debug e
       raise "failed to reset the database: #{base_url}, #{e}"
