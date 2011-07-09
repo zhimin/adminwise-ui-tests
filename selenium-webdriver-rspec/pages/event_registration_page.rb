@@ -51,7 +51,7 @@ class EventRegistrationPage < AbstractPage
   end
 
   def select_person_occupation(person_occupation)
-    @driver.find_element(:name, "person[occupation]").set(person_occupation)
+    @driver.find_element(:name, "person[occupation]").send_keys(person_occupation)
   end
 
   def enter_person_email(person_email)
@@ -87,7 +87,7 @@ class EventRegistrationPage < AbstractPage
   end
 
   def uncheck_checkbox_registration_email_notificaton
-    uncheck_checkbox("event_registration[email_notification]", "1")
+    @driver.find_element(:name, "event_registration[email_notification]").clear
   end
 
   def click_confirm

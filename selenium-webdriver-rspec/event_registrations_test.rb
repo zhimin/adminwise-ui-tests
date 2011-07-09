@@ -38,7 +38,7 @@ test_suite "Event Registrations" do
     event_registration_page.click_register
     event_registration_confirmation_page = EventRegistrationConfirmationPage.new(@driver)
     event_registration_confirmation_page.click_confirm
-    @driver.page_source.should include("Your registration for CITCON 2011 has been received")
+    @driver.page_source.should include("has been received")
     # use this global variable to detect this test has been run or not
     $pending_count += 1
   end
@@ -63,12 +63,12 @@ test_suite "Event Registrations" do
     event_registration_page.click_register
     event_registration_confirmation_page = EventRegistrationConfirmationPage.new(@driver)
     event_registration_confirmation_page.click_confirm
-    @driver.page_source.should include("Your registration for CITCON 2011 has been received")
+    @driver.page_source.should include("has been received")
 
     visit "/"
     refresh
     login_as("admin")
-    @driver.find_element(:link_text, "Events").click
+    @driver.find_element(:link_text, "EVENTS").click
     @driver.find_element(:link_text, "CITCON 2011").click
     @driver.find_element(:link_text, "Pending #{$pending_count}").click
     @driver.page_source.should include("Eileen Fa")

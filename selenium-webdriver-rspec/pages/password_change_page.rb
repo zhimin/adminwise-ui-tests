@@ -19,7 +19,8 @@ class PasswordChangePage < AbstractPage
   end
   
   def click_change
-      click_button("Change")
+    @driver.find_element(:name, "commit").click
+    # click_button("Change")
   end
 
 end

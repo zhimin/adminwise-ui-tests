@@ -23,7 +23,7 @@ class EventPage < AbstractPage
   end
   
   def click_update
-    click_button("Update")
+    @driver.find_element(:id, "event_submit").click
   end
   
   def enter_name(name)

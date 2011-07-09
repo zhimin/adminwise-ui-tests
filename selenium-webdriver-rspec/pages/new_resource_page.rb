@@ -7,7 +7,7 @@ class NewResourcePage < AbstractPage
   end
 
   def select_subject(resource_subject)
-    select_option("resource[subject]", resource_subject)
+    @driver.find_element(:name, "resource[subject]").send_keys(resource_subject)
   end
   
   def click_create

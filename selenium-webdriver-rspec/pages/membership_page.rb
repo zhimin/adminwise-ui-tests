@@ -49,28 +49,36 @@ class MembershipPage < AbstractPage
     @driver.find_element(:name, "member[email]").send_keys(member_email)
   end
 
-  def click_member_type(member_member_type)
-    click_radio_option("member[member_type]", member_member_type)
+  def click_member_type(member_type)
+    radio_group =  "member[member_type]"
+    radio_option = member_type
+    @driver.find_element(:xpath, "//input[@type='radio' and @name='#{radio_group}' and @value='#{radio_option}']").click
   end
 
   def click_mail_out(member_mail_out)
-    click_radio_option("member[mail_out]", member_mail_out)
+    radio_group =  "member[mail_out]"
+    radio_option = member_mail_out
+    @driver.find_element(:xpath, "//input[@type='radio' and @name='#{radio_group}' and @value='#{radio_option}']").click
   end
 
   def click_doing_aba(member_doing_aba)
-    click_radio_option("member[doing_aba]", member_doing_aba)
+    radio_group =  "member[doing_aba]"
+    radio_option = member_doing_aba
+    @driver.find_element(:xpath, "//input[@type='radio' and @name='#{radio_group}' and @value='#{radio_option}']").click
   end
 
   def select_aware_from(member_aware_from)
-    select_option("member[aware_from]", member_aware_from)
+    @driver.find_element(:name, "member[aware_from]").send_keys(member_aware_from)
+    #    select_option("member[aware_from]", member_aware_from)
   end
 
   def click_create_member
-    click_button("Create Member")
+    @driver.find_element(:id, "member_submit").click
+    # click_button("Create Member")
   end
 
   def click_membership
-    @driver.find_element(:link_text, "Membership").click
+    @driver.find_element(:link_text, "MEMBERSHIP").click
   end
 
   def enter_organisation_name(member_oname)
