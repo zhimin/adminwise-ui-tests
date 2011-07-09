@@ -1,6 +1,6 @@
 load File.dirname(__FILE__) + '/test_helper.rb'
 
-test_suite "Event Registrations as Admin" do
+describe "Event Registrations as Admin" do
   include TestHelper
 
   before(:all) do
@@ -25,7 +25,7 @@ test_suite "Event Registrations as Admin" do
     @driver.close unless debugging?
   end
 
-  test "[483] Admin User can register on behalf someone" do
+  it "[483] Admin User can register on behalf someone" do
     @driver.link(:text, "Register on applicant's behalf").click
     event_registration_page = EventRegistrationPage.new(@driver)
     event_registration_page.select_is_member("yes")

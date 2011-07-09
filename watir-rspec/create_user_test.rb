@@ -1,6 +1,6 @@
 load File.dirname(__FILE__) + '/test_helper.rb'
 
-specification "Create a new user as admin" do
+describe "Create a new user as admin" do
   include TestHelper
 
   before(:all) do
@@ -13,7 +13,7 @@ specification "Create a new user as admin" do
     @driver.close unless debugging?
   end
 
-  story "[482] Create new user, then login" do
+  it "[482] Create new user, then login" do
     login_as("admin")
     @driver.link(:text, "Control Panel").click
     @driver.link(:text, "Manage Users").click

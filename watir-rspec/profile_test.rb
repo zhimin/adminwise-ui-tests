@@ -1,6 +1,6 @@
 load File.dirname(__FILE__) + '/test_helper.rb'
 
-specification "User Profile" do
+describe "User Profile" do
   include TestHelper
 
   before(:all) do
@@ -14,7 +14,7 @@ specification "User Profile" do
     @driver.close unless debugging?
   end
 
-  story "[481] User can change password" do
+  it "[481] User can change password" do
     login_as("bob", "test")
     @driver.link(:text, "Profile").click    
     @driver.link(:text, "Change password").click    

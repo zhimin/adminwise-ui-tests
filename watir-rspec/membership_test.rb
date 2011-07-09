@@ -1,6 +1,6 @@
 load File.dirname(__FILE__) + '/test_helper.rb'
 
-specification "Memebership" do
+describe "Memebership" do
   include TestHelper
 
   before(:all) do
@@ -19,19 +19,19 @@ specification "Memebership" do
     visit "/home"
   end
 
-  story "Admin user can search an existing member by surname " do
+  it "Admin user can search an existing member by surname " do
     @driver.text_field(:name, "search").set "Smith"
     @driver.button(:value, "Search").click
     @driver.text.should include("David Smith")
   end
   
-  story "Admin user can search an existing member by membership number" do
+  it "Admin user can search an existing member by membership number" do
     @driver.text_field(:name, "search").set "30002"
     @driver.button(:value, "Search").click
     assert_link_present_with_text("David Smith")
   end
   
-  story "[493] Admin user can create a new family member" do
+  it "[493] Admin user can create a new family member" do
     @driver.link(:text,"Membership").click
     membership_page =  MembershipPage.new(@driver)
     membership_page.add_member
@@ -53,7 +53,7 @@ specification "Memebership" do
     @driver.text.should include("Cindy Fu")
   end
 
-  story "[494] Admin user can create a new organisation member" do
+  it "[494] Admin user can create a new organisation member" do
     membership_page = MembershipPage.new(@driver)
     membership_page.click_add_member
     membership_page.enter_organisation_name("CareLink Pty Ltd")

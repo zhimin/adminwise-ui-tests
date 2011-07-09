@@ -2,7 +2,7 @@ load File.dirname(__FILE__) + '/test_helper.rb'
 
 $pending_count = 1
 
-test_suite "Event Registrations" do
+describe "Event Registrations" do
   include TestHelper
 
   before(:all) do
@@ -23,7 +23,7 @@ test_suite "Event Registrations" do
     @driver.close unless debugging?
   end
 
-  test "[485] User can sign up for events - member - populate info" do
+  it "[485] User can sign up for events - member - populate info" do
     visit "/events/register/2"
     event_registration_page = EventRegistrationPage.new(@driver)
     event_registration_page.select_is_member("yes")
@@ -43,7 +43,7 @@ test_suite "Event Registrations" do
     $pending_count += 1
   end
 
-  test "[486] User can sign up for events - non member" do
+  it "[486] User can sign up for events - non member" do
     visit "/events/register/2"
 
     #    click_radio_option("payment_via_eft", "yes")
