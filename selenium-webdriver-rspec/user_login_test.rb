@@ -4,7 +4,7 @@ specification "User Management" do
   include TestHelper
 
   before(:all) do
-    @driver = Selenium::WebDriver.for(:ie) 
+    @driver = Selenium::WebDriver.for(browser_type) 
     @driver.navigate.to($ITEST2_PROJECT_BASE_URL || $BASE_URL)
     fail_safe{ logout }
     reset_database

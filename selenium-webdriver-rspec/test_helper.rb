@@ -19,6 +19,15 @@ module TestHelper
   include RWebSpec::RSpecHelper
   include RWebSpec::Assert
 
+  def browser_type
+    if $ITEST2_BROWSER
+      return $ITEST2_BROWSER.downcase.to_sym
+    end
+    :ie
+    # :firefox
+    # :chrome
+  end
+  
   # In you test case, you can use
   #
   #   login_as("homer", "Password")
