@@ -7,7 +7,7 @@ class LibraryReturnPage < AbstractPage
   end
 
   def click_process
-    click_button("Process")
+    @driver.button(:value, "Process").click
   end
   
   def enter_resource(resource)
@@ -15,7 +15,7 @@ class LibraryReturnPage < AbstractPage
   end
   
   def click_find
-    click_button("Find")
+    @driver.button(:value, "Find").click
   end
 
 end
