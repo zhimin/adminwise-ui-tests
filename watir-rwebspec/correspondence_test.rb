@@ -22,18 +22,19 @@ specification "Correspondence" do
   end
   
   after(:all) do
-    close_browser unless debugging?
+    failsafe{ logout } unless debugging?
   end
 
-  story "[501]Can create a new correspondence" do
+  story "[501] Can create a new correspondence" do
     page_text.should include("Ashgrove State School")
   end
   
-  story "[502]can edit existing correspondence" do
+  story "[502] can edit existing correspondence" do
     click_link("Edit")
     enter_text("correspondence[description]", "Wrote a cover letter and post out the information booklet to Ashgrove West State School Support Services")
     click_button("Update")
     click_link("Edit")
+    refresh
     page_text.should include("Ashgrove West State School")
   end
 

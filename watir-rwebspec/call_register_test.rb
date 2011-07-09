@@ -5,7 +5,6 @@ specification "Create a new call register" do
 
   before(:all) do
     open_browser
-    reset_database
     failsafe{ logout }
     login_as("admin")
   end
@@ -15,6 +14,8 @@ specification "Create a new call register" do
   end
 
   before(:each) do
+    reset_database
+
     click_link("Answer call")
     answer_call_page = expect_page AnswerCallPage
     answer_call_page.select_call_category("Resources")
@@ -24,18 +25,19 @@ specification "Create a new call register" do
     answer_call_page.click_hang_up
   end
 
-  story "[499]Can create a new call register" do
+  story "[499] Can create a new call register" do
     page_text.should include("Jesse Stewart")
   end
 
-  story "[500]Can edit existing call register" do
+  story "[500] Can edit existing call register" do
     click_link("Call register list")
-    click_link("Edit")
+    link(:text => "Edit", :index => 1).click
     # link(:text => "Edit", :index => 5).click
     click_radio_option("call[non_member]", "false")
     click_button("Update")
     # now shall not be a member
-    click_link("Edit")
+    link(:text => "Edit", :index => 1).click
+    refresh # sometimes IE caches it
     assert_radio_option_checked("call[non_member]", "false")
   end
 

@@ -7,7 +7,7 @@ Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| require file }
 
 FireWatir::Firefox.firefox_started = true if RUBY_PLATFORM.downcase.include?("darwin")
 
-$BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.macmini"
+$BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.agileway.net"
 #localhost:2800"
 #$BASE_URL = "http://demo.adminwise.com"
 #$BASE_URL = "http://adminwise.macmini"
@@ -39,7 +39,7 @@ module TestHelper
 
   def reset_database
     begin
-      Timeout::timeout(3) {
+      Timeout::timeout(5) {
         reset_database_silient
       }
     rescue Timeout::Error => e
@@ -63,10 +63,10 @@ module TestHelper
        require 'httpclient'
        client = HTTPClient.new
        reset_response =  client.get("#{base_url}/reset").body
-       reset_response =  reset_response.content if reset_database.respond_to?("content")
-       raise "Reset database failed: #{reset_database}" unless reset_response == "Database Reset OK"
+       return if reset_response == "Database Reset OK"
+       raise "Reset database failed: #{reset_database}" 
      rescue => e
-       debug e
+       puts "Failed to reset database #{e}"
        raise "failed to reset the database: #{base_url}, #{e}"
      end
    end
