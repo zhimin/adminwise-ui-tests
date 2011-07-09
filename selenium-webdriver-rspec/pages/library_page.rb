@@ -19,7 +19,8 @@ class LibraryPage < AbstractPage
   end
 
   def click_search
-    click_button("search")
+    @driver.find_element(:name, "commit").click
+    # click_button("search")
   end
 
   def click_return

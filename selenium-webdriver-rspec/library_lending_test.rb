@@ -62,16 +62,16 @@ specification "Library: Borrowing and Lending" do
 
     #   search 100001
     #   assert status checkedout, using id
-    @driver.find_element(:link_text, "Library").click
-    library_page = LibraryPage.new(@driver)
+    @driver.find_element(:link_text, "LIBRARY").click
     library_page = LibraryPage.new(@driver)
     library_page.enter_query("100001")
     library_page.click_search
     sleep 0.5
     @driver.find_element(:link_text, "Let Me Hear Your Voice: A Family's Triumph over Autism").click
-    cell(:id, "item_status_100001").text.strip.should == "Checked out"
+    sleep 1
+    @driver.find_element(:id, "item_status_100001").text.strip.should == "Checked out"
 
-    @driver.find_element(:link_text, "Library").click
+    @driver.find_element(:link_text, "LIBRARY").click
     library_page = LibraryPage.new(@driver)
     library_page.click_return
     sleep 0.5
@@ -82,7 +82,7 @@ specification "Library: Borrowing and Lending" do
     try { assert_link_present_with_text("Let Me Hear Your Voice: A Family's Triumph over Autism") }
     library_return_page.click_process
 
-    @driver.find_element(:link_text, "Library").click
+    @driver.find_element(:link_text, "LIBRARY").click
     library_page = LibraryPage.new(@driver)
     library_page.enter_query("100001")
     library_page.click_search

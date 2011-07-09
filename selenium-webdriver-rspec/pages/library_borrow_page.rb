@@ -7,7 +7,7 @@ class LibraryBorrowPage < AbstractPage
   end
 
   def click_find_member
-    click_button("Find member")
+    @driver.find_element(:id, "find_member_btn").click # click_button("Find member")
   end
   
   def enter_resource(resource)
@@ -15,7 +15,7 @@ class LibraryBorrowPage < AbstractPage
   end
 
   def click_find_resource
-    click_button("Find resource")
+    @driver.find_element(:id, "find_resource_btn").click # click_button("Find resource")
   end
 
   def click_select
@@ -25,7 +25,8 @@ class LibraryBorrowPage < AbstractPage
 
   def click_process
     sleep 1
-    click_button("Process")
+    @driver.find_element(:id, "process_btn").click
+    # click_button("Process")
   end
 
   def enter_member_name(name)
