@@ -12,7 +12,7 @@ specification "Library: Add resourses" do
   end
 
   after(:all) do
-    fail_safe{ logout }
+    fail_safe{ logout } unless debugging?
     @driver.quit unless debugging?
   end
 
@@ -34,10 +34,12 @@ specification "Library: Add resourses" do
     new_resource_page.enter_authors("Michael Whelan")
     new_resource_page.select_subject("Families")
     new_resource_page.click_create
-    click_button("Save")
-    @driver.find_element(:link_text, "Library").click
-    @driver.find_element(:name, "q").send_keys "The Other Country"
-    click_button("search")
+    @driver.find_element(:name, "commit").click # click_button("Save")
+    @driver.find_element(:link_text, "LIBRARY").click
+    
+    library_search_page = LibrarySearchPage.new(@driver)
+    library_search_page.enter_query("The Other Country")
+    library_search_page.click_search
     try { @driver.page_source.should include("matches for 'The Other Country'")}
   end
 

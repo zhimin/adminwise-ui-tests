@@ -26,7 +26,7 @@
   <spec_template></spec_template>
   <page_template>&lt;%if @info[:framework] &amp;&amp; @info[:framework] =~ /selenium/i %&gt;require 'rwebspec-webdriver'&lt;% else %&gt;require 'rwebspec'&lt;% end %&gt;
 
-class &lt;%= @info[:page_class]%&gt; &lt; AbstractWebPage
+class &lt;%= @info[:page_class]%&gt; &lt; AbstractPage
 
   def initialize(browser)
     super(browser, "&lt;%= @info[:page_text] %&gt;") # &lt;= TEXT UNIQUE TO THIS PAGE

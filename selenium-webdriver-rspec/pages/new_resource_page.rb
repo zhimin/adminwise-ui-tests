@@ -11,7 +11,7 @@ class NewResourcePage < AbstractPage
   end
   
   def click_create
-    click_button("Create")
+    @driver.find_element(:name, "commit").click
   end
 
   def enter_title(title)
