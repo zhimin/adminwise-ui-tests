@@ -1,26 +1,26 @@
 <?xml version="1.1" encoding="US-ASCII"?>
 <project>
   <name>AdminWise-Selenium2</name>
-  <default_browser>Internet Explorer</default_browser>
-  <framework>Selenium2</framework>
+  <default_browser>Firefox</default_browser>
+  <framework>RWebSpec+Selenium2</framework>
   <environments>
-    <entry name="build_server" default="false">
+    <entry default="false" name="build_server">
       <base_url>http://adminwise.heroku.com</base_url>
     </entry>
-    <entry name="dev" default="false">
+    <entry default="false" name="dev">
       <base_url>http://10.0.0.3:3000</base_url>
     </entry>
-    <entry name="development" default="true">
+    <entry default="false" name="development">
       <base_url>http://localhost:3000</base_url>
     </entry>
-    <entry name="special" default="false">
+    <entry default="false" name="special">
       <base_url>http://adminwise.macmini</base_url>
     </entry>
-    <entry name="test" default="false">
+    <entry default="false" name="test">
       <base_url>http://adminwise.agileway.net</base_url>
     </entry>
   </environments>
-  <exclude_dirs>pages</exclude_dirs>
+  <exclude_dirs></exclude_dirs>
   <exclude_files></exclude_files>
   <test_named_as>test_suite</test_named_as>
   <spec_template></spec_template>
