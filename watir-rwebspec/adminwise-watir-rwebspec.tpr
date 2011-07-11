@@ -2,7 +2,8 @@
 <project>
   <name>AdminWise</name>
   <default_browser>Firefox</default_browser>
-  <framework>RWebSpec+Watir</framework>
+  <test_framework>RWebSpec+Watir</test_framework>
+  <syntax_framework>RWebSpec</syntax_framework>
   <environments>
     <entry default="false" name="build_server">
       <base_url>http://adminwise.heroku.com</base_url>
@@ -10,7 +11,7 @@
     <entry default="false" name="dev">
       <base_url>http://10.0.0.3:3000</base_url>
     </entry>
-    <entry default="false" name="development">
+    <entry default="true" name="development">
       <base_url>http://localhost:3000</base_url>
     </entry>
     <entry default="false" name="special">

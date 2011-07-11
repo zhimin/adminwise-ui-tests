@@ -1,0 +1,30 @@
+<?xml version="1.1" encoding="US-ASCII"?>
+<project>
+  <name>AdminWise-Selenium2</name>
+  <default_browser>Firefox</default_browser>
+  <test_framework>Selenium2</test_framework>
+  <syntax_framework>RSpec</syntax_framework>
+  <environments>
+    <entry default="true" name="development">
+      <base_url>http://localhost</base_url>
+    </entry>
+  </environments>
+  <exclude_dirs></exclude_dirs>
+  <exclude_files></exclude_files>
+  <test_named_as>test_suite</test_named_as>
+  <spec_template></spec_template>
+  <page_template></page_template>
+  <storywise_url></storywise_url>
+  <jira_url></jira_url>
+  <jira_project></jira_project>
+  <jira_login></jira_login>
+  <jira_password></jira_password>
+  <heart_beat>
+    <spec_suite></spec_suite>
+    <environment></environment>
+    <start_time></start_time>
+    <repeat></repeat>
+    <end_repeat></end_repeat>
+    <emails></emails>
+  </heart_beat>
+</project>
