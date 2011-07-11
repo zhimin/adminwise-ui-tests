@@ -2,21 +2,22 @@
 <project>
   <name>AdminWise-Selenium2</name>
   <default_browser>Firefox</default_browser>
-  <framework>RWebSpec+Selenium2</framework>
+  <test_framework>Watir</test_framework>
+  <syntax_framework>RWebSpec</syntax_framework>
   <environments>
-    <entry default="false" name="build_server">
+    <entry name="build_server" default="false">
       <base_url>http://adminwise.heroku.com</base_url>
     </entry>
-    <entry default="false" name="dev">
+    <entry name="dev" default="false">
       <base_url>http://10.0.0.3:3000</base_url>
     </entry>
-    <entry default="false" name="development">
+    <entry name="development" default="false">
       <base_url>http://localhost:3000</base_url>
     </entry>
-    <entry default="false" name="special">
+    <entry name="special" default="false">
       <base_url>http://adminwise.macmini</base_url>
     </entry>
-    <entry default="false" name="test">
+    <entry name="test" default="true">
       <base_url>http://adminwise.agileway.net</base_url>
     </entry>
   </environments>

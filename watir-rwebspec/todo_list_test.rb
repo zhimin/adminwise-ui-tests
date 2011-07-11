@@ -35,9 +35,9 @@ specification "To Do List" do
   end
 
   # JavaScript Popup
-  story "can delete Todo list" do
+  story "can delete Todo list" do    
     image(:src, /delete\.png/).click_no_wait
-    browser.ie.javascript_dialog.button('OK').click
+    browser.javascript_dialog.button('OK').click
     # TODO checkpoint
   end
 
