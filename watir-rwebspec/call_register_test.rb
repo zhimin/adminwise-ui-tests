@@ -6,7 +6,6 @@ specification "Create a new call register" do
   before(:all) do
     open_browser
     failsafe{ logout }
-    login_as("admin")
   end
 
   after(:all) do
@@ -15,7 +14,7 @@ specification "Create a new call register" do
 
   before(:each) do
     reset_database
-
+    login_as("admin")
     click_link("Answer call")
     answer_call_page = expect_page AnswerCallPage
     answer_call_page.select_call_category("Resources")
@@ -25,6 +24,10 @@ specification "Create a new call register" do
     answer_call_page.click_hang_up
   end
 
+  after(:each) do
+    failsafe{ logout }
+  end
+  
   story "[499] Can create a new call register" do
     page_text.should include("Jesse Stewart")
   end

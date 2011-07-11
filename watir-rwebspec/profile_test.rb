@@ -5,8 +5,8 @@ specification "User Profile" do
 
   before(:all) do
     open_browser
-    reset_database
     failsafe{ logout }
+    reset_database
   end
 
   after(:all) do
