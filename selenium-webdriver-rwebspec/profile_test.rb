@@ -16,7 +16,8 @@ specification "User Profile" do
 
   story "[481] User can change password" do
     login_as("bob", "test")
-    click_link("Profile")
+    click_link("profile")
+#    click_link("Profile")
     click_link("Change password")
     
     password_change_page = expect_page PasswordChangePage
@@ -31,7 +32,8 @@ specification "User Profile" do
 
     logout
     login_as("bob", "newpass")
-    assert_link_present_with_text("Profile") # login Ok
+    assert_link_present_with_text("profile") # login Ok
+#    assert_link_present_with_text("Profile") # login Ok
   end
 
 end

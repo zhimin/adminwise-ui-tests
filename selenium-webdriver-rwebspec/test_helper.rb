@@ -33,7 +33,8 @@ module TestHelper
   alias login login_as
 
   def logout
-     failsafe { click_link("Logout") }
+     # failsafe { click_link("Logout") }
+     failsafe { click_link("logout") }
   end
 
 

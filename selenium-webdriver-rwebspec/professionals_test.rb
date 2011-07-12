@@ -11,7 +11,8 @@ specification "Professionals" do
   end
 
   before(:each) do
-   click_link("Administration")
+   click_link("ADMINISTRATION")
+#   click_link("Administration")
    click_link("Professionals")
   end
     
@@ -33,9 +34,11 @@ specification "Professionals" do
   end
   
   story "[497] Admin user sort professional by category" do
-    click_link("Category")  
+    click_link("CATEGORY")  
+#    click_link("Category")  
     try(3) { cell(:id, "category_0").text.should == "Speech Pathlogists" }
-    click_link("Category")  
+    click_link("CATEGORY")  
+#    click_link("Category")  
     try(3) { cell(:id, "category_0").text.should == "Auditory Integration Training" }
   end
   

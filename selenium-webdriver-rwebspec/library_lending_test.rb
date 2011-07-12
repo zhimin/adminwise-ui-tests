@@ -17,7 +17,8 @@ specification "Library: Borrowing and Lending" do
 
   before(:each) do
     visit "/home"
-    click_link("Library")
+    click_link("LIBRARY")
+#    click_link("Library")
   end
 
   after(:each) do
@@ -61,7 +62,8 @@ specification "Library: Borrowing and Lending" do
 
     #   search 100001
     #   assert status checkedout, using id
-    click_link("Library")
+    click_link("LIBRARY")
+#    click_link("Library")
     library_page = expect_page LibraryPage
     library_page = expect_page LibraryPage
     library_page.enter_query("100001")
@@ -70,7 +72,8 @@ specification "Library: Borrowing and Lending" do
     click_link("Let Me Hear Your Voice: A Family's Triumph over Autism")
     cell(:id, "item_status_100001").text.strip.should == "Checked out"
 
-    click_link("Library")
+    click_link("LIBRARY")
+#    click_link("Library")
     library_page = expect_page LibraryPage
     library_page.click_return
     sleep 0.5
@@ -81,7 +84,8 @@ specification "Library: Borrowing and Lending" do
     try { assert_link_present_with_text("Let Me Hear Your Voice: A Family's Triumph over Autism") }
     library_return_page.click_process
 
-    click_link("Library")
+    click_link("LIBRARY")
+#    click_link("Library")
     library_page = expect_page LibraryPage
     library_page.enter_query("100001")
     library_page.click_search
