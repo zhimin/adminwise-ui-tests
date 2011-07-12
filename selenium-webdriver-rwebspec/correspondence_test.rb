@@ -11,7 +11,7 @@ specification "Correspondence" do
   end
   
   before(:each) do
-    click_link("ADMINISTRATION")
+    click_link("Administration")
     click_link("Correspondence")
     click_link("New Correspondence")
     new_correspondence_page = expect_page NewCorrespondencePage
