@@ -1,0 +1,6 @@
+h3. Inconsistent Case with HTML links (Selenium2-RWebSpec)
+
+RWebSpec-WebDriver only recognize links with inconsistent cases, sometime same as source, sometimes UPCASE like styled, sometimes lowercase not like styled.
+
+Use selenium-webdriver with RSpec seem Ok
+

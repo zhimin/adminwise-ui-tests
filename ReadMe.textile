@@ -18,7 +18,7 @@ h4. Selenium2 (selenium-webdriver) vs Watir
 
 Next major version of Selenum2 (also known as webdriver) is still in Beta, it is supported in multiple programming languages. Here we only compares its Ruby version (a popular and concise scripting language, perfect for test scripts) against Watir (Web application testing in Ruby) 
 
-Verdict: Watir
+If you need to run Test against Firefox, then Selenium2 is the only choice. For IE, Watir is more mature and more stable IMO.
 
 h4. RWebSpec vs Watir vs Selenium2
 
