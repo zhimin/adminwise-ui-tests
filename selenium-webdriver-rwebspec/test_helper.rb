@@ -43,7 +43,7 @@ module TestHelper
         reset_database_silient
       }
     rescue Timeout::Error => e
-      puts "Reset database via HttpClient: #{e}"
+      # puts "Reset database via HttpClient: #{e}"
       reset_database_via_ui
     rescue => e
       reset_database_via_ui
