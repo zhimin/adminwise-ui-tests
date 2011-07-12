@@ -7,7 +7,7 @@ Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| require file }
 
 FireWatir::Firefox.firefox_started = true if RUBY_PLATFORM.downcase.include?("darwin")
 
-$BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.macmini"
+$BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.agileway.net"
 #localhost:2800"
 #$BASE_URL = "http://demo.adminwise.com"
 #$BASE_URL = "http://adminwise.macmini"

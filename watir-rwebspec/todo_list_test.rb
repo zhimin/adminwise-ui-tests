@@ -5,18 +5,17 @@ specification "To Do List" do
 
   before(:all) do
     open_browser
-    reset_database
     failsafe{ logout }
-    login_as("admin")
   end
 
   before(:each) do
+    reset_database
+    login_as("bob")
     click_link("Todo lists")
     click_link("New Todo list")
     enter_text("todo_list[name]", "Collect parcel")
     click_button("Create")
   end
-
 
   after(:all) do
     close_browser unless debugging?
@@ -36,6 +35,7 @@ specification "To Do List" do
 
   # JavaScript Popup
   story "can delete Todo list" do    
+    # Alternative way is to use Popup Handler: http://testwisely.com/en/testwise/docs/recipes
     image(:src, /delete\.png/).click_no_wait
     browser.javascript_dialog.button('OK').click
     # TODO checkpoint

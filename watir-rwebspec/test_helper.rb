@@ -37,15 +37,21 @@ module TestHelper
   end
 
 
-  def reset_database
-    begin
-      Timeout::timeout(5) {
-        reset_database_silient
-      }
-    rescue Timeout::Error => e
-      puts "Reset database via HttpClient: #{e}"
-      reset_database_via_ui
-    rescue => e
+  def reset_database(background = false)
+    if background
+
+      begin
+        Timeout::timeout(3) {
+          reset_database_silient
+        }
+      rescue Timeout::Error => e
+        puts "Reset database via HttpClient: #{e}"
+        reset_database_via_ui
+      rescue => e
+        puts "Reset via UI"
+        reset_database_via_ui
+      end
+    else
       reset_database_via_ui
     end
   end
@@ -57,17 +63,17 @@ module TestHelper
   end
 
   def reset_database_silient
-     # Option 2: using HTTP to call reset_database URL directly
-     base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
-     begin
-       require 'httpclient'
-       client = HTTPClient.new
-       reset_response =  client.get("#{base_url}/reset").body
-       return if reset_response == "Database Reset OK"
-       raise "Reset database failed: #{reset_database}" 
-     rescue => e
-       puts "Failed to reset database #{e}"
-       raise "failed to reset the database: #{base_url}, #{e}"
-     end
-   end
+    # Option 2: using HTTP to call reset_database URL directly
+    base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
+    begin
+      require 'httpclient'
+      client = HTTPClient.new
+      reset_response =  client.get("#{base_url}/reset").body
+      return if reset_response == "Database Reset OK"
+      raise "Reset database failed: #{reset_database}"
+    rescue => e
+      puts "Failed to reset database #{e}"
+      raise "failed to reset the database: #{base_url}, #{e}"
+    end
+  end
 end
