@@ -16,7 +16,7 @@ specification "User Profile" do
 
   story "[481] User can change password" do
     login_as("bob", "test")
-    click_link("profile")
+    click_link("Profile")
     click_link("Change password")
     
     password_change_page = expect_page PasswordChangePage

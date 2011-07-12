@@ -5,10 +5,10 @@
   <test_framework>Selenium2</test_framework>
   <syntax_framework>RSpec</syntax_framework>
   <environments>
-    <entry name="development" default="false">
-      <base_url>http://localhost</base_url>
+    <entry name="development" default="true">
+      <base_url>http://localhost:3000</base_url>
     </entry>
-    <entry name="test" default="true">
+    <entry name="test" default="false">
       <base_url>http://adminwise.agileway.net/</base_url>
     </entry>
   </environments>

@@ -32,7 +32,7 @@ specification "Memebership" do
   end
   
   story "[493] Admin user can create a new family member" do
-    click_link("MEMBERSHIP")
+    click_link("Membership")
     membership_page = expect_page MembershipPage
     membership_page.add_member
     membership_page.enter_first_name("Cindy")
@@ -54,7 +54,7 @@ specification "Memebership" do
   end
 
   story "[494] Admin user can create a new organisation member" do
-        click_link("MEMBERSHIP")
+    click_link("Membership")
     membership_page = expect_page MembershipPage
     membership_page.click_add_member
     membership_page.enter_organisation_name("CareLink Pty Ltd")
@@ -74,9 +74,4 @@ specification "Memebership" do
   end
 
 end
-
-
-
-
-
 

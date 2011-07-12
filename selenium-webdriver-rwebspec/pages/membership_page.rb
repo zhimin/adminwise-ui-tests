@@ -67,7 +67,7 @@ class MembershipPage < RWebSpec::AbstractWebPage
   end
 
   def click_membership
-    click_link("MEMBERSHIP")
+    click_link("Membership")
   end
 
   def click_add_member

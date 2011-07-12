@@ -12,8 +12,7 @@ test_suite "Event Registrations as Admin" do
 
   before(:each) do
     visit "/home"
-#    click_link("Events")
-    click_link("EVENTS")
+    click_link("Events")
     event_list_page = expect_page EventListPage
     click_link("ABIQ 2011 Autism Conference")
   end

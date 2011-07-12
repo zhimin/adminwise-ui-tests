@@ -15,8 +15,8 @@ specification "Create a new user as admin" do
 
   story "[482] Create new user, then login" do
     login_as("admin")
-    #  click_link("Control Panel")
-    click_link("control panel")
+    click_link("Control Panel")
+#    click_link("control panel")
     click_link("Manage Users")
     click_link("Add new user")
     

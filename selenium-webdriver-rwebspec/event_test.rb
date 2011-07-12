@@ -13,7 +13,7 @@ test_suite "Events" do
 
   before(:each) do
     visit "/"
-    click_link("EVENTS")
+    click_link("Events")
   end
 
   after(:all) do
