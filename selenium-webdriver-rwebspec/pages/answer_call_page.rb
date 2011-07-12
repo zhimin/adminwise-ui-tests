@@ -1,4 +1,4 @@
-require 'rwebspec'
+require 'rwebspec-webdriver'
 
 class AnswerCallPage < RWebSpec::AbstractWebPage
 

@@ -1,4 +1,4 @@
-require 'rwebspec'
+require 'rwebspec-webdriver'
 
 class EventRegistrationConfirmationPage < RWebSpec::AbstractWebPage
 
