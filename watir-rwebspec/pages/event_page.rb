@@ -27,5 +27,9 @@ class EventPage < AbstractPage
     def enter_name(name)
     enter_text("event[name]", name)
   end
+    
+    def enter_date_from(event_date_from)
+        enter_text("event[date_from]", event_date_from)
+    end
 
 end

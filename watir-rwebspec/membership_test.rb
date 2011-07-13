@@ -73,10 +73,12 @@ specification "Memebership" do
 
   story "Admin user can update an existing member details" do
     membership_page = expect_page MembershipPage
-    membership_page.click_name_link
+    membership_page.click_name("David Smith")
     membership_page.enter_member_end_date("2012-08-20")
+    membership_page.enter_suburb("Norman Park")
     membership_page.click_update_member
     page_text.should include("20/08/2012")
+    page_text.should contain("Norman Park")
   end
 end
 

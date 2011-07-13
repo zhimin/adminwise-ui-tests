@@ -81,8 +81,8 @@ class MembershipPage < AbstractPage
     enter_text("member[fname]", member_fname)
   end
   
-  def click_name_link
-      click_link("Bob Builder")
+  def click_name(name)
+      click_link(name)
   end
   
   def enter_member_end_date(member_end_date)
@@ -91,5 +91,9 @@ class MembershipPage < AbstractPage
   
   def click_update_member
       click_button("Update Member")
+  end
+  
+  def enter_suburb(member_suburb)
+      enter_text("member[suburb]", member_suburb)
   end
 end
