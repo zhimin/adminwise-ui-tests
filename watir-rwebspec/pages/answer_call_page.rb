@@ -1,6 +1,5 @@
-require 'rwebspec'
 
-class AnswerCallPage < RWebSpec::AbstractWebPage
+class AnswerCallPage < AbstractPage
 
   def initialize(browser)
     super(browser, "") # <= TEXT UNIQUE TO THIS PAGE

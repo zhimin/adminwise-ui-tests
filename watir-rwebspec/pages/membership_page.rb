@@ -1,6 +1,6 @@
 require 'rwebspec'
 
-class MembershipPage < RWebSpec::AbstractWebPage
+class MembershipPage < AbstractPage
 
   def initialize(browser)
     super(browser, "") # <= TEXT UNIQUE TO THIS PAGE

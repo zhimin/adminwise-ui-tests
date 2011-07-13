@@ -1,6 +1,5 @@
-require 'rwebspec'
 
-class NewProfessionalPage < RWebSpec::AbstractWebPage
+class NewProfessionalPage < AbstractPage
 
   def initialize(browser)
     super(browser, "") # <= TEXT UNIQUE TO THIS PAGE

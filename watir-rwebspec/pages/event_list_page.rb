@@ -1,6 +1,5 @@
-# load File.dirname(__FILE__) + '/maybe_your_template_page.rb'
 
-class EventListPage < RWebSpec::AbstractWebPage
+class EventListPage < AbstractPage
 
   def initialize(browser)
     super(browser, "Listing events") # <= 
