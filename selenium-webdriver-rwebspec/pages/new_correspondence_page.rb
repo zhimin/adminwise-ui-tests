@@ -1,6 +1,5 @@
-require 'rwebspec-webdriver'
 
-class NewCorrespondencePage < RWebSpec::AbstractWebPage
+class NewCorrespondencePage < AbstractPage
 
   def initialize(browser)
     super(browser, "") # <= TEXT UNIQUE TO THIS PAGE

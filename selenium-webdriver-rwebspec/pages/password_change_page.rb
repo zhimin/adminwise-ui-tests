@@ -1,6 +1,5 @@
-# load File.dirname(__FILE__) + '/maybe_your_template_page.rb'
 
-class PasswordChangePage < RWebSpec::AbstractWebPage
+class PasswordChangePage < AbstractPage
 
   def initialize(browser)
     super(browser, "Change Password") # <= 

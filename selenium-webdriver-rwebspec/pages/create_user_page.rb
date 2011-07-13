@@ -1,6 +1,5 @@
-require 'rwebspec-webdriver'
 
-class CreateUserPage < RWebSpec::AbstractWebPage
+class CreateUserPage < AbstractPage
 
   def initialize(browser)
     super(browser, "Register")

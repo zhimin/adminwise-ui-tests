@@ -1,6 +1,5 @@
-# load File.dirname(__FILE__) + '/maybe_your_template_page.rb'
 
-class LibraryBorrowPage < RWebSpec::AbstractWebPage
+class LibraryBorrowPage < AbstractPage
 
   def initialize(browser)
     super(browser, "") # <=
