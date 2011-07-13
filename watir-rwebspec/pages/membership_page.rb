@@ -1,4 +1,3 @@
-require 'rwebspec'
 
 class MembershipPage < AbstractPage
 
@@ -80,5 +79,17 @@ class MembershipPage < AbstractPage
 
   def enter_first_name(member_fname)
     enter_text("member[fname]", member_fname)
+  end
+  
+  def click_name_link
+      click_link("Bob Builder")
+  end
+  
+  def enter_member_end_date(member_end_date)
+      enter_text("member[end_date]", member_end_date)
+  end
+  
+  def click_update_member
+      click_button("Update Member")
   end
 end
