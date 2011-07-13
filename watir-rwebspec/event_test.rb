@@ -40,6 +40,15 @@ test_suite "Events" do
     event_page.click_update
     assert_text_present("2010 Agileway Testing Conference")
   end
-
+  
+  story "Can edit an existing event" do
+  click_link("Events")
+  click_link_with_id("edit_0")
+  enter_text("event[date_from]", "2011-07-27")
+  click_button("Update")
+  assert_text_present("Event details - CITCON 2011")
+  click_link("Events")
+  page_text.should contain("2011-07-27")
+  end
 
 end

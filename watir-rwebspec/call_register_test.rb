@@ -44,7 +44,13 @@ specification "Create a new call register" do
     assert_radio_option_checked("call[non_member]", "false")
   end
 
-  # end of all test cases in this file
+
+  story "Can create an Excel report from Call Register" do
+    click_link("Reports")
+    click_link ("Export to Excel")
+    page_text.should include("DATE_TIME")
+  end  
+   
+
 end
-
-
+  
