@@ -1,6 +1,6 @@
 Given /^I am on the (.+)$/ do |page_name|
   login_as("bob", "test")
-  @browser.find_element(:link_text, "Profile").click
+  @browser.find_element(:link_text, "profile").click
   @browser.find_element(:link_text, "Change password").click
         
   @password_change_page = Object.const_get(page_name.gsub(" ","")).new(@browser)
