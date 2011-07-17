@@ -1,7 +1,7 @@
 Given /^I am on the (.+)$/ do |page_name|
   login_as("bob", "test")
-  @browser.find_element(:link_text, "profile").click
-  @browser.find_element(:link_text, "Change password").click
+  @browser.link(:text, "Profile").click
+  @browser.link(:text, "Change password").click
         
   @password_change_page = Object.const_get(page_name.gsub(" ","")).new(@browser)
 end
@@ -23,12 +23,13 @@ When /^I click change$/ do
 end
 
 Then /^I can relogin with new password "([^"]*)"$/ do |new_pass|
+  logout
   login_as("bob", new_pass)  
 end
 
 
 def logout
-  @browser.find_element(:link_text, "logout").click      
+  @browser.link(:text, "Logout").click;
 end
 
 def login_as(username, password = "test")

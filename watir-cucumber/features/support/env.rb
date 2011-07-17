@@ -1,19 +1,13 @@
 TEST_DATA_DIR = "./features/test_data"
 
 require 'rubygems'
-require 'selenium-webdriver'
+require 'watir'
 
 Dir["#{File.dirname(__FILE__)}/../../pages/*_page.rb"].each { |file| require file }
 
-
-if RUBY_PLATFORM =~ /mingw/ 
-  browser = Selenium::WebDriver.for(:ie)   
-else
-  browser = Selenium::WebDriver.for(:firefox)   
-end
-
-browser.navigate.to("http://adminwise.agileway.net")
-# browser.navigate.to("http://localhost:3000")
+browser = Watir::Browser.new
+browser.goto("http://10.0.0.6:3000")
+#browser.goto("http://adminwise.agileway.net")
 
 Before do
   @browser = browser
