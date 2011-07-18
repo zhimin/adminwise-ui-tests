@@ -1,9 +1,7 @@
 This is experiment
 ===================
 
-Project structure inspired from 
-https://github.com/alisterscott/WatirMelonCucumber
-
+The Page directory is fully copied from watir-rspec
 
 
 
