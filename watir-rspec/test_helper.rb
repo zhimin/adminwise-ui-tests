@@ -5,8 +5,7 @@ require 'httpclient'
 require 'timeout'
 
 require "#{File.dirname(__FILE__)}/pages/abstract_page.rb"
-
-Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| require file }
+Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 
 Watir::Browser.default = 'ie'
 

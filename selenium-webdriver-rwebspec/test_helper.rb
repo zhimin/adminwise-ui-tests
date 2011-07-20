@@ -3,7 +3,8 @@ require 'rwebspec-webdriver'
 require 'httpclient'
 require 'timeout'
 
-Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| require file }
+require File.join(File.dirname(__FILE__), "pages", "abstract_page.rb")
+Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 
 $BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.agileway.net"
 #localhost:2800"
