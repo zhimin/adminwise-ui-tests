@@ -17,8 +17,11 @@
     <entry name="special" default="false">
       <base_url>http://adminwise.macmini</base_url>
     </entry>
-    <entry name="test" default="true">
+    <entry name="test" default="false">
       <base_url>http://adminwise.agileway.net</base_url>
+    </entry>
+    <entry name="uat" default="false">
+      <base_url>http://192.168.1.101:3000</base_url>
     </entry>
   </environments>
   <exclude_dirs></exclude_dirs>

@@ -2,7 +2,7 @@
 class AnswerCallPage < AbstractPage
 
   def initialize(browser)
-    super(browser, "") # <= TEXT UNIQUE TO THIS PAGE
+    super(browser, "Call Register - New Call")
   end
 
   def select_call_category(call_category)

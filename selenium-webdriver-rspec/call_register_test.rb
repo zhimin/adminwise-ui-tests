@@ -17,6 +17,7 @@ describe "Create a new call register" do
   end
 
   before(:each) do
+    sleep 3
     @driver.find_element(:link_text, "Answer call").click
     answer_call_page = AnswerCallPage.new(@driver)
     answer_call_page.select_call_category("Resources")

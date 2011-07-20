@@ -3,10 +3,14 @@ class AbstractPage
 
   attr_accessor :driver
   
-  def initialize(driver, text = nil)
+  def initialize(driver, identify_text = nil)
     @driver = driver
-    # @driver.page_source.should include(text) if @driver && text
+    if @driver && identify_text && !identify_text.empty?
+      raise "Not on page: #{self.class.name}, '#{identify_text}' not found" unless @driver.page_source.include?(identify_text) 
+    end
   end
 
-  
+  def text
+    # santiize
+  end
 end
