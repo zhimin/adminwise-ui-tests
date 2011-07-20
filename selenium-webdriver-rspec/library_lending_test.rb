@@ -43,7 +43,8 @@ specification "Library: Borrowing and Lending" do
     library_borrow_page.enter_member_name("30008")
     library_borrow_page.click_find_member
     sleep 0.5
-    @driver.find_element(:link_text, "1 Rentals")
+    @driver.find_element(:link_text, "1 Rentals").click
+    sleep 1
     MemberBorrowHistoryPage.new(@driver)
     #
   end
@@ -66,9 +67,9 @@ specification "Library: Borrowing and Lending" do
     library_page = LibraryPage.new(@driver)
     library_page.enter_query("100001")
     library_page.click_search
-    sleep 0.5
-    @driver.find_element(:link_text, "Let Me Hear Your Voice: A Family's Triumph over Autism").click
     sleep 1
+    @driver.find_element(:link_text, "Let Me Hear Your Voice: A Family's Triumph over Autism").click
+    sleep 2
     @driver.find_element(:id, "item_status_100001").text.strip.should == "Checked out"
 
     @driver.find_element(:link_text, "LIBRARY").click
