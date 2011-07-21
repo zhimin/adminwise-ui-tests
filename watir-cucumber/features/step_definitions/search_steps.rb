@@ -25,6 +25,11 @@ end
 Then /^I can relogin with new password "([^"]*)"$/ do |new_pass|
   logout
   login_as("bob", new_pass)  
+  @browser.link(:text, "Profile").click
+end
+
+Then /^I should get error "([^"]*)"$/ do |message|
+  raise "Expected text '#{message}' not found" unless @browser.text.include?(message)
 end
 
 
