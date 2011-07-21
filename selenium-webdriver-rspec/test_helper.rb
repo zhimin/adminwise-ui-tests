@@ -3,7 +3,8 @@ require 'selenium-webdriver'
 require 'httpclient'
 require 'timeout'
 
-Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| require file }
+require File.join(File.dirname(__FILE__), "pages", "abstract_page.rb")
+Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 
 FireWatir::Firefox.firefox_started = true if RUBY_PLATFORM.downcase.include?("darwin")
 

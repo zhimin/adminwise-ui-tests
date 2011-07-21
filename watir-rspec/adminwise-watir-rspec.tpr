@@ -9,7 +9,7 @@
       <base_url>http://adminwise.heroku.com</base_url>
     </entry>
     <entry name="dev" default="false">
-      <base_url>http://10.0.0.3:3000</base_url>
+      <base_url>http://10.0.0.6:3000</base_url>
     </entry>
     <entry name="development" default="false">
       <base_url>http://localhost:3000</base_url>
@@ -17,7 +17,7 @@
     <entry name="special" default="false">
       <base_url>http://adminwise.macmini</base_url>
     </entry>
-    <entry name="test" default="true">
+    <entry name="test" default="false">
       <base_url>http://adminwise.agileway.net</base_url>
     </entry>
   </environments>

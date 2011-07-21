@@ -3,6 +3,7 @@ require 'rwebspec'
 require 'httpclient'
 require 'timeout'
 
+# Load the page objects (using load to reflect page changes for every run)
 require "#{File.dirname(__FILE__)}/pages/abstract_page.rb"
 Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 

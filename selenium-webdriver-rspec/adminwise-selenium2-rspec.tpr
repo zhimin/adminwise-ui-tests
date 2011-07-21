@@ -5,7 +5,10 @@
   <test_framework>Selenium2</test_framework>
   <syntax_framework>RSpec</syntax_framework>
   <environments>
-    <entry name="development" default="true">
+    <entry name="dev" default="false">
+      <base_url>http://10.0.0.6:3000</base_url>
+    </entry>
+    <entry name="development" default="false">
       <base_url>http://localhost:3000</base_url>
     </entry>
     <entry name="test" default="false">

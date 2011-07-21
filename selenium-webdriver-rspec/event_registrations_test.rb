@@ -38,6 +38,7 @@ test_suite "Event Registrations" do
     event_registration_page.click_register
     event_registration_confirmation_page = EventRegistrationConfirmationPage.new(@driver)
     event_registration_confirmation_page.click_confirm
+    sleep 1
     @driver.page_source.should include("has been received")
     # use this global variable to detect this test has been run or not
     $pending_count += 1
@@ -63,6 +64,7 @@ test_suite "Event Registrations" do
     event_registration_page.click_register
     event_registration_confirmation_page = EventRegistrationConfirmationPage.new(@driver)
     event_registration_confirmation_page.click_confirm
+    sleep 1 # NOTE: sometimes selenium-wedriver too fast still get last page's source
     @driver.page_source.should include("has been received")
 
     visit "/"
