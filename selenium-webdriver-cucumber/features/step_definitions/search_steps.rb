@@ -26,6 +26,10 @@ Then /^I can relogin with new password "([^"]*)"$/ do |new_pass|
   login_as("bob", new_pass)  
 end
 
+Then /^I should get error "([^"]*)"$/ do |arg|
+  # TODO 
+end
+
 
 def logout
   @browser.find_element(:link_text, "logout").click      

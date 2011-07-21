@@ -7,6 +7,7 @@ class HomePage < AbstractPage
   end
   
   def enter_password(password)
+    @driver.find_element(:name, "user[password]").clear
     @driver.find_element(:name, "user[password]").send_keys(password)
   end
   
