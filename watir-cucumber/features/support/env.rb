@@ -7,12 +7,11 @@ require 'test/unit/assertions'
 require File.join(File.dirname(__FILE__), "..","..", "pages", "abstract_page.rb")
 Dir["#{File.dirname(__FILE__)}/../../pages/*_page.rb"].each { |file| load file }
 
+$BASE_URL = "http://10.0.0.6:3000"
 browser = Watir::Browser.new
-# browser.goto("http://10.0.0.6:3000")
-#browser.goto("http://adminwise.agileway.net")
 
 World do
-   include Test::Unit::Assertions
+  include Test::Unit::Assertions # http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit/Assertions.html
 end
 
 Before do
@@ -32,7 +31,7 @@ end
 
 # Helper methods 
 def reset_database
-  base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
+  $base_url = base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
   @browser.goto("#{base_url}/reset")
   @browser.goto("#{base_url}/")
 end

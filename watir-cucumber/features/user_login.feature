@@ -3,9 +3,10 @@ Feature: Authentication
   I want to login
 
   Scenario Outline: User Login
-    Given I have entered username <username> on login page
+    Given I am on Home Page
+    And I have entered userame <username> on login page
     And I have entered password <password> on login page
-    When I press "Log in" button
+    When I press 'Log in' button
     Then the text <expected_text> should be on the screen
 
   Scenarios:

@@ -1,11 +1,10 @@
-begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end 
-require 'cucumber/formatter/unicode'
+#begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end 
+#require 'cucumber/formatter/unicode'
 
 Given /^I am on the (.+)$/ do |page_name|
   login_as("bob", "test")
   @browser.link(:text, "Profile").click
-  @browser.link(:text, "Change password").click
-        
+  @browser.link(:text, "Change password").click        
   @password_change_page = Object.const_get(page_name.gsub(" ","")).new(@browser)
 end
 
@@ -22,6 +21,19 @@ end
 
 Then /^I should get error "([^"]*)"$/ do |message|
   @browser.text.should include(message)
+end
+
+
+When /^enter new password "([^"]*)"$/ do |new_pass|
+  @password_change_page.enter_new  new_pass  
+end
+
+When /^enter confirmation "([^"]*)"$/ do |confirm_password|
+  @password_change_page.enter_confirm(confirm_password)
+end
+
+When /^I click change$/ do
+  @browser.button(:value, "Log in").click
 end
 
 
