@@ -10,11 +10,15 @@ Given /^I have entered userame admin on login page$/ do #|username|
   @home_page.enter_login("admin")
 end
 
-Given /^I have entered password test on login page$/ do #|password|
-  @home_page.enter_password("test")
-end
+#Given /^I have entered password test on login page$/ do #|password|
+#  @home_page.enter_password("test")
+#end
+#
+#Given /^I have entered password badpass on login page$/ do #|password|
+#  @home_page.enter_password("badpass")
+#end
 
-Given /^I have entered password badpass on login page$/ do #|password|
+Given /^I have entered password (\w+) on login page$/ do |password|
   @home_page.enter_password("badpass")
 end
 
