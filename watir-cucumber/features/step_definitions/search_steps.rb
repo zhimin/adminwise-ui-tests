@@ -1,3 +1,6 @@
+begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end 
+require 'cucumber/formatter/unicode'
+
 Given /^I am on the (.+)$/ do |page_name|
   login_as("bob", "test")
   @browser.link(:text, "Profile").click
@@ -10,17 +13,6 @@ When /^I enter current password "([^"]*)"$/ do |term|
   @password_change_page.enter_current term
 end
 
-When /^enter new password "(\w+)"$/ do |new_pass|
-    @password_change_page.enter_new new_pass
-end
-
-When /^enter confirmation "(\w+)"$/ do |confirm|
-    @password_change_page.enter_confirm(confirm)
-end
-
-When /^I click change$/ do
-    @password_change_page.click_change
-end
 
 Then /^I can relogin with new password "([^"]*)"$/ do |new_pass|
   logout
@@ -29,7 +21,7 @@ Then /^I can relogin with new password "([^"]*)"$/ do |new_pass|
 end
 
 Then /^I should get error "([^"]*)"$/ do |message|
-  raise "Expected text '#{message}' not found" unless @browser.text.include?(message)
+  @browser.text.should include(message)
 end
 
 

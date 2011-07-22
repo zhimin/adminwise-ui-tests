@@ -2,6 +2,7 @@ TEST_DATA_DIR = "./features/test_data"
 
 require 'rubygems'
 require 'watir'
+require 'test/unit/assertions'
 
 require File.join(File.dirname(__FILE__), "..","..", "pages", "abstract_page.rb")
 Dir["#{File.dirname(__FILE__)}/../../pages/*_page.rb"].each { |file| load file }
@@ -9,6 +10,10 @@ Dir["#{File.dirname(__FILE__)}/../../pages/*_page.rb"].each { |file| load file }
 browser = Watir::Browser.new
 # browser.goto("http://10.0.0.6:3000")
 #browser.goto("http://adminwise.agileway.net")
+
+World do
+   include Test::Unit::Assertions
+end
 
 Before do
   @browser = browser
