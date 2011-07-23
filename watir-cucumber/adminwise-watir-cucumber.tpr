@@ -11,7 +11,7 @@
     <entry name="dev" default="false">
       <base_url>http://10.0.0.6:3000</base_url>
     </entry>
-    <entry name="development" default="false">
+    <entry name="development" default="true">
       <base_url>http://localhost:3000</base_url>
     </entry>
     <entry name="special" default="false">
