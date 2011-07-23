@@ -7,6 +7,14 @@ The Page directory is fully copied from watir-rspec
 ISSUSES
 =======
 
+1. using World does not show errors properly, stack overflow instead
+
+Update: World(Test::Unit::Assertions) is OK, but NOT 
+
+#World do
+#  include Test::Unit::Assertions  http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit/Assertions.html
+#end
+
 When there is error in step.rb
   Given /^I have entered password badpass on login page$/ do #|password|
     @home_page.enter_password(badpass) # badpass undefined

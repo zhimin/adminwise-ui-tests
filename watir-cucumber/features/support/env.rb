@@ -10,9 +10,7 @@ Dir["#{File.dirname(__FILE__)}/../../pages/*_page.rb"].each { |file| load file }
 $BASE_URL = "http://10.0.0.6:3000"
 browser = Watir::Browser.new
 
-World do
-  include Test::Unit::Assertions # http://ruby-doc.org/stdlib/libdoc/test/unit/rdoc/classes/Test/Unit/Assertions.html
-end
+World(Test::Unit::Assertions)
 
 Before do
   @browser = browser
