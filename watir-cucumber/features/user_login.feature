@@ -12,5 +12,5 @@ Feature: Authentication
   Scenarios:
     | username | password | expected_text|
     | admin    | test     | Control Panel|
-    | bob      | test     | Profile      |
+    | bob      | best     | Profile      |
     | bob      | badpass  | Invalid email or password.|

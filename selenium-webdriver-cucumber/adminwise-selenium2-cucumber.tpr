@@ -3,7 +3,7 @@
   <name>AdminWise Watir Selenium2</name>
   <default_browser>Internet Explorer</default_browser>
   <test_framework>Selenium2</test_framework>
-  <syntax_framework>RSpec</syntax_framework>
+  <syntax_framework>Cucumber</syntax_framework>
   <environments>
     <entry name="build_server" default="false">
       <base_url>http://adminwise.heroku.com</base_url>

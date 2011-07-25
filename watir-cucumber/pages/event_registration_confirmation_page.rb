@@ -6,7 +6,7 @@ class EventRegistrationConfirmationPage < AbstractPage
   end
 
   def click_confirm
-    @browser.button(:value, "Confirm").click
+    browser.button(:value, "Confirm").click
   end
 
 end

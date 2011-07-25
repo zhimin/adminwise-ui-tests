@@ -7,27 +7,27 @@ class LibraryPage < AbstractPage
   end
 
   def click_borrow
-    @browser.link(:text, "Borrow").click
+    browser.link(:text, "Borrow").click
   end
 
   def add_new_resources
-    @browser.link(:text, "Add new resources").click
+    browser.link(:text, "Add new resources").click
   end
 
   def enter_query(q)
-    @browser.text_field(:name, "q").set q
+    browser.text_field(:name, "q").set q
   end
 
   def click_search
-    @browser.button(:value, "search").click
+    browser.button(:value, "search").click
   end
 
   def click_return
-    @browser.link(:text, "Return").click
+    browser.link(:text, "Return").click
   end
 
   def add_manually
-    @browser.link(:text, "Add New resource manually").click
+    browser.link(:text, "Add New resource manually").click
   end
 
 end
