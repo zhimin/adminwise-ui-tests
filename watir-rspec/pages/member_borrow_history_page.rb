@@ -2,8 +2,8 @@
 
 class MemberBorrowHistoryPage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "Member - Borrowing History ") # <= 
+  def initialize(driver)
+    super(driver, "Member - Borrowing History ") # <= 
   end
 
 

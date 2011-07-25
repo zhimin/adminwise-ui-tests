@@ -7,30 +7,30 @@ class LibraryBorrowPage < AbstractPage
   end
 
   def click_find_member
-    @driver.find_element(:id, "find_member_btn").click # click_button("Find member")
+    browser.find_element(:id, "find_member_btn").click # click_button("Find member")
   end
   
   def enter_resource(resource)
-    @driver.find_element(:id, "resource_textbox_q").send_keys(resource)
+    browser.find_element(:id, "resource_textbox_q").send_keys(resource)
   end
 
   def click_find_resource
-    @driver.find_element(:id, "find_resource_btn").click # click_button("Find resource")
+    browser.find_element(:id, "find_resource_btn").click # click_button("Find resource")
   end
 
   def click_select
     sleep 1
-    @driver.find_element(:link_text, "Select").click
+    browser.find_element(:link_text, "Select").click
   end
 
   def click_process
     sleep 1
-    @driver.find_element(:id, "process_btn").click
+    browser.find_element(:id, "process_btn").click
     # click_button("Process")
   end
 
   def enter_member_name(name)
-    @driver.find_element(:id, "member_textbox_q").send_keys(name)
+    browser.find_element(:id, "member_textbox_q").send_keys(name)
   end
 
 end

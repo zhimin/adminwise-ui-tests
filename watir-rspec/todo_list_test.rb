@@ -4,21 +4,21 @@ describe "To Do List" do
   include TestHelper
 
   before(:all) do
-    @driver = Watir::Browser.new
+    @browser = Watir::Browser.new
     begin; logout;  rescue; end
   end
 
   before(:each) do
     reset_database
     login_as("bob")
-    @driver.link(:text, "Todo lists").click
-    @driver.link(:text, "New Todo list").click
-    @driver.text_field(:name, "todo_list[name]").set("Collect parcel")
-    @driver.button(:value, "Create").click
+    @browser.link(:text, "Todo lists").click
+    @browser.link(:text, "New Todo list").click
+    @browser.text_field(:name, "todo_list[name]").set("Collect parcel")
+    @browser.button(:value, "Create").click
   end
 
   after(:all) do
-    @driver.close unless debugging?
+    @browser.close unless debugging?
   end
 
   it "Create a new Todo list" do
@@ -26,18 +26,18 @@ describe "To Do List" do
   end
 
   it "can edit a Todo list name" do
-    @driver.link(:text, "Collect parcel").click
-    @driver.link(:text, "Collect parcel").click
-    @driver.text_field(:name, "todo_list[name]").set("Collect returned resources")
-    @driver.button(:value, "Update").click
+    @browser.link(:text, "Collect parcel").click
+    @browser.link(:text, "Collect parcel").click
+    @browser.text_field(:name, "todo_list[name]").set("Collect returned resources")
+    @browser.button(:value, "Update").click
     assert_link_present_with_text("Collect returned resources")
   end
 
   # JavaScript Popup
   it "can delete Todo list" do
     # Alternative way is use Popup Handler: http://testwisely.com/en/testwise/docs/recipes
-    @driver.image(:src, /delete\.png/).click_no_wait
-    @driver.javascript_dialog.button('OK').click
+    @browser.image(:src, /delete\.png/).click_no_wait
+    @browser.javascript_dialog.button('OK').click
     # TODO checkpoint    
   end
 

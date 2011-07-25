@@ -8,19 +8,19 @@ class PasswordChangePage < AbstractPage
 
 
   def enter_current(password)
-    @driver.text_field(:name, "current_password").set password
+    @browser.text_field(:name, "current_password").set password
   end
 
   def enter_new(new_pass)
-    @driver.text_field(:name, "user[password]").set new_pass
+    @browser.text_field(:name, "user[password]").set new_pass
   end
 
   def enter_confirm(confirm_pass)
-    @driver.text_field(:name, "user[password_confirmation]").set confirm_pass
+    @browser.text_field(:name, "user[password_confirmation]").set confirm_pass
   end
   
   def click_change
-    @driver.button(:value, "Change").click
+    @browser.button(:value, "Change").click
   end
 
 end

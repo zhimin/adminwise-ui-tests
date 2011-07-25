@@ -10,13 +10,13 @@ Purpose
 Converting from RWebSpec
 ------------------------
 
-1. open_browser  =>     @driver = Watir::Browser.new
+1. open_browser  =>     @browser = Watir::Browser.new
 
-2. Create AbstractPage class holds @driver instance
+2. Create AbstractPage class holds @browser instance
 
 3. Convert rwebspec test steps to Watir steps, e.g.
 
-    @driver.link(:text,"Here") => @driver.link(:text, "Here").click
+    @browser.link(:text,"Here") => @browser.link(:text, "Here").click
 
 
 Impression
@@ -26,7 +26,7 @@ Impression
 
 2. Now open a new browser every single time, although can add extract test logic to reuse existing browser window (but RWebSpec with built-in support)
   
-    click_button("Create") => @driver.button(:value, "Create").click
+    click_button("Create") => @browser.button(:value, "Create").click
 
 3. Lack of useful utils such as 
      fallsafe{ }
@@ -36,11 +36,11 @@ Impression
      assert_link_present_with_text
 
 5. The Page class model make it easy to change over, 
-     membership_page = expect MembershipPage => membership_page = MembershipPage.new(@driver)
+     membership_page = expect MembershipPage => membership_page = MembershipPage.new(@browser)
 
 6. Add 'visit' in test_helper, as it is easy to goto the page in site, and handel different environment server URL
 
 7. Assertiong changes:
     page_text.should contain("Something")
-    @driver.text.should include("Something")
+    @browser.text.should include("Something")
 

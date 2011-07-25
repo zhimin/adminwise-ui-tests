@@ -2,12 +2,12 @@
 
 class MemberSearchPage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "") # <= 
+  def initialize(driver)
+    super(driver, "") # <= 
   end
 
   def enter_name(member_name)
-    @driver.find_element(:name, "member_name").send_keys(member_name)
+    browser.find_element(:name, "member_name").send_keys(member_name)
   end
 
 end

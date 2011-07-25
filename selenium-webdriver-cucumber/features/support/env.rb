@@ -10,7 +10,7 @@ Dir["#{File.dirname(__FILE__)}/../../pages/*_page.rb"].each { |file| load file }
 # Can't use reload
 # Dir["#{File.dirname(__FILE__)}/../step_definitions/*_steps.rb"].each { |file| load file }
 
-$BASE_URL = "http://adminwise.heroku.com"
+$BASE_URL = ENV["ADMINWISE_URL"] || "http://adminwise.heroku.com"
 browser = Selenium::WebDriver.for($ITEST2_BROWSER ? $ITEST2_BROWSER.downcase.to_sym : :ie)  # set by TestWise if running in TestWise
 World(Test::Unit::Assertions)
 
@@ -18,7 +18,7 @@ World(Test::Unit::Assertions)
 # browser.navigate.to("http://localhost:3000")
 
 Before do
-  @driver = @browser = browser
+  @browser = @browser = browser
   reset_database
 end
 

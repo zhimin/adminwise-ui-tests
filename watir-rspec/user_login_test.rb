@@ -4,7 +4,7 @@ describe "User Management" do
   include TestHelper
 
   before(:all) do
-    @driver = Watir::Browser.new
+    @browser = Watir::Browser.new
     logout
     reset_database
   end
@@ -14,7 +14,7 @@ describe "User Management" do
   end
 
   after(:all) do
-    @driver.close unless debugging?
+    @browser.close unless debugging?
   end
 
   it "[480] A registered user can login" do
@@ -29,13 +29,13 @@ describe "User Management" do
 
   it "[480] Admin user can login - invalid password" do
     login_as("admin", "badpass")
-    @driver.text.should include("Invalid email or password.")
+    @browser.text.should include("Invalid email or password.")
   end
 
   it "[480] Admin user can login - try go the protected url" do
     visit "/events"
     sleep 1
-    @driver.text.should include("You need to sign in or sign up before continuing.")
+    @browser.text.should include("You need to sign in or sign up before continuing.")
   end
   
 end

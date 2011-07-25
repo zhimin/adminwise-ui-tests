@@ -7,10 +7,10 @@ class LibrarySearchPage < AbstractPage
   end
 
   def enter_query(query)
-    @driver.find_element(:name, "q").send_keys query
+    browser.find_element(:name, "q").send_keys query
   end
 
   def click_search
-    @driver.find_element(:name, "commit").click # Search button
+    browser.find_element(:name, "commit").click # Search button
   end
 end

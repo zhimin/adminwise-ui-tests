@@ -2,8 +2,8 @@
 
 class LibraryReturnPage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "") # <= 
+  def initialize(driver)
+    super(driver, "") # <= 
   end
 
   def click_process
@@ -11,7 +11,7 @@ class LibraryReturnPage < AbstractPage
   end
   
   def enter_resource(resource)
-    @driver.find_element(:name, "item_physical_id").send_keys resource
+    browser.find_element(:name, "item_physical_id").send_keys resource
   end
   
   def click_find

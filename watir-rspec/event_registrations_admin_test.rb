@@ -4,7 +4,7 @@ describe "Event Registrations as Admin" do
   include TestHelper
 
   before(:all) do
-    @driver = Watir::Browser.new
+    @browser = Watir::Browser.new
     reset_database
     logout
     login_as("admin")
@@ -12,9 +12,9 @@ describe "Event Registrations as Admin" do
 
   before(:each) do
     visit "/home"
-    @driver.link(:text, "Events").click
-    event_list_page = EventListPage.new(@driver)
-    @driver.link(:text, "ABIQ 2011 Autism Conference").click
+    @browser.link(:text, "Events").click
+    event_list_page = EventListPage.new(@browser)
+    @browser.link(:text, "ABIQ 2011 Autism Conference").click
   end
 
   after(:each) do
@@ -22,12 +22,12 @@ describe "Event Registrations as Admin" do
   end
 
   after(:all) do
-    @driver.close unless debugging?
+    @browser.close unless debugging?
   end
 
   it "[483] Admin User can register on behalf someone" do
-    @driver.link(:text, "Register on applicant's behalf").click
-    event_registration_page = EventRegistrationPage.new(@driver)
+    @browser.link(:text, "Register on applicant's behalf").click
+    event_registration_page = EventRegistrationPage.new(@browser)
     event_registration_page.select_is_member("yes")
     sleep 0.5
     event_registration_page.enter_member_id("30002")
@@ -35,16 +35,16 @@ describe "Event Registrations as Admin" do
     event_registration_page.click_find
     sleep 1
     event_registration_page.click_register
-    @driver.text.should include("Address line1 can't be blank")
-    @driver.text_field(:name, "person[address_line1]").set "10 Pember St"
+    @browser.text.should include("Address line1 can't be blank")
+    @browser.text_field(:name, "person[address_line1]").set "10 Pember St"
     event_registration_page.click_register
 
-    @driver.button(:value, "Confirm").click
-    @driver.text.should include("Your registration for ABIQ 2011 Autism Conference has been received")
+    @browser.button(:value, "Confirm").click
+    @browser.text.should include("Your registration for ABIQ 2011 Autism Conference has been received")
   end
 
 #  test "Admin user can register a staff " do
-#    @driver.link(:text,"Register staff")
+#    @browser.link(:text,"Register staff")
 #  end
 
 

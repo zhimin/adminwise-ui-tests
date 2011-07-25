@@ -7,7 +7,7 @@ class MemberSearchPage < AbstractPage
   end
 
   def enter_name(member_name)
-    @driver.text_field(:name, "member_name").set member_name
+    @browser.text_field(:name, "member_name").set member_name
   end
 
 end

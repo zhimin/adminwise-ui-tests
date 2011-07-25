@@ -4,7 +4,7 @@ describe "Events" do
   include TestHelper
 
   before(:all) do
-    @driver = Watir::Browser.new
+    @browser = Watir::Browser.new
     reset_database
     logout
     login_as("admin")
@@ -12,32 +12,32 @@ describe "Events" do
 
   before(:each) do
     visit "/"
-    @driver.link(:text, "Events").click
+    @browser.link(:text, "Events").click
   end
 
   after(:all) do
     logout unless debugging?
-    @driver.close unless debugging?
+    @browser.close unless debugging?
   end
 
   # Press key Ctrl+Shift+T, then enter 123 quickly navigate you here
   it "[487] Can create a new event" do
-    event_list_page = EventListPage.new(@driver)
+    event_list_page = EventListPage.new(@browser)
     event_page = event_list_page.click_new
     event_page.enter_name("ABA Workshop")
     event_page.enter_venue("QUT")
     event_page.enter_presenters("Many")
     event_page.enter_date("10/12/2010")
     event_page.click_create
-    @driver.text.should include("3 events")
+    @browser.text.should include("3 events")
   end
 
   it "[488] Can edit an existing event" do
-    event_list_page =  EventListPage.new(@driver)
+    event_list_page =  EventListPage.new(@browser)
     event_page = event_list_page.edit(1)
     event_page.enter_name("2010 Agileway Testing Conference")
     event_page.click_update
-    @driver.text.should include("2010 Agileway Testing Conference")
+    @browser.text.should include("2010 Agileway Testing Conference")
   end
 
 

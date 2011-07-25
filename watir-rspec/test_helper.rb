@@ -25,7 +25,7 @@ module TestHelper
   #   login_as("bart")  # the password will be default to 'iTest2'
   #   login("lisa")     # same as login_as
   def login_as(username, password = "test")
-    home_page = HomePage.new(@driver)
+    home_page = HomePage.new(@browser)
     home_page.enter_login(username)
     home_page.enter_password(password)
     home_page.click_login
@@ -33,7 +33,7 @@ module TestHelper
   alias login login_as
 
   def logout
-    begin; @driver.link(:text, "Logout").click;  rescue => e; end
+    begin; @browser.link(:text, "Logout").click;  rescue => e; end
   end
 
 
@@ -42,7 +42,7 @@ module TestHelper
       Timeout::timeout(3) {
         reset_database_silient
     }
-    @driver.goto("#{base_url}/")
+    @browser.goto("#{base_url}/")
     rescue Timeout::Error => e
       puts "Reset database via HttpClient: #{e}"
       reset_database_via_ui
@@ -53,13 +53,13 @@ module TestHelper
 
   def reset_database_via_ui
     base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
-    @driver.goto("#{base_url}/reset")
-    @driver.goto("#{base_url}/")
+    @browser.goto("#{base_url}/reset")
+    @browser.goto("#{base_url}/")
   end
 
   def visit(page)
     base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
-    @driver.goto("#{base_url}#{page}")
+    @browser.goto("#{base_url}#{page}")
   end
 
   def reset_database_silient
@@ -85,7 +85,7 @@ def debugging?
 end
 
 def assert_link_present_with_text(link_text)
-  @driver.links.each { |link|
+  @browser.links.each { |link|
     return if link.text.include?(link_text)
   }
   raise ("can't find the link containing text: #{link_text}")

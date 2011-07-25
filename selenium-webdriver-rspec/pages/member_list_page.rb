@@ -2,8 +2,8 @@
 
 class MemberListPage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "") # <= 
+  def initialize(driver)
+    super(driver, "") # <= 
   end
 
 

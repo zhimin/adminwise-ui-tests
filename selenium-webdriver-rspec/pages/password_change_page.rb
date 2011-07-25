@@ -2,25 +2,25 @@
 
 class PasswordChangePage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "Change Password") # <= 
+  def initialize(driver)
+    super(driver, "Change Password") # <= 
   end
 
   def enter_current(password)
-    @driver.find_element(:name, "current_password").send_keys(password)
+    browser.find_element(:name, "current_password").send_keys(password)
   end
 
   def enter_new(new_pass)
-    @driver.find_element(:name, "user[password]").send_keys(new_pass)
+    browser.find_element(:name, "user[password]").send_keys(new_pass)
   end
 
   def enter_confirm(confirm_pass)
-    @driver.find_element(:name, "user[password_confirmation]").clear
-    @driver.find_element(:name, "user[password_confirmation]").send_keys(confirm_pass)
+    browser.find_element(:name, "user[password_confirmation]").clear
+    browser.find_element(:name, "user[password_confirmation]").send_keys(confirm_pass)
   end
   
   def click_change
-    @driver.find_element(:name, "commit").click
+    browser.find_element(:name, "commit").click
     # click_button("Change")
   end
 

@@ -1,11 +1,11 @@
 class EventRegistrationConfirmationPage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "") # <= TEXT UNIQUE TO THIS PAGE
+  def initialize(driver)
+    super(driver, "") # <= TEXT UNIQUE TO THIS PAGE
   end
 
   def click_confirm
-    @driver.find_element(:id, "confirmBtn").click
+    browser.find_element(:id, "confirmBtn").click
   end
 
 end
