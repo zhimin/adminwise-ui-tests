@@ -42,10 +42,16 @@ module TestHelper
   end
   alias login login_as
 
-  def logout
+  def logout(throw_errror = true)
     # NOTES WebDriver: logout
     #  fail_safe { @driver.find_element(:link_text, "Logout").click }
-    fail_safe { @driver.find_element(:link_text, "logout").click }
+    if throw_errror
+      # Somehoe: Selenium-webdriver 2.2 does not click the logout link (by text or id)
+      # @driver.find_element(:id, "logout_link").click
+      visit("/users/sign_out")
+    else
+      fail_safe { @driver.find_element(:id, "logout_link").click }
+    end
   end
 
 
@@ -63,14 +69,14 @@ module TestHelper
   end
 
   def reset_database_via_ui
-    base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
+    $base_url =  base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
     @driver.navigate.to("#{base_url}/reset")
     @driver.navigate.to("#{base_url}/")
   end
 
   def reset_database_silient
     # Option 2: using HTTP to call reset_database URL directly
-    base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
+    $base_url = base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
     begin
       require 'httpclient'
       client = HTTPClient.new

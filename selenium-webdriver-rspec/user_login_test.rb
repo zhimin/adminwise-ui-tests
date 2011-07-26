@@ -7,11 +7,11 @@ specification "User Management" do
     @driver = Selenium::WebDriver.for(browser_type) 
     @driver.navigate.to($ITEST2_PROJECT_BASE_URL || $BASE_URL)
     fail_safe{ logout }
-    reset_database
+    # reset_database
   end
 
   after(:each) do
-    fail_safe{ logout } unless debugging?
+    logout
   end
 
   after(:all) do

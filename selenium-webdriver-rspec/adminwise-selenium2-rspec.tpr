@@ -11,6 +11,9 @@
     <entry name="development" default="true">
       <base_url>http://localhost:3000</base_url>
     </entry>
+    <entry name="standalone" default="false">
+      <base_url>http://10.0.0.3:3000</base_url>
+    </entry>
     <entry name="test" default="false">
       <base_url>http://adminwise.agileway.net/</base_url>
     </entry>

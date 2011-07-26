@@ -33,6 +33,12 @@ Impression
 * assert_link change to 
     @driver.find_element(:link_text, "logout")
 
+Issues
+------
+
+* Unable to click Logout link on AdminWise Page (either by link_text or :id), 
+  workaround: visit logout_url directly
+
 Reference
 ---------
 selenium-webdriver Intro: http://code.google.com/p/selenium/wiki/RubyBindings
