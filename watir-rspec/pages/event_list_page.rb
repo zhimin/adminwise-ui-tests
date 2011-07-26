@@ -8,11 +8,11 @@ class EventListPage < AbstractPage
 
   def edit(index)
     browser.link(:id, "edit_#{index}").click
-    EventPage.new(@browser) 
+    EventPage.new(browser) 
   end
   
   def click_new
     browser.link(:text, "New event").click
-    EventPage.new(@browser) 
+    EventPage.new(browser) 
   end
 end

@@ -45,11 +45,12 @@ class MembershipPage < AbstractPage
   end
 
   def click_member_type(member_member_type)
-    browser.radio(:name, "member[member_type]", member_member_type).set
+#    browser.radio(:name, "member[member_type]", member_member_type).set
+    browser.radio(:name => "member[member_type]", :value => member_member_type).set
   end
 
   def click_mail_out(member_mail_out)
-    browser.radio(:name, "member[mail_out]", member_mail_out).set
+    browser.radio(:name => "member[mail_out]", :value => member_mail_out).set
   end
 
   def click_doing_aba(member_doing_aba)

@@ -44,3 +44,11 @@ Impression
     page_text.should contain("Something")
     @browser.text.should include("Something")
 
+Upgrade to Watir 2
+===================
+
+Watir 1
+    browser.radio(:name, "member[member_type]", member_member_type).set
+
+Watir 2
+    browser.radio(:name => "member[member_type]", :value => member_member_type).set
