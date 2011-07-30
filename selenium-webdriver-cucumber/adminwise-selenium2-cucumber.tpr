@@ -18,7 +18,7 @@
       <base_url>http://adminwise.macmini</base_url>
     </entry>
     <entry name="test" default="false">
-      <base_url>http://adminwise.agileway.net</base_url>
+      <base_url>http://adminwise.heroku.com</base_url>
     </entry>
   </environments>
   <exclude_dirs></exclude_dirs>

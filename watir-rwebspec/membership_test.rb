@@ -80,6 +80,17 @@ specification "Memebership" do
     page_text.should include("20/08/2012")
     page_text.should contain("Norman Park")
   end
+
+  story "Can browse past member" do
+    click_link("Bob Builder")
+    enter_text("member[end_date]", "2010-08-20")
+    click_button("Update Member")
+    click_link("Browse current members")
+    assert_link_not_present_with_text("Bob Builder")
+    click_link("Browse members (including past)")
+    assert_link_present_with_text("Bob Builder")
+  end
+
 end
 
 

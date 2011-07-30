@@ -64,6 +64,7 @@ test_suite "Event Registrations" do
     event_registration_confirmation_page = expect_page EventRegistrationConfirmationPage
     event_registration_confirmation_page.click_confirm
     page_text.should include("Your registration for CITCON 2011 has been received")
+    
 
     visit "/"
     refresh
@@ -72,6 +73,8 @@ test_suite "Event Registrations" do
     click_link("CITCON 2011")
     click_link("Pending #{$pending_count}")
     page_text.should contain("Eileen Fa")
+
+
   end
 
 

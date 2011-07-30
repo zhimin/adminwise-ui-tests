@@ -13,6 +13,7 @@ test_suite "Events" do
 
   before(:each) do
     visit "/"
+
   end
 
   after(:all) do
@@ -31,11 +32,11 @@ test_suite "Events" do
     event_page.click_create
     assert_text_present("3 events")
   end
-
+#
   test "[488] Can edit an existing event" do
     click_link("Events")
     event_list_page = expect_page EventListPage
-    event_page = event_list_page.edit(1)
+    event_page = event_list_page.edit(0)
     event_page.enter_name("2010 Agileway Testing Conference")
     event_page.enter_date_from("2011-07-27")
     event_page.click_update
@@ -43,5 +44,6 @@ test_suite "Events" do
     click_link("Events")
     page_text.should contain("2011-07-27")
   end
+
 
 end

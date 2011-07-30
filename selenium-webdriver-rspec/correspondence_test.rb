@@ -13,7 +13,7 @@ describe "Correspondence" do
 
   before(:each) do
     @driver.find_element(:link_text, "ADMINISTRATION").click
-    #click_link("Administration")
+    click_link("Administration")
     @driver.find_element(:link_text,"Correspondence").click
     @driver.find_element(:link_text,"New Correspondence").click
 

@@ -17,7 +17,10 @@
     <entry name="special" default="false">
       <base_url>http://adminwise.macmini</base_url>
     </entry>
-    <entry name="test" default="true">
+    <entry name="staging" default="true">
+      <base_url>http://adminwise.heroku.com</base_url>
+    </entry>
+    <entry name="test" default="false">
       <base_url>http://adminwise.agileway.net</base_url>
     </entry>
   </environments>

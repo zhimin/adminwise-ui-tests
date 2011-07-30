@@ -10,7 +10,7 @@ specification "Correspondence" do
     login_as("admin")
   end
   
-  before(:each) do
+  before(:each) do
     click_link("Administration")
     click_link("Correspondence")
     click_link("New Correspondence")
@@ -19,8 +19,9 @@ specification "Correspondence" do
     new_correspondence_page.enter_sender_receiver("Kelly Adell")
     new_correspondence_page.enter_description("Wrote a cover letter and post out the information booklet to Ashgrove State School Support Services")
     new_correspondence_page.click_add
-  end
-  
+
+  end
+
   after(:all) do
     failsafe{ logout } unless debugging?
   end
@@ -33,7 +34,6 @@ specification "Correspondence" do
     click_link("Edit")
     enter_text("correspondence[description]", "Wrote a cover letter and post out the information booklet to Ashgrove West State School Support Services")
     click_button("Update")
-    click_link("Edit")
     refresh
     page_text.should include("Ashgrove West State School")
   end

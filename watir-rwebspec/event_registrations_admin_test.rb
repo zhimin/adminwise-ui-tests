@@ -42,6 +42,9 @@ test_suite "Event Registrations as Admin" do
     page_text.should include("Confirm your registration details")
     click_button("Confirm")
     page_text.should include("Your registration for ABIQ 2011 Autism Conference has been received")
+    visit"/events"
+    click_link_with_text ("ABIQ 2011 Autism Conference")
+    assert_link_present_with_text("Pending 1")
   end
 
   test "[498] Admin user can register a staff " do
