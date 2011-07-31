@@ -60,7 +60,9 @@ module TestHelper
 
   def reset_database_via_ui
     base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
+    debug base_url
     goto_url("#{base_url}/reset")
+    refresh
     goto_page("/")
   end
 

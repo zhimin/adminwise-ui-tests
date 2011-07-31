@@ -34,7 +34,6 @@ specification "User Management" do
 
   story "[480] Admin user can login - try go the protected url" do
     visit "/events"
-    click_link("Events")
     #sleep 1
     page_text.should contain("You need to sign in or sign up before continuing.")
   end

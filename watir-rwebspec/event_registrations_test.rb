@@ -1,22 +1,21 @@
 load File.dirname(__FILE__) + '/test_helper.rb'
 
-$pending_count = 1
-
 test_suite "Event Registrations" do
   include TestHelper
 
   before(:all) do
     open_browser
-    reset_database
+    reset_database()
     fail_safe { logout }
-    $pending_count = 1 # default
+    $pending_count = 0 # default
   end
 
   before(:each) do
   end
 
   after(:each) do
-    fail_safe { logout } unless debugging?
+    #fail_safe { logout } unless debugging?
+
   end
 
   after(:all) do
@@ -40,7 +39,8 @@ test_suite "Event Registrations" do
     event_registration_confirmation_page.click_confirm
     page_text.should include("Your registration for CITCON 2011 has been received")
     # use this global variable to detect this test has been run or not
-    $pending_count += 1
+    $pending_count = $pending_count + 1
+
   end
 
   test "[486] User can sign up for events - non member" do
@@ -64,16 +64,16 @@ test_suite "Event Registrations" do
     event_registration_confirmation_page = expect_page EventRegistrationConfirmationPage
     event_registration_confirmation_page.click_confirm
     page_text.should include("Your registration for CITCON 2011 has been received")
-    
+    $pending_count = $pending_count + 1
 
     visit "/"
-    refresh
+    #refresh
+
     login_as("admin")
     click_link("Events")
     click_link("CITCON 2011")
     click_link("Pending #{$pending_count}")
     page_text.should contain("Eileen Fa")
-
 
   end
 
