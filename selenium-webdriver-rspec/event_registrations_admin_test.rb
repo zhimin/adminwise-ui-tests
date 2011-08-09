@@ -1,6 +1,6 @@
 load File.dirname(__FILE__) + '/test_helper.rb'
 
-test_suite "Event Registrations as Admin" do
+describe "Event Registrations as Admin" do
   include TestHelper
 
   before(:all) do

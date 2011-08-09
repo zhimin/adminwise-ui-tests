@@ -6,8 +6,6 @@ require 'timeout'
 require File.join(File.dirname(__FILE__), "pages", "abstract_page.rb")
 Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 
-FireWatir::Firefox.firefox_started = true if RUBY_PLATFORM.downcase.include?("darwin")
-
 $BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.macmini"
 #localhost:2800"
 #$BASE_URL = "http://demo.adminwise.com"
@@ -17,14 +15,17 @@ $BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.macmini"
 # defined here.
 module TestHelper
 
-  include RWebSpec::RSpecHelper
-  include RWebSpec::Assert
-
   def browser_type
     if $ITEST2_BROWSER
       return $ITEST2_BROWSER.downcase.to_sym
+		else
+			if RUBY_PLATFORM =~ /mingw/ 
+				:ie
+			else
+				:chrome
+			end
     end
-    :ie
+    #:ie
     # :firefox
     # :chrome
   end

@@ -1,6 +1,6 @@
 load File.dirname(__FILE__) + '/test_helper.rb'
 
-specification "Professionals" do
+describe "Professionals" do
   include TestHelper
 
   before(:all) do
@@ -21,7 +21,7 @@ specification "Professionals" do
     @driver.quit unless debugging?
   end
 
-  story "[496] Admin User can add a professional" do
+  it "[496] Admin User can add a professional" do
     @driver.find_element(:link_text, "New Professional").click
     new_professional_page = NewProfessionalPage.new(@driver)
     new_professional_page.select_category("Centre Based Early Intervention Programs")
@@ -33,7 +33,7 @@ specification "Professionals" do
     @driver.page_source.should include("Jane Steel")
   end
   
-  story "[497] Admin user sort professional by category" do
+  it "[497] Admin user sort professional by category" do
     @driver.find_element(:link_text, "CATEGORY").click # NOTEs [Watir]  'Category' 
     try(3) { @driver.find_element(:id, "category_0").text.should == "Speech Pathlogists" }
     @driver.find_element(:link_text, "CATEGORY").click  

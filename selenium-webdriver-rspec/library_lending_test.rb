@@ -1,6 +1,6 @@
 load File.dirname(__FILE__) + '/test_helper.rb'
 
-specification "Library: Borrowing and Lending" do
+describe "Library: Borrowing and Lending" do
   include TestHelper
 
   before(:all) do
@@ -27,7 +27,7 @@ specification "Library: Borrowing and Lending" do
   end
 
 
-  story "[491] Admin user can process a member borrowing a book" do
+  it "[491] Admin user can process a member borrowing a book" do
     library_page = LibraryPage.new(@driver)
     library_page.click_borrow
     library_borrow_page = LibraryBorrowPage.new(@driver)
@@ -49,7 +49,7 @@ specification "Library: Borrowing and Lending" do
     #
   end
 
-  story "[492] Admin user can process returning a book" do
+  it "[492] Admin user can process returning a book" do
     library_page = LibraryPage.new(@driver)
     library_page.click_borrow
     library_borrow_page = LibraryBorrowPage.new(@driver)

@@ -1,6 +1,6 @@
 load File.dirname(__FILE__) + '/test_helper.rb'
 
-test_suite "Events" do
+describe "Events" do
   include TestHelper
 
   before(:all) do
@@ -23,7 +23,7 @@ test_suite "Events" do
   end
 
   # Press key Ctrl+Shift+T, then enter 123 quickly navigate you here
-  story "[487] Can create a new event" do
+  it "[487] Can create a new event" do
     event_list_page =  EventListPage.new(@driver)
     event_page = event_list_page.click_new
     event_page.enter_name("ABA Workshop")

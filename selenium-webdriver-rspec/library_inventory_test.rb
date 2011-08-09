@@ -1,6 +1,6 @@
 load File.dirname(__FILE__) + '/test_helper.rb'
 
-specification "Library: Add resourses" do
+describe "Library: Add resourses" do
   include TestHelper
 
   before(:all) do
@@ -25,7 +25,7 @@ specification "Library: Add resourses" do
     goto_page("/home") unless debugging?
   end
 
-  story "[489] Admin user can add a new library resource manually" do
+  it "[489] Admin user can add a new library resource manually" do
     library_page = LibraryPage.new(@driver)
     library_page.add_new_resources
     library_page.add_manually

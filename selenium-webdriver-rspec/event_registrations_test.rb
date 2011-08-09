@@ -2,7 +2,7 @@ load File.dirname(__FILE__) + '/test_helper.rb'
 
 $pending_count = 1
 
-test_suite "Event Registrations" do
+describe "Event Registrations" do
   include TestHelper
 
   before(:all) do

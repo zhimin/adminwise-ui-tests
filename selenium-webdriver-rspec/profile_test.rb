@@ -1,6 +1,6 @@
 load File.dirname(__FILE__) + '/test_helper.rb'
 
-specification "User Profile" do
+describe "User Profile" do
   include TestHelper
 
   before(:all) do
@@ -15,7 +15,7 @@ specification "User Profile" do
     @driver.quit unless debugging?
   end
 
-  story "[481] User can change password" do
+  it "[481] User can change password" do
     login_as("bob", "test")
     @driver.find_element(:link_text, "profile").click # NOTES [Watir] 'Profile'
     @driver.find_element(:link_text, "Change password").click

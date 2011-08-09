@@ -1,6 +1,6 @@
 load File.dirname(__FILE__) + '/test_helper.rb'
 
-specification "Memeber Login" do
+describe "Memeber Login" do
   include TestHelper
 
   before(:all) do
@@ -20,7 +20,7 @@ specification "Memeber Login" do
     visit "/home"
   end
 
-  story "[495] Admin can generate a login for an existing member" do
+  it "[495] Admin can generate a login for an existing member" do
     @driver.find_element(:link_text, "MEMBERSHIP").click # NOTES [Watir] 'Membership'
     @driver.find_element(:link_text, "David Smith").click
     @driver.find_element(:id, "generate_login").click

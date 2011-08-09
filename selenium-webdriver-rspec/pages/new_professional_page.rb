@@ -22,8 +22,14 @@ class NewProfessionalPage < AbstractPage
     # click_button("Create")
   end
 
-  def select_category(professional_categor)
-    browser.find_element(:name, "professional[category]").send_keys(professional_categor)
+  def select_category(professional_category)
+    category_element = browser.find_element(:name, "professional[category]")
+		category_element.find_elements(:tag_name, "option").each do |option_element|
+			if option_element.text == professional_category
+				option_element.click
+				break
+			end
+		end
   end
 
 end

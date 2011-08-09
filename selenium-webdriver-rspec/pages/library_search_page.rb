@@ -1,5 +1,3 @@
-require 'rwebspec'
-
 class LibrarySearchPage < AbstractPage
 
   def initialize(driver)

@@ -1,6 +1,6 @@
 load File.dirname(__FILE__) + '/test_helper.rb'
 
-specification "Create a new user as admin" do
+describe "Create a new user as admin" do
   include TestHelper
 
   before(:all) do
@@ -15,7 +15,7 @@ specification "Create a new user as admin" do
     @driver.quit unless debugging?
   end
 
-  story "[482] Create new user, then login" do
+  it "[482] Create new user, then login" do
     login_as("admin")
     
   #   @driver.find_elements(:tag_name, "a").each do |elem| 
