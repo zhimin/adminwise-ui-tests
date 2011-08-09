@@ -34,7 +34,7 @@ describe "Events" do
     @driver.page_source.should include("3 events")
   end
 
-  test "[488] Can edit an existing event" do
+  it "[488] Can edit an existing event" do
     event_list_page = EventListPage.new(@driver)
     event_page = event_list_page.edit(1)
     event_page.enter_name("2010 Agileway Testing Conference")

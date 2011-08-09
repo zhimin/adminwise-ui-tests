@@ -26,7 +26,7 @@ describe "Event Registrations as Admin" do
     @driver.quit unless debugging?
   end
 
-  test "[483] Admin User can register on behalf someone" do
+  it "[483] Admin User can register on behalf someone" do
     @driver.find_element(:link_text, "Register on applicant's behalf").click
     event_registration_page = EventRegistrationPage.new(@driver)
     event_registration_page.select_is_member("yes")
@@ -46,7 +46,7 @@ describe "Event Registrations as Admin" do
     # @driver.page_source.should include("Your registration for ABIQ 2011 Autism Conference has been received")
   end
 
-#  test "Admin user can register a staff " do
+#  it "Admin user can register a staff " do
 #    @driver.find_element(:link_text, "Register staff")
 #  end
 

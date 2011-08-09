@@ -24,7 +24,7 @@ describe "Event Registrations" do
     @driver.quit unless debugging?
   end
 
-  test "[485] User can sign up for events - member - populate info" do
+  it "[485] User can sign up for events - member - populate info" do
     visit "/events/register/2"
     event_registration_page =  EventRegistrationPage.new(@driver)
     event_registration_page.select_is_member("yes")
@@ -44,7 +44,7 @@ describe "Event Registrations" do
     $pending_count += 1
   end
 
-  test "[486] User can sign up for events - non member" do
+  it "[486] User can sign up for events - non member" do
     visit "/events/register/2"
 
     #    click_radio_option("payment_via_eft", "yes")
