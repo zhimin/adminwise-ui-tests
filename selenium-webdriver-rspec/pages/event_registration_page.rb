@@ -51,7 +51,13 @@ class EventRegistrationPage < AbstractPage
   end
 
   def select_person_occupation(person_occupation)
-    browser.find_element(:name, "person[occupation]").send_keys(person_occupation)
+    select_element = browser.find_element(:name, "person[occupation]")
+		select_element.find_elements(:tag_name, "option").each do |option_element|
+			if option_element.text == person_occupation
+				option_element.click
+				break
+			end
+		end
   end
 
   def enter_person_email(person_email)

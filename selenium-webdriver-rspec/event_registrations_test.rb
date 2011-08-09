@@ -68,7 +68,7 @@ describe "Event Registrations" do
     @driver.page_source.should include("has been received")
 
     visit "/"
-    refresh
+    # refresh
     login_as("admin")
     @driver.find_element(:link_text, "EVENTS").click
     @driver.find_element(:link_text, "CITCON 2011").click
