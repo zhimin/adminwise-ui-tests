@@ -9,7 +9,7 @@ Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 
 FireWatir::Firefox.firefox_started = true if RUBY_PLATFORM.downcase.include?("darwin")
 
-$BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.agileway.net"
+$BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.heroku.com"
 #localhost:2800"
 #$BASE_URL = "http://demo.adminwise.com"
 #$BASE_URL = "http://adminwise.macmini"
@@ -38,11 +38,10 @@ module TestHelper
     failsafe { click_link("Logout") }
   end
 
-
   def reset_database(background = false)
     if background
-
       begin
+        puts "Trying ..."
         Timeout::timeout(3) {
           reset_database_silient
         }
@@ -60,9 +59,8 @@ module TestHelper
 
   def reset_database_via_ui
     base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
-    debug base_url
-    goto_url("#{base_url}/reset")
-    refresh
+    goto_url("#{base_url}/reset?#{rand(13213)}")
+    # refresh
     goto_page("/")
   end
 

@@ -10,34 +10,43 @@ specification "To Do List" do
     open_browser
     reset_database
     failsafe{ logout }
-    login_as("admin")
+    login_as("bob")
   end
 
   before(:each) do
+    goto_page("/")
+    refresh 
     click_link("Todo lists")
-    click_link("New Todo list")
-    enter_text("todo_list[name]", "Office work")
-    click_button("Create")
   end
-
+  
   after(:all) do
-    close_browser unless debugging?
+    fail_safe{ logout } unless debugging?
   end
 
   story "Create a new Todo list" do
+    click_link("New Todo list")
+    enter_text("todo_list[name]", "Office work")
+    click_button("Create")
     assert_link_present_with_text("Office work")
   end
 
   story "can edit a Todo list name" do
+    click_link("New Todo list")
+    enter_text("todo_list[name]", "Collect parcel")
+    click_button("Create")    
     click_link("Collect parcel")
-    click_link("Collect parcel")
+    click_link("Collect parcel") # second link for is for editing
     enter_text("todo_list[name]", "Office work has to be done by Monday")
     click_button("Update")
+    refresh # IE not refresh
     assert_link_present_with_text("Office work has to be done by Monday")
   end
 
   story "Can add a new task in existing todo list" do
-    click_link("Todo lists")
+    click_link("New Todo list")
+    enter_text("todo_list[name]", "Office work has to be done by Monday")    
+    click_button("Create")        
+
     click_link("Office work has to be done by Monday")
     click_link("New task")
     enter_text("task[description]", "agenda for Tuesday meeting ")
@@ -47,11 +56,23 @@ specification "To Do List" do
   end
 
   # JavaScript Popup
+  #
+  # Also smart to calculate last entry
   story "can delete Todo list" do
+    click_link("New Todo list")
+    enter_text("todo_list[name]", "Not important")    
+    click_button("Create")    
+    assert_link_present_with_text("Not important")
     # Alternative way is to use Popup Handler: http://testwisely.com/en/testwise/docs/recipes
-    image(:src, /delete\.png/).click_no_wait
+    del_link_ids = []
+    browser.links.each_with_index do |x, xid|
+      del_link_ids << x.id if x.id && x.id =~ /del_todo_\d+/
+    end
+    link(:id, del_link_ids.last).click_no_wait
     browser.javascript_dialog.button('OK').click
-    # TODO checkpoint
+    sleep 2
+    refresh
+    assert_link_not_present_with_text("Not important")
   end
 
 end

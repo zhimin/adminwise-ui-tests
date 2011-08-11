@@ -34,19 +34,19 @@ specification "Create a new call register" do
 
   story "[500] Can edit existing call register" do
     click_link("Call register list")
-    link(:text => "Edit", :index => 1).click
+    link(:text => "Edit", :index => 0).click
     # link(:text => "Edit", :index => 5).click
     click_radio_option("call[non_member]", "false")
     click_button("Update")
     # now shall not be a member
-    link(:text => "Edit", :index => 1).click
+    link(:text => "Edit", :index => 0).click
     refresh # sometimes IE caches it
     assert_radio_option_checked("call[non_member]", "false")
   end
 
 
   story "Can create an Excel report from Call Register" do
-    link(:text => "Reports", :index => 2).click
+    link(:text => "Reports", :index => 1).click
     assert_link_present_with_text("Export to Excel")
     # click_link("Export to Excel")
     # page_text.should include("DATE_TIME")

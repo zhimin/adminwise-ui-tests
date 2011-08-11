@@ -13,16 +13,16 @@ test_suite "Events" do
 
   before(:each) do
     visit "/"
-
+    refresh # if is IE?
   end
 
   after(:all) do
-    logout unless debugging?
+   logout unless debugging?
   end
 
   # Press key Ctrl+Shift+T, then enter 123 quickly navigate you here
   story "[487] Can create a new event" do
-    click_link("Events")
+    try { click_link("Events") }
     event_list_page = expect_page EventListPage
     event_page = event_list_page.click_new
     event_page.enter_name("ABA Workshop")
@@ -42,6 +42,7 @@ test_suite "Events" do
     event_page.click_update
     assert_text_present("2010 Agileway Testing Conference")
     click_link("Events")
+    refresh # if ie
     page_text.should contain("2011-07-27")
   end
 
