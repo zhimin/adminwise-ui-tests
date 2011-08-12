@@ -18,7 +18,7 @@ specification "Memeber Login" do
     visit "/home"
   end
 
-  story "[495] Admin can generate a login for an existing member" do
+  story "[23] Admin can generate a login for an existing member" do
     click_link("Membership")
     click_link("David Smith")
     click_button("Generate login")

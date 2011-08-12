@@ -23,14 +23,14 @@ specification "To Do List" do
     fail_safe{ logout } unless debugging?
   end
 
-  story "Create a new Todo list" do
+  story "[37]Create a new Todo list" do
     click_link("New Todo list")
     enter_text("todo_list[name]", "Office work")
     click_button("Create")
     assert_link_present_with_text("Office work")
   end
 
-  story "can edit a Todo list name" do
+  story "[38]can edit a Todo list name" do
     click_link("New Todo list")
     enter_text("todo_list[name]", "Collect parcel")
     click_button("Create")    
@@ -42,7 +42,7 @@ specification "To Do List" do
     assert_link_present_with_text("Office work has to be done by Monday")
   end
 
-  story "Can add a new task in existing todo list" do
+  story "[39]Can add a new task in existing todo list" do
     click_link("New Todo list")
     enter_text("todo_list[name]", "Office work has to be done by Monday")    
     click_button("Create")        
@@ -58,7 +58,7 @@ specification "To Do List" do
   # JavaScript Popup
   #
   # Also smart to calculate last entry
-  story "can delete Todo list" do
+  story "[40]can delete Todo list" do
     click_link("New Todo list")
     enter_text("todo_list[name]", "Not important")    
     click_button("Create")    

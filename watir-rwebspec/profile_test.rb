@@ -14,7 +14,7 @@ specification "User Profile" do
     # close_browser if is_windows? and is_firefox?
   end
 
-  story "[481] User can change password" do
+  story "[8] User can change password" do
     login_as("bob", "test")
     click_link("Profile")
     click_link("Change password")

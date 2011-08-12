@@ -12,7 +12,7 @@ specification "Create a new user as admin" do
     logout unless debugging?
   end
 
-  story "[482] Create new user, then login" do
+  story "[19] Create new user, then login" do
     login_as("admin")
     click_link("Control Panel")
     click_link("Manage Users")

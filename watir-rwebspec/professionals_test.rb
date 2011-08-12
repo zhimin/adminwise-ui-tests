@@ -20,7 +20,7 @@ specification "Professionals" do
     # close_browser if is_windows? and is_firefox?
   end
 
-  story "[496] Admin User can add a professional" do
+  story "[24] Admin User can add a professional" do
     click_link("New Professional")
     new_professional_page = expect_page NewProfessionalPage
     new_professional_page.select_category("Centre Based Early Intervention Programs")
@@ -33,7 +33,7 @@ specification "Professionals" do
     page_text.should contain("Jane Steel")
   end
   
-  story "[497] Admin user sort professional by category" do
+  story "[25] Admin user sort professional by category" do
     click_link("Category")  
     try(3) {cell(:id, "category_0").text.should == "Speech Pathlogists" }
     click_link("Category")  

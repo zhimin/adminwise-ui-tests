@@ -21,7 +21,7 @@ test_suite "Events" do
   end
 
   # Press key Ctrl+Shift+T, then enter 123 quickly navigate you here
-  story "[487] Can create a new event" do
+  story "[5] Can create a new event" do
     try { click_link("Events") }
     event_list_page = expect_page EventListPage
     event_page = event_list_page.click_new
@@ -33,7 +33,7 @@ test_suite "Events" do
     assert_text_present("3 events")
   end
 #
-  test "[488] Can edit an existing event" do
+  test "[6] Can edit an existing event" do
     click_link("Events")
     event_list_page = expect_page EventListPage
     event_page = event_list_page.edit(0)

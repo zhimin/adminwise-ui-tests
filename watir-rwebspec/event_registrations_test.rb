@@ -22,7 +22,7 @@ test_suite "Event Registrations" do
     # close_browser if is_windows? and is_firefox?
   end
 
-  test "[485] User can sign up for events - member - populate info" do
+  test "[7] User can sign up for events - member - populate info" do
     visit "/events/register/2"
     event_registration_page = expect_page EventRegistrationPage
     event_registration_page.select_is_member("yes")
@@ -43,7 +43,7 @@ test_suite "Event Registrations" do
 
   end
 
-  test "[486] User can sign up for events - non member" do
+  test "[7] User can sign up for events - non member" do
     visit "/events/register/2"
 
     #    click_radio_option("payment_via_eft", "yes")

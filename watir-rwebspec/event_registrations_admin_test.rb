@@ -26,7 +26,7 @@ test_suite "Event Registrations as Admin" do
     # close_browser if is_windows? and is_firefox?
   end
 
-  test "[483] Admin User can register on behalf someone" do
+  test "[32] Admin User can register on behalf someone" do
     click_link("Register on applicant's behalf")
     event_registration_page = expect_page EventRegistrationPage
     event_registration_page.select_is_member("yes")
@@ -47,7 +47,7 @@ test_suite "Event Registrations as Admin" do
     assert_link_present_with_text("Pending 1")
   end
 
-  test "[498] Admin user can register a staff " do
+  test "[33] Admin user can register a staff " do
     click_link("Register staff")
     register_staff_page = expect_page RegisterStaffPage
     register_staff_page.enter_title("Mrs")

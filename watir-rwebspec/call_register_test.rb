@@ -28,11 +28,11 @@ specification "Create a new call register" do
     failsafe{ logout } unless debugging?
   end
   
-  story "[499] Can create a new call register" do
+  story "[34] Can create a new call register" do
     page_text.should include("Jesse Stewart")
   end
 
-  story "[500] Can edit existing call register" do
+  story "[35] Can edit existing call register" do
     click_link("Call register list")
     link(:text => "Edit", :index => 0).click
     # link(:text => "Edit", :index => 5).click
@@ -45,7 +45,7 @@ specification "Create a new call register" do
   end
 
 
-  story "Can create an Excel report from Call Register" do
+  story "[36]]Can create an Excel report from Call Register" do
     link(:text => "Reports", :index => 1).click
     assert_link_present_with_text("Export to Excel")
     # click_link("Export to Excel")

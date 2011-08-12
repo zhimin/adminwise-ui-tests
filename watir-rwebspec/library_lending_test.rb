@@ -26,7 +26,7 @@ specification "Library: Borrowing and Lending" do
   end
 
 
-  story "[491] Admin user can process a member borrowing a book" do
+  story "[21] Admin user can process a member borrowing a book" do
     library_page = expect_page LibraryPage
     library_page.click_borrow
     library_borrow_page = expect_page LibraryBorrowPage
@@ -47,7 +47,7 @@ specification "Library: Borrowing and Lending" do
     #
   end
 
-  story "[492] Admin user can process returning a book" do
+  story "[22] Admin user can process returning a book" do
     library_page = expect_page LibraryPage
     library_page.click_borrow
     library_borrow_page = expect_page LibraryBorrowPage
