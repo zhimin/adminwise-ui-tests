@@ -18,13 +18,13 @@ specification "Memebership" do
     visit "/home"
   end
 
-  story "[17]Admin user can search an existing member by surname " do
+  story "[17] Admin user can search an existing member by surname " do
     enter_text("search", "Smith")
     click_button("Search")
     page_text.should include("David Smith")
   end
 
-  story "[18]Admin user can search an existing member by membership number" do
+  story "[18] Admin user can search an existing member by membership number" do
     enter_text("search", "30002")
     click_button("Search")
     assert_link_present_with_text("David Smith")
@@ -71,7 +71,7 @@ specification "Memebership" do
     page_text.should include("CareLink Pty Ltd")
   end
 
-  story "[15]]Admin user can update an existing member details" do
+  story "[15] Admin user can update an existing member details" do
     membership_page = expect_page MembershipPage
     membership_page.click_name("David Smith")
     membership_page.enter_member_end_date("2012-08-20")
@@ -81,7 +81,7 @@ specification "Memebership" do
     page_text.should contain("Norman Park")
   end
 
-  story "[16]]Can browse past member" do
+  story "[16] Can browse past member" do
     click_link("Bob Builder")
     enter_text("member[end_date]", "2010-08-20")
     click_button("Update Member")
@@ -92,9 +92,3 @@ specification "Memebership" do
   end
 
 end
-
-
-
-
-
-
