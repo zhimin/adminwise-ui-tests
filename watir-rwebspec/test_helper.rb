@@ -28,7 +28,7 @@ module TestHelper
   #   login("lisa")     # same as login_as
   def login_as(username, password = "test")
     home_page = expect_page HomePage
-    home_page.enter_login(username)
+    home_page.enter_username(username)
     home_page.enter_password(password)
     home_page.click_login
   end

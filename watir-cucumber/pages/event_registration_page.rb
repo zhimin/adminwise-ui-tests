@@ -2,8 +2,8 @@
 
 class EventRegistrationPage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "") # <= 
+  def initialize(driver)
+    super(driver, "") # <= 
   end
 
   def enter_member_id(member_id)
@@ -23,7 +23,9 @@ class EventRegistrationPage < AbstractPage
   end
 
   def select_is_member(is_member)
-    browser.radio(:name, "is_member", is_member).set
+    # Watir 1
+    # browser.radio(:name, "is_member", is_member).set
+    browser.radio(:name => "is_member", :value => is_member).set
   end
   
   # function(parameter))
@@ -80,7 +82,7 @@ class EventRegistrationPage < AbstractPage
   end
   
   def uncheck_checkbox_registration_email_notificaton
-    browser.checkbox(:name, "event_registration[email_notification]", "1").clear
+    browser.checkbox(:name => "event_registration[email_notification]",  :value => "1").clear
   end
 
   def click_confirm

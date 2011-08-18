@@ -2,8 +2,8 @@
 
 class MemberSearchPage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "") # <= 
+  def initialize(driver)
+    super(driver, "") # <= 
   end
 
   def enter_name(member_name)

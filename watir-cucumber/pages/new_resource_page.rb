@@ -2,8 +2,8 @@
 
 class NewResourcePage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "") # <= 
+  def initialize(driver)
+    super(driver, "") # <= 
   end
 
   def select_subject(resource_subject)

@@ -2,8 +2,8 @@
 
 class EventPage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "") # <=
+  def initialize(driver)
+    super(driver, "") # <=
   end
 
   def enter_venue(event_venue)

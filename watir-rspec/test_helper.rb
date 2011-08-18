@@ -9,7 +9,7 @@ Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 
 Watir::Browser.default = 'ie'
 
-$BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.agileway.net"
+$BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.heroku.com"
 #localhost:2800"
 #$BASE_URL = "http://demo.adminwise.com"
 #$BASE_URL = "http://adminwise.macmini"
@@ -52,19 +52,19 @@ module TestHelper
   end
 
   def reset_database_via_ui
-    base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
+    base_url = $TESTWISE_PROJECT_BASE_URL || $ITEST2_PROJECT_BASE_URL || $BASE_URL
     @browser.goto("#{base_url}/reset")
     @browser.goto("#{base_url}/")
   end
 
   def visit(page)
-    base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
+    base_url = $TESTWISE_PROJECT_BASE_URL || $ITEST2_PROJECT_BASE_URL || $BASE_URL
     @browser.goto("#{base_url}#{page}")
   end
 
   def reset_database_silient
     # Option 2: using HTTP to call reset_database URL directly
-    base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL 
+    base_url = $TESTWISE_PROJECT_BASE_URL || $ITEST2_PROJECT_BASE_URL || $BASE_URL
     begin
       require 'httpclient'
       client = HTTPClient.new
@@ -81,7 +81,7 @@ end
 
 # Copy from RWebSpec
 def debugging?
-  $ITEST2_DEBUGGING && $ITEST2_RUNNING_AS == "test_case"
+  ($ITEST2_DEBUGGING && $ITEST2_RUNNING_AS == "test_case") || ($TESTWISE_DEBUGGING && $TESTWISE_RUNNING_AS == "test_case")
 end
 
 def assert_link_present_with_text(link_text)

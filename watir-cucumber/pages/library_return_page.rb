@@ -1,9 +1,7 @@
-# load File.dirname(__FILE__) + '/maybe_your_template_page.rb'
-
 class LibraryReturnPage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "") # <= 
+  def initialize(driver)
+    super(driver, "") # <= 
   end
 
   def click_process

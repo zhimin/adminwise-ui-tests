@@ -1,11 +1,8 @@
 
 class HomePage < AbstractPage
 
-  def initialize(browser, identity_text='')
-    super(browser)
-    # If you want to verify page title, uncomment (remove leading #) in the line below 
-    # title.should == "Smart eDA"
-    browser.text.should include(identity_text) unless identity_text.empty?
+  def initialize(driver, identity_text='')
+    super(driver, identity_text)
   end
   
   def enter_password(password)

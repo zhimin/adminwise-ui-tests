@@ -1,7 +1,7 @@
 class MembershipPage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "") # <= TEXT UNIQUE TO THIS PAGE
+  def initialize(driver)
+    super(driver, "")
   end
 
   def add_member
@@ -45,15 +45,15 @@ class MembershipPage < AbstractPage
   end
 
   def click_member_type(member_member_type)
-    browser.radio(:name, "member[member_type]", member_member_type).set
+    browser.radio(:name => "member[member_type]", :value => member_member_type).set
   end
 
   def click_mail_out(member_mail_out)
-    browser.radio(:name, "member[mail_out]", member_mail_out).set
+    browser.radio(:name => "member[mail_out]", :value => member_mail_out).set
   end
 
   def click_doing_aba(member_doing_aba)
-    browser.radio(:name, "member[doing_aba]", member_doing_aba)
+    browser.radio(:name => "member[doing_aba]", :value =>  member_doing_aba).set
   end
 
   def select_aware_from(member_aware_from)

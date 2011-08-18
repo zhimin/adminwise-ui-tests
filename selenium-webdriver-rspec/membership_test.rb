@@ -4,8 +4,8 @@ describe "Memebership" do
   include TestHelper
 
   before(:all) do
-    @driver = Selenium::WebDriver.for(browser_type)
-    @driver.navigate.to($ITEST2_PROJECT_BASE_URL || $BASE_URL)
+    @browser = Selenium::WebDriver.for(browser_type)
+    @browser.navigate.to($BASE_URL)
     reset_database
     fail_safe{ logout }
     login_as("admin", "test")
@@ -13,7 +13,7 @@ describe "Memebership" do
 
   after(:all) do
     logout unless debugging?
-    @driver.quit
+    @browser.quit
   end
 
   before(:each) do
@@ -21,20 +21,20 @@ describe "Memebership" do
   end
 
   it "Admin user can search an existing member by surname " do
-    @driver.find_element(:name, "search").send_keys("Smith")
+    @browser.find_element(:name, "search").send_keys("Smith")
     click_button("Search")    
-    @driver.page_source.should include("David Smith")
+    @browser.page_source.should include("David Smith")
   end
   
   it "Admin user can search an existing member by membership number" do
-    @driver.find_element(:name, "search").send_keys("30002")
+    @browser.find_element(:name, "search").send_keys("30002")
     click_button("Search")
     assert_link_present_with_text("David Smith")
   end
   
   it "[493] Admin user can create a new family member" do
-    @driver.find_element(:link_text, "MEMBERSHIP").click # NOTES [Watir] 'Membership'
-    membership_page = MembershipPage.new(@driver)
+    @browser.find_element(:link_text, "MEMBERSHIP").click # NOTES [Watir] 'Membership'
+    membership_page = MembershipPage.new(@browser)
     membership_page.add_member
     membership_page.enter_first_name("Cindy")
     membership_page.enter_last_name("Fu")
@@ -51,11 +51,11 @@ describe "Memebership" do
     membership_page.select_aware_from("family/ friend")
     membership_page.click_create_member
     membership_page.click_membership
-    @driver.page_source.should include("Cindy Fu")
+    @browser.page_source.should include("Cindy Fu")
   end
 
   it "[494] Admin user can create a new organisation member" do
-    membership_page =  MembershipPage.new(@driver)
+    membership_page =  MembershipPage.new(@browser)
     membership_page.click_add_member
     membership_page.enter_organisation_name("CareLink Pty Ltd")
     membership_page.enter_first_name("Michele")
@@ -70,7 +70,7 @@ describe "Memebership" do
     membership_page.select_aware_from("conference/ workshop")
     membership_page.click_create_member
     membership_page.click_membership
-    @driver.page_source.should include("CareLink Pty Ltd")
+    @browser.page_source.should include("CareLink Pty Ltd")
   end
 
 end

@@ -7,7 +7,7 @@ require 'test/unit/assertions'
 require File.join(File.dirname(__FILE__), "..","..", "pages", "abstract_page.rb")
 Dir["#{File.dirname(__FILE__)}/../../pages/*_page.rb"].each { |file| load file }
 
-$BASE_URL = "http://10.0.0.6:3000"
+$BASE_URL = $TESTWISE_PROJECT_BASE_URL || "http://adminwise.heroku.com"
 browser = Watir::Browser.new
 
 World(Test::Unit::Assertions)

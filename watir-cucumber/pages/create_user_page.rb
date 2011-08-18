@@ -1,7 +1,7 @@
 class CreateUserPage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "Register")
+  def initialize(driver)
+    super(driver, "Register")
   end
 
   def enter_username(username)

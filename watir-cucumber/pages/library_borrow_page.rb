@@ -2,8 +2,8 @@
 
 class LibraryBorrowPage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "") # <=
+  def initialize(driver)
+    super(driver, "") # <=
   end
 
   def click_find_member

@@ -6,7 +6,7 @@ require 'timeout'
 require File.join(File.dirname(__FILE__), "pages", "abstract_page.rb")
 Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 
-$BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.macmini"
+$BASE_URL = $TESTWISE_PROJECT_BASE_URL || $ITEST2_PROJECT_BASE_URL || ENV['ADMINWISE_URL'] || "http://adminwise.heroku.com"
 #localhost:2800"
 #$BASE_URL = "http://demo.adminwise.com"
 #$BASE_URL = "http://adminwise.macmini"
@@ -18,6 +18,8 @@ module TestHelper
   def browser_type
     if $ITEST2_BROWSER
       return $ITEST2_BROWSER.downcase.to_sym
+    elsif $TESTWISE_BROWSER
+      return $TESTWISE_BROWSER.downcase.to_sym
 		else
 			if RUBY_PLATFORM =~ /mingw/ 
 				:ie
@@ -36,7 +38,7 @@ module TestHelper
   #   login_as("bart")  # the password will be default to 'iTest2'
   #   login("lisa")     # same as login_as
   def login_as(username, password = "test")
-    home_page = HomePage.new(@driver)
+    home_page = HomePage.new(@browser)
     home_page.enter_login(username)
     home_page.enter_password(password)
     home_page.click_login
@@ -45,13 +47,13 @@ module TestHelper
 
   def logout(throw_errror = true)
     # NOTES WebDriver: logout
-    #  fail_safe { @driver.find_element(:link_text, "Logout").click }
+    #  fail_safe { @browser.find_element(:link_text, "Logout").click }
     if throw_errror
       # Somehoe: Selenium-webdriver 2.2 does not click the logout link (by text or id)
-      # @driver.find_element(:id, "logout_link").click
+      # @browser.find_element(:id, "logout_link").click
       visit("/users/sign_out")
     else
-      fail_safe { @driver.find_element(:id, "logout_link").click }
+      fail_safe { @browser.find_element(:id, "logout_link").click }
     end
   end
 
@@ -70,35 +72,32 @@ module TestHelper
   end
 
   def reset_database_via_ui
-    $base_url =  base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
-    @driver.navigate.to("#{base_url}/reset")
-    @driver.navigate.to("#{base_url}/")
+    @browser.navigate.to("#{$BASE_URL}/reset")
+    @browser.navigate.to("#{$BASE_URL}/")
   end
 
   def reset_database_silient
     # Option 2: using HTTP to call reset_database URL directly
-    $base_url = base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
     begin
       require 'httpclient'
       client = HTTPClient.new
-      reset_response =  client.get("#{base_url}/reset").body
-      reset_response =  reset_response.content if reset_database.respond_to?("content")
+      reset_response = client.get("#{$BASE_URL}/reset").body
+      reset_response = reset_response.content if reset_database.respond_to?("content")
       raise "Reset database failed: #{reset_database}" unless reset_response == "Database Reset OK"
     rescue => e
       debug e
-      raise "failed to reset the database: #{base_url}, #{e}"
+      raise "failed to reset the database: #{$BASE_URL}, #{e}"
     end
   end
 
 
   # Copy from RWebSpec
   def visit(page)
-    base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
-    @driver.navigate.to("#{base_url}#{page}")
+    @browser.navigate.to("#{$BASE_URL}#{page}")
   end
     
   def debugging?
-    $ITEST2_DEBUGGING && $ITEST2_RUNNING_AS == "test_case"
+    ($TESTWISE_DEBUGGING && $TESTWISE_RUNNING_AS == "test_case")|| ($ITEST2_DEBUGGING && $ITEST2_RUNNING_AS == "test_case")
   end
 
   def fail_safe(&block)
@@ -109,7 +108,7 @@ module TestHelper
   end
   
   def assert_link_present_with_text(link_text)
-    the_link = @driver.find_element(:link_text, link_text)
+    the_link = @browser.find_element(:link_text, link_text)
     raise ("can't find the link containing text: #{link_text}") unless the_link
   end
 

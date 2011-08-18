@@ -6,10 +6,7 @@ require 'timeout'
 require File.join(File.dirname(__FILE__), "pages", "abstract_page.rb")
 Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 
-$BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.agileway.net"
-#localhost:2800"
-#$BASE_URL = "http://demo.adminwise.com"
-#$BASE_URL = "http://adminwise.macmini"
+$BASE_URL = $TESTWISE_PROJECT_BASE_URL || ENV['ADMINWISE_URL'] || "http://adminwise.heroku.com"
 
 # This is the helper for your tests, every test file will include all the operation
 # defined here.
@@ -25,7 +22,7 @@ module TestHelper
   #   login("lisa")     # same as login_as
   def login_as(username, password = "test")
     home_page = expect_page HomePage
-    home_page.enter_login(username)
+    home_page.enter_username(username)
     home_page.enter_password(password)
     home_page.click_login
   end

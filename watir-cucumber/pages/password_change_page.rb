@@ -2,10 +2,9 @@
 
 class PasswordChangePage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "Change Password") # <= 
+  def initialize(driver)
+    super(driver, "Change Password") # <= 
   end
-
 
   def enter_current(password)
     browser.text_field(:name, "current_password").set password

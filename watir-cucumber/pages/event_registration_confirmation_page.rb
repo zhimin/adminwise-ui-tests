@@ -1,8 +1,8 @@
 
 class EventRegistrationConfirmationPage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "") # <= TEXT UNIQUE TO THIS PAGE
+  def initialize(driver)
+    super(driver, "")
   end
 
   def click_confirm

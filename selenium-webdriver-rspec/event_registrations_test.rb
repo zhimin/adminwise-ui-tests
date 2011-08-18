@@ -6,8 +6,8 @@ describe "Event Registrations" do
   include TestHelper
 
   before(:all) do
-    @driver = Selenium::WebDriver.for(browser_type) 
-    @driver.navigate.to($ITEST2_PROJECT_BASE_URL || $BASE_URL)
+    @browser = Selenium::WebDriver.for(browser_type) 
+    @browser.navigate.to($BASE_URL)
     reset_database
     fail_safe { logout }
     $pending_count = 1 # default
@@ -21,25 +21,25 @@ describe "Event Registrations" do
   end
 
   after(:all) do
-    @driver.quit unless debugging?
+    @browser.quit unless debugging?
   end
 
   it "[485] User can sign up for events - member - populate info" do
     visit "/events/register/2"
-    event_registration_page =  EventRegistrationPage.new(@driver)
+    event_registration_page =  EventRegistrationPage.new(@browser)
     event_registration_page.select_is_member("yes")
     try { event_registration_page.enter_member_id("30002") }
     event_registration_page.enter_member_surname("Smith")
     event_registration_page.click_find
     sleep 3
     event_registration_page.click_register
-    @driver.page_source.should include("Address line1 can't be blank")
-    @driver.find_element(:name, "person[address_line1]").send_keys("10 Pember St")
+    @browser.page_source.should include("Address line1 can't be blank")
+    @browser.find_element(:name, "person[address_line1]").send_keys("10 Pember St")
     event_registration_page.click_register
-    event_registration_confirmation_page = EventRegistrationConfirmationPage.new(@driver)
+    event_registration_confirmation_page = EventRegistrationConfirmationPage.new(@browser)
     event_registration_confirmation_page.click_confirm
     sleep 1
-    @driver.page_source.should include("has been received")
+    @browser.page_source.should include("has been received")
     # use this global variable to detect this test has been run or not
     $pending_count += 1
   end
@@ -48,7 +48,7 @@ describe "Event Registrations" do
     visit "/events/register/2"
 
     #    click_radio_option("payment_via_eft", "yes")
-    event_registration_page = EventRegistrationPage.new(@driver)
+    event_registration_page = EventRegistrationPage.new(@browser)
     event_registration_page.select_is_member("no")
     event_registration_page.enter_person_title("Mr")
     event_registration_page.enter_first_name("Eileen")
@@ -62,18 +62,18 @@ describe "Event Registrations" do
     event_registration_page.enter_postcode("4000")
     event_registration_page.uncheck_checkbox_registration_email_notificaton
     event_registration_page.click_register
-    event_registration_confirmation_page = EventRegistrationConfirmationPage.new(@driver)
+    event_registration_confirmation_page = EventRegistrationConfirmationPage.new(@browser)
     event_registration_confirmation_page.click_confirm
     sleep 1 # NOTE: sometimes selenium-wedriver too fast still get last page's source
-    @driver.page_source.should include("has been received")
+    @browser.page_source.should include("has been received")
 
     visit "/"
     # refresh
     login_as("admin")
-    @driver.find_element(:link_text, "EVENTS").click
-    @driver.find_element(:link_text, "CITCON 2011").click
-    @driver.find_element(:link_text, "Pending #{$pending_count}").click
-    @driver.page_source.should include("Eileen Fa")
+    @browser.find_element(:link_text, "EVENTS").click
+    @browser.find_element(:link_text, "CITCON 2011").click
+    @browser.find_element(:link_text, "Pending #{$pending_count}").click
+    @browser.page_source.should include("Eileen Fa")
   end
 
 
