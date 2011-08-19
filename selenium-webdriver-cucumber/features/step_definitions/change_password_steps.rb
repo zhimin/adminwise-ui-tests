@@ -3,7 +3,7 @@
 
 Given /^I login as "(\w+)" and on Password Change Page$/ do |username|
   begin;  logout; rescue => e; end
-  @browser.navigate.to($base_url)
+  @browser.navigate.to($BASE_URL)
   home_page = HomePage.new(@browser)
   home_page.enter_login(username)
   home_page.enter_password("test")

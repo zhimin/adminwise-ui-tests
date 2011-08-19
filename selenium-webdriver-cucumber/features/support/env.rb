@@ -10,7 +10,7 @@ Dir["#{File.dirname(__FILE__)}/../../pages/*_page.rb"].each { |file| load file }
 # Can't use reload
 # Dir["#{File.dirname(__FILE__)}/../step_definitions/*_steps.rb"].each { |file| load file }
 
-$BASE_URL = $TESTWISE_PROJECT_BASE_URL || $ITEST2PROJECT_BASE_URL || ENV["ADMINWISE_URL"] || "http://adminwise.heroku.com"
+$BASE_URL = $TESTWISE_PROJECT_BASE_URL || $ITEST2_PROJECT_BASE_URL || ENV["ADMINWISE_URL"] || "http://adminwise.heroku.com"
 browser = Selenium::WebDriver.for($TESTWISE_BROWSER ? $TESTWISE_BROWSER.downcase.to_sym : :ie)  # set by TestWise if running in TestWise
 World(Test::Unit::Assertions)
 

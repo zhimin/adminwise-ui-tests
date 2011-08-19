@@ -2,7 +2,7 @@
 
 Given /^I am on Home Page$/ do
   begin;  @browser.find_element(:link_text, "logout").click; rescue => e; end
-  @browser.navigate.to($base_url)
+  @browser.navigate.to($BASE_URL)
   @home_page = HomePage.new(@browser)
 end
 
