@@ -2,12 +2,14 @@ h3. Test Framework Comparison: Selenium2, Watir and RWebSpec
 
 If you are undecided on choosing which test frameworks for your project: Watir or Selenium2, the you might find this useful. Here you can find folders with test scripts in four syntax variations, 
  
-* Watir with RWebSpec
-* Selenium2 with RWebSpec
+* RWebSpec on Watir 
 * Watir with RSpec
+* Watir with Cucumber
+* RWebSpec on Selenium2
 * Selenium2 with RSpec
+* Selenium2 with Cucumber
 
-All four test projects can be opened and run in <a href="http://testwisely.com" target="_blank">TestWise2</a>, you can easily to try out and compare yourself.
+All six test projects can be opened and run in <a href="http://testwisely.com" target="_blank">TestWise2</a>, you can easily to try out and compare yourself.
 
 h4. Behaviour Driven Development Framework: <a href="http://rspec.info" target="_blank">RSpec</a>
 
@@ -16,15 +18,15 @@ RSpec is a Behaviour-Driven Development framework in Ruby, it helps on executabl
 
 h4. Selenium2 (selenium-webdriver) vs Watir
 
-Next major version of Selenum2 (also known as webdriver) is still in Beta, it is supported in multiple programming languages. Here we only compares its Ruby version (a popular and concise scripting language, perfect for test scripts) against Watir (Web application testing in Ruby) 
+Next major version of Selenum2 (also known as webdriver) is released in July 2011, it is supported in multiple programming languages. Here we only compares its Ruby version (a popular and concise scripting language, perfect for test scripts) against Watir (Web application testing in Ruby) 
 
-If you need to run Test against Firefox, then Selenium2 is the only choice. For IE, Watir is more mature and more stable IMO.
+If you need to run Test against Firefox or Chrome, then Selenium2 is the only choice. For IE, Watir is more mature and more stable IMO.
 
 h4. RWebSpec vs Watir vs Selenium2
 
-RWebSpec provides an high level abstract of testing syntax on top of Watir or Selenium2, i.e., if you develop test in RWebSpec, it will be easy to switch between Watir and Selenium2. Besides, with of loss of flexibility, you can use native Watir with RWebSpec or Selenium2 with RWebSpec.
+RWebSpec provides an high level abstract of testing syntax on top of Watir or Selenium2, i.e., if you develop test in RWebSpec, it will be easy to switch between Watir and Selenium2. Besides, without of loss of flexibility, you can use native Watir with RWebSpec or Selenium2 with RWebSpec.
 
-Also RWebSpec provides other benefits
+Also RWebSpec provides other benefits:
 
 <ul>
 <li>Built-in Pages-objects support
