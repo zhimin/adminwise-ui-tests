@@ -11,7 +11,10 @@ Dir["#{File.dirname(__FILE__)}/../../pages/*_page.rb"].each { |file| load file }
 # Dir["#{File.dirname(__FILE__)}/../step_definitions/*_steps.rb"].each { |file| load file }
 
 $BASE_URL = $TESTWISE_PROJECT_BASE_URL || $ITEST2_PROJECT_BASE_URL || ENV["ADMINWISE_URL"] || "http://adminwise.heroku.com"
-browser = Selenium::WebDriver.for($TESTWISE_BROWSER ? $TESTWISE_BROWSER.downcase.to_sym : :ie)  # set by TestWise if running in TestWise
+
+browser_type = $TESTWISE_BROWSER.downcase.to_sym rescue nil  # set by TestWise if running in TestWise
+browser_type = RUBY_PLATFORM =~ /mingw/ ? :ie : :firefox
+browser = Selenium::WebDriver.for(browser_type) 
 World(Test::Unit::Assertions)
 
 # browser.navigate.to("http://adminwise.agileway.net")
