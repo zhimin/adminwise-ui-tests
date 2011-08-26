@@ -5,19 +5,19 @@
   <test_framework>Selenium2</test_framework>
   <syntax_framework>Cucumber</syntax_framework>
   <environments>
-    <entry name="build_server" default="false">
+    <entry default="false" name="build_server">
       <base_url>http://adminwise.heroku.com</base_url>
     </entry>
-    <entry name="dev" default="false">
+    <entry default="false" name="dev">
       <base_url>http://10.0.0.6:3000</base_url>
     </entry>
-    <entry name="development" default="false">
+    <entry default="false" name="development">
       <base_url>http://localhost:3000</base_url>
     </entry>
-    <entry name="special" default="false">
+    <entry default="false" name="special">
       <base_url>http://adminwise.macmini</base_url>
     </entry>
-    <entry name="test" default="true">
+    <entry default="true" name="test">
       <base_url>http://adminwise.heroku.com</base_url>
     </entry>
   </environments>
