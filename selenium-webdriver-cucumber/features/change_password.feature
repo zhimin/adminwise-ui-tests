@@ -1,7 +1,7 @@
 Feature: User Profile
   As a registered user
   I want to update my details
-
+ 
   Scenario: Change password 
     Given I login as "bob" and on Password Change Page
     When I enter current password "test"
