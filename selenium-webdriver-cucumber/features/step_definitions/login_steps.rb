@@ -1,4 +1,3 @@
-# begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end 
 
 Given /^I am on Home Page$/ do
   begin;  @browser.find_element(:link_text, "logout").click; rescue => e; end
