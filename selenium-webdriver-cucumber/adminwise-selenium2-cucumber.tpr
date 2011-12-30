@@ -5,24 +5,24 @@
   <test_framework>Selenium2</test_framework>
   <syntax_framework>Cucumber</syntax_framework>
   <environments>
-    <entry default="false" name="build_server">
+    <entry name="build_server" default="false">
       <base_url>http://adminwise.heroku.com</base_url>
     </entry>
-    <entry default="false" name="dev">
+    <entry name="dev" default="false">
       <base_url>http://10.0.0.6:3000</base_url>
     </entry>
-    <entry default="false" name="development">
+    <entry name="development" default="false">
       <base_url>http://localhost:3000</base_url>
     </entry>
-    <entry default="false" name="special">
+    <entry name="special" default="false">
       <base_url>http://adminwise.macmini</base_url>
     </entry>
-    <entry default="true" name="test">
+    <entry name="test" default="true">
       <base_url>http://adminwise.heroku.com</base_url>
     </entry>
   </environments>
   <exclude_dirs></exclude_dirs>
-  <exclude_files></exclude_files>
+  <exclude_files>;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature</exclude_files>
   <test_named_as>test_suite</test_named_as>
   <spec_template></spec_template>
   <page_template></page_template>
