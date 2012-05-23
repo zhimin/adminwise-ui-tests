@@ -1,0 +1,6 @@
+Steps
+-----
+
+1. operations need to start with @browser. For example, the below won't work
+  
+  @browser.find_element(:link_text, "New Application").click
