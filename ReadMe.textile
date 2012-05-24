@@ -1,6 +1,6 @@
 h3. Test Framework Comparison: Selenium2, Watir, Watir-WebDriver and RWebSpec
 
-If you are undecided on choosing which test frameworks for your project: Watir or Selenium2, the you might find this useful. Here you can find folders with test scripts in four syntax variations, 
+If you are undecided on choosing which test frameworks for your project: Watir or Selenium-WebDriver, the you might find this useful. Here you can find folders with test scripts in four syntax variations, 
  
 * RWebSpec on Watir 
 * Watir with RSpec
