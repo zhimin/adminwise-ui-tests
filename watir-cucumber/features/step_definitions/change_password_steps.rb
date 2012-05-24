@@ -1,7 +1,6 @@
-#begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end 
-#require 'cucumber/formatter/unicode'
 
-Given /^I login as "(\w+)" and on Password Change Page$/ do |username|
+
+Given /^I login as "(.*?)" and on Password Change Page$/ do |username|
   begin;  logout; rescue => e; end
   @browser.goto($base_url)
   home_page = HomePage.new(@browser)
@@ -14,30 +13,15 @@ Given /^I login as "(\w+)" and on Password Change Page$/ do |username|
   # @password_change_page = Object.const_get(page_name.gsub(" ","")).new(@browser)
 end
 
-When /^I enter current password "([^"]*)"$/ do |term|
-  @password_change_page.enter_current term
+When /^I enter current password "(.*?)"$/ do |pass|
+  @password_change_page.enter_current pass
 end
 
-
-Then /^I can relogin as "(\w+)" with new password "([^"]*)"$/ do |username, new_pass|
-  logout
-  home_page = HomePage.new(@browser)
-  home_page.enter_login(username)
-  home_page.enter_password(new_pass)
-  home_page.click_login
-  @browser.link(:text, "Profile").click
-end
-
-Then /^I should get error "([^"]*)"$/ do |message|
-  assert @browser.text.include?(message)
-end
-
-
-When /^enter new password "([^"]*)"$/ do |new_pass|
+When /^enter new password "(.*?)"$/ do |new_pass|
   @password_change_page.enter_new  new_pass  
 end
 
-When /^enter confirmation "([^"]*)"$/ do |confirm_password|
+When /^enter confirmation "(.*?)"$/ do |confirm_password|
   @password_change_page.enter_confirm(confirm_password)
 end
 
@@ -45,6 +29,18 @@ When /^I click change$/ do
   @browser.button(:value, "Change").click
 end
 
+Then /^I should get error "(.*?)"$/ do |message|
+  assert @browser.text.include?(message)
+end
+
+Then /^I can relogin as "(.*?)" with new password "(.*?)"$/ do |username, new_pass|
+  logout
+  home_page = HomePage.new(@browser)
+  home_page.enter_login(username)
+  home_page.enter_password(new_pass)
+  home_page.click_login
+  @browser.link(:text, "Profile").click
+end
 
 def logout
   @browser.link(:text, "Logout").click;

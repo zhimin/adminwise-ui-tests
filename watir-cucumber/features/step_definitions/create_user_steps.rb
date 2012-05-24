@@ -7,7 +7,7 @@
 
 Given /^I login as "(.*)" and on Control Panel page then on manage user page$/ do |username|
   begin;  logout; rescue => e; end
-  @browser.goto($base_url)
+  @browser.goto($BASE_URL)
   home_page = HomePage.new(@browser)
   home_page.enter_login(username)
   home_page.enter_password("test")
@@ -20,21 +20,17 @@ end
 
 When /^I click link "(.*)"$/ do |link|
   @browser.link(:text, link).click
-   
-
 end
-
-When /^I enter username "(.*)"$/ do |username|
-  @browser.text_field(:id, "username").set("KDay")
-  @browser.text_field(:id, "email").set("kellyD@gmail.com")
-  @browser.text_field(:id, "password").set("letme")
-  @browser.button(:value,"Create User").click
- 
-end
-
 
 
 Then /^I can click link "(.*)" in Users$/ do |link|
-   @browser.link(:text, "KDay").click
+   @browser.link(:text, link).click
+end
 
+Given /^I enter username "(.*?)" and email "(.*?)" and enter password "(.*?)" then I click "(.*?)"$/ do |username, email, password, create_button_text|
+  debug("Enter user '#{username}'")
+  @browser.text_field(:id, "username").set(username)
+  @browser.text_field(:id, "email").set(email)
+  @browser.text_field(:id, "password").set(password)
+  @browser.button(:value, create_button_text).click 
 end

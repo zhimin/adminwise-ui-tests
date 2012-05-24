@@ -22,7 +22,7 @@
     </entry>
   </environments>
   <exclude_dirs></exclude_dirs>
-  <exclude_files>;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature</exclude_files>
+  <exclude_files>;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature;tmp_syntax_check.feature</exclude_files>
   <test_named_as>test_suite</test_named_as>
   <spec_template></spec_template>
   <page_template></page_template>

@@ -1,30 +1,6 @@
 <?xml version="1.1" encoding="US-ASCII"?>
 <project>
-  <name>watir-webdriver-cucumber.tpr</name>
-  <default_browser></default_browser>
-  <test_framework>Watir-WebDriver</test_framework>
-  <syntax_framework>Cucumber</syntax_framework>
-  <environments>
-    <entry name="development" default="true">
-      <base_url>http://adminwise.heroku.com</base_url>
-    </entry>
-  </environments>
+  <name>watir-webdriver-cucumber</name>
   <exclude_dirs></exclude_dirs>
-  <exclude_files>;tmp_syntax_check.feature</exclude_files>
-  <test_named_as>specification</test_named_as>
-  <spec_template></spec_template>
-  <page_template></page_template>
-  <storywise_url></storywise_url>
-  <jira_url></jira_url>
-  <jira_project></jira_project>
-  <jira_login></jira_login>
-  <jira_password></jira_password>
-  <heart_beat>
-    <spec_suite></spec_suite>
-    <environment></environment>
-    <start_time></start_time>
-    <repeat></repeat>
-    <end_repeat></end_repeat>
-    <emails></emails>
-  </heart_beat>
+  <exclude_files></exclude_files>
 </project>

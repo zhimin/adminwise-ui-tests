@@ -10,11 +10,17 @@ Dir["#{File.dirname(__FILE__)}/../../pages/*_page.rb"].each { |file| load file }
 # Can't use reload
 # Dir["#{File.dirname(__FILE__)}/../step_definitions/*_steps.rb"].each { |file| load file }
 
+# include RWebSpec Utils and better integration with TestWise
+require "#{File.dirname(__FILE__)}/rwebspec_utils.rb"
+require "#{File.dirname(__FILE__)}/testwise_support.rb"
+
+
 $BASE_URL = $TESTWISE_PROJECT_BASE_URL || ENV["ADMINWISE_URL"] || "http://adminwise.heroku.com"
 
 browser_type = $TESTWISE_BROWSER.downcase.to_sym rescue nil  # set by TestWise if running in TestWise
 browser_type ||= (RUBY_PLATFORM =~ /mingw/ ? :ie : :firefox)
 browser = Selenium::WebDriver.for(browser_type) 
+
 World(Test::Unit::Assertions)
 
 Before do

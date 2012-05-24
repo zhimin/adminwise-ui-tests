@@ -9,7 +9,8 @@ Given /^I have entered password (\w+) on login page$/ do |password|
   @home_page.enter_password(password)
 end
 
-Given /^I have entered userame (\w+) on login page$/ do |username|
+Given /^I have entered userame (\w+) on login page$/ do |username|  
+  debug("enter user '#{username}'") # showing message in TestWise console
   @home_page.enter_login(username)
 end
 

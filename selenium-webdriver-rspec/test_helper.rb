@@ -6,7 +6,11 @@ require 'timeout'
 require File.join(File.dirname(__FILE__), "pages", "abstract_page.rb")
 Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 
-$BASE_URL = $TESTWISE_PROJECT_BASE_URL || $ITEST2_PROJECT_BASE_URL || ENV['ADMINWISE_URL'] || "http://adminwise.heroku.com"
+# use utils in RWebSpec and better integration with TestWise
+require "#{File.dirname(__FILE__)}/rwebspec_utils.rb"
+require "#{File.dirname(__FILE__)}/testwise_support.rb"
+
+$BASE_URL = $TESTWISE_PROJECT_BASE_URL || ENV['ADMINWISE_URL'] || "http://adminwise.heroku.com"
 #localhost:2800"
 #$BASE_URL = "http://demo.adminwise.com"
 #$BASE_URL = "http://adminwise.macmini"
@@ -14,6 +18,9 @@ $BASE_URL = $TESTWISE_PROJECT_BASE_URL || $ITEST2_PROJECT_BASE_URL || ENV['ADMIN
 # This is the helper for your tests, every test file will include all the operation
 # defined here.
 module TestHelper
+
+  include RWebSpecUtils
+  include TestWiseSupport
 
   def browser_type
     if $ITEST2_BROWSER
@@ -90,51 +97,14 @@ module TestHelper
     end
   end
 
-
   # Copy from RWebSpec
   def visit(page)
     @browser.navigate.to("#{$BASE_URL}#{page}")
-  end
-    
-  def debugging?
-    ($TESTWISE_DEBUGGING && $TESTWISE_RUNNING_AS == "test_case")|| ($ITEST2_DEBUGGING && $ITEST2_RUNNING_AS == "test_case")
-  end
-
-  def fail_safe(&block)
-    begin
-      yield
-    rescue => e
-    end
   end
   
   def assert_link_present_with_text(link_text)
     the_link = @browser.find_element(:link_text, link_text)
     raise ("can't find the link containing text: #{link_text}") unless the_link
-  end
-
-  # Try the operation up to specified timeout (in seconds), and sleep given interval (in seconds).
-  # Error will be ignored until timeout
-  # Example
-  #    try { click_link('waiting')}
-  #    try(10, 2) { click_button('Search' } # try to click the 'Search' button upto 10 seconds, try every 2 seconds
-  #    try { click_button('Search' }
-  def try(timeout = 30, polling_interval = 1, & block)
-    start_time = Time.now
-
-    last_error = nil
-    until (duration = Time.now - start_time) > timeout
-      begin
-        yield
-        last_error = nil
-        return true
-      rescue => e
-        last_error = e
-      end
-      sleep polling_interval
-    end
-
-    raise "Timeout after #{duration.to_i} seconds with error: #{last_error}." if last_error
-    raise "Timeout after #{duration.to_i} seconds."
   end
 
 

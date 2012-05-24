@@ -97,11 +97,6 @@ module TestHelper
     end
   end
 
-  # Copy from RWebSpec
-  def debugging?
-    ($ITEST2_DEBUGGING && $ITEST2_RUNNING_AS == "test_case") || ($TESTWISE_DEBUGGING && $TESTWISE_RUNNING_AS == "test_case")
-  end
-
   def assert_link_present_with_text(link_text)
     @browser.links.each { |link|
       return if link.text.include?(link_text)
