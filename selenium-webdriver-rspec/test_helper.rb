@@ -3,12 +3,12 @@ require 'selenium-webdriver'
 require 'httpclient'
 require 'timeout'
 
-require File.join(File.dirname(__FILE__), "pages", "abstract_page.rb")
-Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
-
 # use utils in RWebSpec and better integration with TestWise
 require "#{File.dirname(__FILE__)}/rwebspec_utils.rb"
 require "#{File.dirname(__FILE__)}/testwise_support.rb"
+
+require File.join(File.dirname(__FILE__), "pages", "abstract_page.rb")
+Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 
 $BASE_URL = $TESTWISE_PROJECT_BASE_URL || ENV['ADMINWISE_URL'] || "http://adminwise.heroku.com"
 #localhost:2800"
