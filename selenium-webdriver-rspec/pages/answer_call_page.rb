@@ -2,6 +2,7 @@
 class AnswerCallPage < AbstractPage
 
   def initialize(driver)
+    debug driver.find_element(:tag_name, "body").text
     super(driver, "Call Register - New Call")
   end
 

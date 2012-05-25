@@ -32,7 +32,7 @@ module RWebSpecUtils
   # Try the operation up to specified times, and sleep given interval (in seconds)
   # Error will be ignored until timeout
   # Example
-  #    repeat_try(3, 2) { click_button('Search' } # 3 times, 6 seconds in total
+  #    repeat_try_until(3, 2) { click_button('Search' } # 3 times, 6 seconds in total
   #    repeat_try { click_button('Search' } # using default 5 tries, 2 second interval
   def repeat_try(num_tries = $testwise_polling_timeout || 30, interval = $testwise_polling_interval || 1, & block)
     num_tries ||= 1

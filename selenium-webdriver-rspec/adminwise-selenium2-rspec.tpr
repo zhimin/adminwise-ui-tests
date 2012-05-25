@@ -1,7 +1,7 @@
 <?xml version="1.1" encoding="US-ASCII"?>
 <project>
   <name>AdminWise-Selenium2</name>
-  <default_browser>Internet Explorer</default_browser>
+  <default_browser>Chrome</default_browser>
   <test_framework>Selenium2</test_framework>
   <syntax_framework>RSpec</syntax_framework>
   <environments>

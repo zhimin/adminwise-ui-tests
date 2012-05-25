@@ -36,7 +36,7 @@ describe "Event Registrations as Admin" do
     event_registration_page.click_find
     sleep 1
     event_registration_page.click_register
-    try(3) {@browser.page_source.should include("Address line1 can't be blank")}
+    try_until(3) {@browser.page_source.should include("Address line1 can't be blank")}
     @browser.find_element(:name, "person[address_line1]").send_keys("10 Pember St")
     event_registration_page.click_register
 

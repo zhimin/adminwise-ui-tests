@@ -13,7 +13,7 @@ describe "Memebership" do
 
   after(:all) do
     logout unless debugging?
-    @browser.quit
+    @browser.quit unless debugging?
   end
 
   before(:each) do
@@ -22,13 +22,13 @@ describe "Memebership" do
 
   it "Admin user can search an existing member by surname " do
     @browser.find_element(:name, "search").send_keys("Smith")
-    click_button("Search")    
+    @browser.find_element(:id, "member_search_btn").click
     @browser.page_source.should include("David Smith")
   end
   
   it "Admin user can search an existing member by membership number" do
     @browser.find_element(:name, "search").send_keys("30002")
-    click_button("Search")
+    @browser.find_element(:name, "search").submit # use different way from above
     assert_link_present_with_text("David Smith")
   end
   

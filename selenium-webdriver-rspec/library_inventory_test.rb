@@ -40,7 +40,7 @@ describe "Library: Add resourses" do
     library_search_page = LibrarySearchPage.new(@browser)
     library_search_page.enter_query("The Other Country")
     library_search_page.click_search
-    try { @browser.page_source.should include("matches for 'The Other Country'")}
+    try_until(10) { @browser.page_source.should include("matches for 'The Other Country'")}
   end
 
 =begin
@@ -50,7 +50,7 @@ describe "Library: Add resourses" do
     if page_text.include?("OR")
       enter_text("q", "Web Test Automation")
       click_button("search")
-      try(10) {    link(:text => "Add", :index => 1).click }
+      try_until(10) {    link(:text => "Add", :index => 1).click }
       click_button("Create")
       click_button("Save")
       @browser.find_element(:link_text, "Library").click

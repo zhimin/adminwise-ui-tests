@@ -1,6 +1,7 @@
-
+# Th
 class AbstractPage
-
+  include TestWiseSupport
+  
   attr_accessor :driver
   
   def initialize(driver, identify_text = nil)
@@ -15,6 +16,6 @@ class AbstractPage
   end
   
   def text
-    # santiize
+    @browser.find_element(:tag_name, "body").text
   end
 end

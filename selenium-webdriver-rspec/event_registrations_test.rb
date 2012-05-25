@@ -28,7 +28,7 @@ describe "Event Registrations" do
     visit "/events/register/2"
     event_registration_page =  EventRegistrationPage.new(@browser)
     event_registration_page.select_is_member("yes")
-    try { event_registration_page.enter_member_id("30002") }
+    try_until(10) { event_registration_page.enter_member_id("30002") }
     event_registration_page.enter_member_surname("Smith")
     event_registration_page.click_find
     sleep 3

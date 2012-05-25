@@ -57,7 +57,7 @@ describe "Library: Borrowing and Lending" do
     library_borrow_page.click_find_member
     library_borrow_page.enter_resource("100001")
     library_borrow_page.click_find_resource
-    try { library_borrow_page.click_select }
+    try(10) { library_borrow_page.click_select }
     library_borrow_page = LibraryBorrowPage.new(@browser)
     library_borrow_page.click_process
 
@@ -80,7 +80,7 @@ describe "Library: Borrowing and Lending" do
     library_return_page.enter_resource("100001")
     library_return_page.click_find
 		
-    try { assert_link_present_with_text("Let Me Hear Your Voice: A Family's Triumph over Autism") }
+    try_until(10) { assert_link_present_with_text("Let Me Hear Your Voice: A Family's Triumph over Autism") }
     library_return_page.click_process
 
     @browser.find_element(:link_text, "LIBRARY").click

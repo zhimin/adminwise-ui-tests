@@ -3,7 +3,7 @@
 class MemberBorrowHistoryPage < AbstractPage
 
   def initialize(driver)
-    super(driver, "Member - Borrowing Hiit ") # <= 
+    super(driver, "Member - Borrowing History") 
   end
 
 
