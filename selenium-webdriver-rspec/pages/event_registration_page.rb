@@ -93,7 +93,7 @@ class EventRegistrationPage < AbstractPage
   end
 
   def uncheck_checkbox_registration_email_notificaton
-    browser.find_element(:name, "event_registration[email_notification]").clear
+    try_until(3) { browser.find_element(:name, "event_registration[email_notification]").clear }
   end
 
   def click_confirm

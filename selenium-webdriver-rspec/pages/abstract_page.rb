@@ -1,7 +1,8 @@
 # Th
 class AbstractPage
   include TestWiseSupport
-  
+  include RWebSpecUtils
+   
   attr_accessor :driver
   
   def initialize(driver, identify_text = nil)

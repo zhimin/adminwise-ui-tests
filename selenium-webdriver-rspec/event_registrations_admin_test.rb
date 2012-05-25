@@ -15,7 +15,7 @@ describe "Event Registrations as Admin" do
     visit "/home"
     @browser.find_element(:link_text, "EVENTS").click
     event_list_page = EventListPage.new(@browser)
-    @browser.find_element(:link_text, "ABIQ 2011 Autism Conference").click
+    @browser.find_element(:link_text, "Wise Testing Conference").click
   end
 
   after(:each) do

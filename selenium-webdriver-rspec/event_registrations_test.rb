@@ -60,9 +60,11 @@ describe "Event Registrations" do
     event_registration_page.enter_address_line1("10 Pember St")
     event_registration_page.enter_person_suburb("Brisbane")
     event_registration_page.enter_postcode("4000")
-    event_registration_page.uncheck_checkbox_registration_email_notificaton
+    # Element is not currently interactable and may not be manipulated
+    # event_registration_page.uncheck_checkbox_registration_email_notificaton
     event_registration_page.click_register
     event_registration_confirmation_page = EventRegistrationConfirmationPage.new(@browser)
+
     event_registration_confirmation_page.click_confirm
     sleep 1 # NOTE: sometimes selenium-wedriver too fast still get last page's source
     @browser.page_source.should include("has been received")

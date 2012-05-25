@@ -13,7 +13,6 @@ describe "Correspondence" do
 
   before(:each) do
     @browser.find_element(:link_text, "ADMINISTRATION").click
-    click_link("Administration")
     @browser.find_element(:link_text,"Correspondence").click
     @browser.find_element(:link_text,"New Correspondence").click
 
