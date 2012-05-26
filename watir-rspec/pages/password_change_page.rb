@@ -11,6 +11,7 @@ class PasswordChangePage < AbstractPage
   end
 
   def enter_new(new_pass)
+    debug("[DEBUG] Entering new pass => #{new_pass}")
     browser.text_field(:name, "user[password]").set new_pass
   end
 

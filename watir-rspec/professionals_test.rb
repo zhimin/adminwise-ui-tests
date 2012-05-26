@@ -28,15 +28,15 @@ describe "Professionals" do
     new_professional_page.enter_contact("Jenny")
     new_professional_page.enter_organisation_name("Focus Speech")
     new_professional_page.click_create
-    try(10) { @browser.text.should include("Professionals List") }
+    try_until(10) { @browser.text.should include("Professionals List") }
     @browser.text.should include("Jane Steel")
   end
   
   it "[497] Admin user sort professional by category" do
     @browser.link(:text, "Category").click
-    try(3) { @browser.cell(:id, "category_0").text.should == "Speech Pathlogists" }
+    try_until(3) { @browser.cell(:id, "category_0").text.should == "Speech Pathlogists" }
     @browser.link(:text, "Category").click
-    try(3) { @browser.cell(:id, "category_0").text.should == "Auditory Integration Training" }
+    try_until(3) { @browser.cell(:id, "category_0").text.should == "Auditory Integration Training" }
   end
   
 end

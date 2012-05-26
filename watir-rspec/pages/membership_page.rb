@@ -57,7 +57,7 @@ class MembershipPage < AbstractPage
   end
 
   def select_aware_from(member_aware_from)
-    browser.select_list(:name, "member[aware_from]").set member_aware_from
+    browser.select_list(:name, "member[aware_from]").select member_aware_from
   end
 
   def click_create_member

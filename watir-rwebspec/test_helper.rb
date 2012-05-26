@@ -58,7 +58,7 @@ module TestHelper
   end
 
   def reset_database_via_ui
-    base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
+    base_url = $TESTWISE_PROJECT_BASE_URL || $BASE_URL
     goto_url("#{base_url}/reset?#{rand(13213)}")
     # refresh
     goto_page("/")
@@ -66,7 +66,7 @@ module TestHelper
 
   def reset_database_silient
     # Option 2: using HTTP to call reset_database URL directly
-    base_url = $ITEST2_PROJECT_BASE_URL || $BASE_URL
+    base_url = $TESTWISE_PROJECT_BASE_URL || $BASE_URL
     begin
       require 'httpclient'
       client = HTTPClient.new

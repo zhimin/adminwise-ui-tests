@@ -7,7 +7,7 @@ class NewResourcePage < AbstractPage
   end
 
   def select_subject(resource_subject)
-    browser.select_list(:name, "resource[subject]").set resource_subject
+    browser.select_list(:name, "resource[subject]").select resource_subject
   end
   
   def click_create

@@ -46,7 +46,7 @@ class EventRegistrationPage < AbstractPage
   end
   
   def select_person_occupation(person_occupation)
-    browser.select_list(:name, "person[occupation]").set person_occupation
+    browser.select_list(:name, "person[occupation]").select person_occupation
   end
   
   def enter_person_email(person_email)

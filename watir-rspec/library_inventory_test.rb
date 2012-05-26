@@ -37,7 +37,7 @@ describe "Library: Add resourses" do
     @browser.link(:text,"Library").click
     @browser.text_field(:name, "q").set "The Other Country"
     @browser.button(:value, "search").click
-    try { @browser.text.should include("matches for 'The Other Country'")}
+    try_until(10) { @browser.text.should include("matches for 'The Other Country'")}
   end
 
 =begin

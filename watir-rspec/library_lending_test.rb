@@ -55,7 +55,7 @@ describe "Library: Borrowing and Lending" do
     library_borrow_page.click_find_member
     library_borrow_page.enter_resource("100001")
     library_borrow_page.click_find_resource
-    try { library_borrow_page.click_select }
+    try_until(10) { library_borrow_page.click_select }
     library_borrow_page = LibraryBorrowPage.new(@browser)
     library_borrow_page.click_process
 

@@ -23,7 +23,7 @@ class NewProfessionalPage < AbstractPage
   end
 
   def select_category(professional_category)
-    browser.select_list(:name, "professional[category]").set professional_category
+    browser.select_list(:name, "professional[category]").select professional_category
   end
 
 end
