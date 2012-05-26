@@ -20,12 +20,13 @@ specification "User Profile" do
     click_link("Change password")
     
     password_change_page = expect_page PasswordChangePage
-    password_change_page.enter_current("password")
+    password_change_page.enter_current("test")
     password_change_page.enter_new("newpass")
     password_change_page.enter_confirm("newpass2")
     password_change_page.click_button("Change")
     
     page_text.should contain("Password doesn't match confirmation")
+    password_change_page.enter_current("test")    
     password_change_page.enter_confirm("newpass")
     password_change_page.click_button("Change")
 
