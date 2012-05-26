@@ -1,5 +1,4 @@
 Feature: Create a new user
-  In order to value
   As an admin
   I want to create a new user
 
