@@ -17,7 +17,7 @@ describe "User Management" do
     @browser.close unless debugging?
   end
 
-  it "[480] A registered user can login" do
+  it "[480] A registered user can login", :tag => "must" do
     login_as("bob", "test")
     assert_link_present_with_text("Logout")
   end
@@ -27,12 +27,12 @@ describe "User Management" do
     assert_link_present_with_text("Control Panel")
   end
 
-  it "[480] Admin user can login - invalid password" do
+  it "[480] Admin user can login - invalid password", :tag => "critical" do
     login_as("admin", "badpass")
     @browser.text.should include("Invalid email or password.")
   end
 
-  it "[480] Admin user can login - try go the protected url" do
+  it "[480] Admin user can login - try go the protected url", :tag => "must" do
     visit "/events"
     sleep 1
     @browser.text.should include("You need to sign in or sign up before continuing.")

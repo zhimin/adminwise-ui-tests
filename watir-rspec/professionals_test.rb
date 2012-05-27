@@ -34,9 +34,9 @@ describe "Professionals" do
   
   it "[497] Admin user sort professional by category" do
     @browser.link(:text, "Category").click
-    try_until(3) { @browser.cell(:id, "category_0").text.should == "Speech Pathlogists" }
+    try_until(3) { @browser.td(:id, "category_0").text.should == "Speech Pathlogists" }
     @browser.link(:text, "Category").click
-    try_until(3) { @browser.cell(:id, "category_0").text.should == "Auditory Integration Training" }
+    try_until(3) { @browser.td(:id, "category_0").text.should == "Auditory Integration Training" }
   end
   
 end

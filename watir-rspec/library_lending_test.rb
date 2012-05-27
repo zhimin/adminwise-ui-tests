@@ -67,7 +67,7 @@ describe "Library: Borrowing and Lending" do
     library_page.click_search
     sleep 0.5
     @browser.link(:text,"Let Me Hear Your Voice: A Family's Triumph over Autism").click
-    @browser.cell(:id, "item_status_100001").text.strip.should == "Checked out"
+    @browser.td(:id, "item_status_100001").text.strip.should == "Checked out"
 
     @browser.link(:text,"Library").click
     library_page = LibraryPage.new(@browser)
@@ -77,7 +77,7 @@ describe "Library: Borrowing and Lending" do
     library_return_page.enter_resource("100001")
     library_return_page.click_find
 		
-    try { assert_link_present_with_text("Let Me Hear Your Voice: A Family's Triumph over Autism") }
+    try_until(3) { assert_link_present_with_text("Let Me Hear Your Voice: A Family's Triumph over Autism") }
     library_return_page.click_process
 
     @browser.link(:text,"Library").click
@@ -86,7 +86,7 @@ describe "Library: Borrowing and Lending" do
     library_page.click_search
     sleep 1
     @browser.link(:text,"Let Me Hear Your Voice: A Family's Triumph over Autism").click
-    @browser.cell(:id, "item_status_100001").text.strip.should == "Available"
+    @browser.td(:id, "item_status_100001").text.strip.should == "Available"
   end
 
   

@@ -17,7 +17,7 @@ specification "User Management" do
     # close_browser if is_windows? and is_firefox?
   end
 
-  story "[1] A registered user can login" do
+  story "[1] A registered user can login", :critical do
     login_as("bob", "test")
     assert_link_present_with_text("Logout")
   end
@@ -27,7 +27,7 @@ specification "User Management" do
     assert_link_present_with_text("Control Panel")
   end
 
-  story "[28] Anonymous user cannot login - invalid password" do
+  story "[28] Anonymous user cannot login - invalid password", :critical do
     login_as("admin", "badpass")
     page_text.should contain("Invalid email or password.")
   end

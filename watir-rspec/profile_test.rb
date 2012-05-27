@@ -14,7 +14,7 @@ describe "User Profile" do
     @browser.close unless debugging?
   end
 
-  it "[481] User can change password" do
+  it "[481] User can change password", :tag => "must" do
     login_as("bob", "test")
     @browser.link(:text, "Profile").click    
     @browser.link(:text, "Change password").click    

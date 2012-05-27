@@ -21,7 +21,7 @@ describe "To Do List" do
     @browser.close unless debugging?
   end
 
-  it "Create a new Todo list" do
+  it "Create a new Todo list", :tag => "critical" do
     assert_link_present_with_text("Collect parcel")
   end
 
