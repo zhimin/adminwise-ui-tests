@@ -4,7 +4,7 @@
 require 'rubygems'
 gem 'ci_reporter'
 gem 'rspec'
-require "spec/rake/spectask"
+require 'rspec/core/rake_task'
 require 'ci/reporter/rake/rspec' # use this if you're using RSpec
 
 task :default => ["go"]
@@ -16,8 +16,8 @@ def excluded_test_files
 end
 
 desc "run all tests in this folder"
-Spec::Rake::SpecTask.new("go") do |t|
+RSpec::Core::RakeTask.new("go") do |t|
   test_files = Dir.glob("*_spec.rb") + Dir.glob("*_test.rb") - excluded_test_files
-  t.spec_files = FileList[test_files]
+  t.pattern = FileList[test_files]
   t.warning = false
 end

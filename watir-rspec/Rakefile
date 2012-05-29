@@ -4,7 +4,7 @@
 require 'rubygems'
 gem 'ci_reporter'
 gem 'rspec'
-require "spec/rake/spectask"
+require 'rspec/core/rake_task'
 require 'ci/reporter/rake/rspec' # use this if you're using RSpec
 
 BUILDWISE_URL = ENV["BUILDWISE_MASTER"] || "http://localhost:3618"
@@ -25,7 +25,7 @@ def all_specs
 end
 
 desc "run all tests in this folder"
-Spec::Rake::SpecTask.new("test:ui") do |t|
+RSpec::Core::RakeTask.new("test:ui") do |t|
   specs_to_be_executed = []
   ordered_specs = buildwise_ui_test_order(BUILDWISE_PROJECT_IDENTIFIER)
   puts "[ORDER 1]: call buildwise #{ordered_specs}"
@@ -47,7 +47,7 @@ Spec::Rake::SpecTask.new("test:ui") do |t|
 end
 
 desc "run selected quick tests"
-Spec::Rake::SpecTask.new("test:ui:quick") do |t|
+RSpec::Core::RakeTask.new("test:ui:quick") do |t|
   quick_specs = ["membership_test.rb", "event_test.rb"]
   ordered_specs = buildwise_ui_test_order(BUILDWISE_PROJECT_IDENTIFIER)
 	puts "XXX: #{ordered_specs.inspect}"
