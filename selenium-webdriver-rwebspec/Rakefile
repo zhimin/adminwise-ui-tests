@@ -43,7 +43,7 @@ RSpec::Core::RakeTask.new("test:ui") do |t|
   specs_to_be_executed -= excluded_test_files
 
   puts "[ORDER 4] Final ordering : #{specs_to_be_executed}"
-  t.pattern = FileList[specs_to_be_executed]
+  t.pattern = [specs_to_be_executed]
 end
 
 desc "run selected quick tests"
@@ -53,7 +53,7 @@ RSpec::Core::RakeTask.new("test:ui:quick") do |t|
 	puts "XXX: #{ordered_specs.inspect}"
 	specs_to_be_executed = ordered_specs & quick_specs
 	specs_to_be_executed = specs_to_be_executed.collect { |x| "#{$test_dir}/#{x}" } rescue nil
-  t.pattern = FileList[specs_to_be_executed]
+  t.pattern = [specs_to_be_executed]
 end
 
 task :go_all => ["ci:setup:rspec"] do

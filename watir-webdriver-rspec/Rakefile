@@ -18,6 +18,6 @@ end
 desc "run all tests in this folder"
 RSpec::Core::RakeTask.new("go") do |t|
   test_files = Dir.glob("*_spec.rb") + Dir.glob("*_test.rb") - excluded_test_files
-  t.pattern = FileList[test_files]
+  t.pattern = [test_files]
   t.warning = false
 end
