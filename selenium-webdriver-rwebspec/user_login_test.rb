@@ -19,26 +19,23 @@ specification "User Management" do
 
   story "[480] A registered user can login" do
     login_as("bob", "test")
-    save_page("C:\\tmp.html")
-    assert_link_present_with_text("logout")
-#    assert_link_present_with_text("Logout")
+    assert_link_present_with_text("Membership")
   end
 
   story "[480] Admin user can login" do
     login_as("admin", "test")
-    assert_link_present_with_text("control panel")
-#    assert_link_present_with_text("Control Panel")
+    assert_link_present_with_text("Control Panel")
   end
 
   story "[480] Admin user can login - invalid password" do
     login_as("admin", "badpass")
-    page_text.should contain("Invalid email or password.")
+    page_text.should contain("Invalid password")
   end
 
   story "[480] Admin user can login - try go the protected url" do
     visit "/events"
     sleep 1
-    page_text.should contain("You need to sign in or sign up before continuing.")
+    page_text.should contain("Not logged in")
   end
   
 end

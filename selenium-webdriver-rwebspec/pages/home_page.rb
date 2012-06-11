@@ -7,15 +7,16 @@ class HomePage < AbstractPage
   end
 
   def enter_username(username)
-    enter_text("user[username]", username)
+    enter_text("username", username)
   end
   
   def enter_password(password)
-    enter_text("user[password]", password)
+    enter_text("password", password)
   end
 
   def click_login
-    click_button("Log in")
+    click_button_with_id("signin_button")
   end
+  alias click_sign_in click_login
 
 end

@@ -22,9 +22,10 @@ class EventPage < AbstractPage
   end
   
   def click_update
-    click_button("Update")
+    click_button("Save")
   end
-    def enter_name(name)
+    
+  def enter_name(name)
     enter_text("event[name]", name)
   end
 

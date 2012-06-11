@@ -1,7 +1,7 @@
 class EventListPage < AbstractPage
 
   def initialize(browser)
-    super(browser, "Listing events") # <= 
+    super(browser, "Events") # <= 
   end
 
   def edit(index)

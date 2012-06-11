@@ -6,15 +6,15 @@ class CreateUserPage < AbstractPage
   end
 
   def enter_username(username)
-    enter_text("username", username)
+    enter_text("user[username]", username)
   end
 
   def enter_email(email)
-    enter_text("email", email)
+    enter_text("user[email]", email)
   end
 
   def enter_password(password)
-    enter_text("password", password)
+    enter_text("user[password]", password)
   end
 
   def click_create

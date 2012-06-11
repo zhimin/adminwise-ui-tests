@@ -6,7 +6,7 @@ class MembershipPage < AbstractPage
   end
 
   def add_member
-    click_link("Add member")
+    click_link("New Member")
   end
 
   def enter_first_name(member_fname)
@@ -66,12 +66,11 @@ class MembershipPage < AbstractPage
   end
 
   def click_membership
-    click_link("MEMBERSHIP")
-#    click_link("Membership")
+    click_link("Membership")
   end
 
   def click_add_member
-    click_link("Add member")
+    click_link("New Member")
   end
 
   def enter_organisation_name(member_oname)
