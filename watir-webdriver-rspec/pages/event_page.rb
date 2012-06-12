@@ -22,8 +22,8 @@ class EventPage < AbstractPage
     browser.text_field(:name, "event[date_from]").set event_date_from
   end
 
-  def click_update
-    browser.button(:value, "Update").click
+  def click_save
+    browser.button(:value, "Save").click
   end
 
   def enter_name(name)

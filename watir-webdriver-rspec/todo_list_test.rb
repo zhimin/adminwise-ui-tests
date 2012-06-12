@@ -11,8 +11,8 @@ describe "To Do List" do
   before(:each) do
     reset_database
     login_as("bob")
-    @browser.link(:text, "Todo lists").click
-    @browser.link(:text, "New Todo list").click
+    @browser.link(:text, "TODO Lists").click
+    @browser.link(:text, "New TODO list").click
     @browser.text_field(:name, "todo_list[name]").set("Collect parcel")
     @browser.button(:value, "Create").click
   end
@@ -26,7 +26,6 @@ describe "To Do List" do
   end
 
   it "can edit a Todo list name" do
-    @browser.link(:text, "Collect parcel").click
     @browser.link(:text, "Collect parcel").click
     @browser.text_field(:name, "todo_list[name]").set("Collect returned resources")
     @browser.button(:value, "Update").click

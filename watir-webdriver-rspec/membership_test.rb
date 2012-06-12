@@ -6,12 +6,12 @@ describe "Memebership" do
   before(:all) do
     @browser = Watir::Browser.new(browser_type)
     reset_database
-    logout
-    login_as("admin", "test")
+    failsafe{ logout } 
+    login_as("bob", "test")
   end
 
   after(:all) do
-    logout unless debugging?
+    failsafe{ logout } unless debugging?
     @browser.close unless debugging?
   end
 

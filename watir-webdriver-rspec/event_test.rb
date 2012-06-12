@@ -6,7 +6,7 @@ describe "Events" do
   before(:all) do
     @browser = Watir::Browser.new(browser_type)
     reset_database
-    logout
+    failsafe{ logout }
     login_as("admin")
   end
 
@@ -36,7 +36,7 @@ describe "Events" do
     event_list_page =  EventListPage.new(@browser)
     event_page = event_list_page.edit(1)
     event_page.enter_name("2010 Agileway Testing Conference")
-    event_page.click_update
+    event_page.click_save
     @browser.text.should include("2010 Agileway Testing Conference")
   end
 

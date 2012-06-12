@@ -5,7 +5,7 @@ class MembershipPage < AbstractPage
   end
 
   def add_member
-    browser.link(:text,"Add member").click
+    browser.link(:text,"New Member").click
   end
 
   def enter_first_name(member_fname)

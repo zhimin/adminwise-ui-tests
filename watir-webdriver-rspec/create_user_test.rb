@@ -15,9 +15,8 @@ describe "Create a new user as admin" do
 
   it "[482] Create new user, then login" do
     login_as("admin")
-    @browser.link(:text, "Control Panel").click
-    @browser.link(:text, "Manage Users").click
-    @browser.link(:text, "Add new user").click
+    @browser.link(:text, "Manage users").click
+    @browser.link(:text, "Add user").click
     
     create_user_page = CreateUserPage.new(@browser)
     create_user_page.enter_username("mike")
@@ -28,7 +27,7 @@ describe "Create a new user as admin" do
     
     logout
     login_as("mike", "pass")
-    assert_link_present_with_text("Logout") # checkpoint: login sucessuflly
+    logout # checkpoint: login sucessuflly
   end
 
 end

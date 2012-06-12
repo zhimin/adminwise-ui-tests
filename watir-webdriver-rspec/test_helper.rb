@@ -52,9 +52,17 @@ module TestHelper
   alias login login_as
 
   def logout
-    begin; @browser.link(:text, "Logout").click;  rescue => e; end
+    @browser.link(:id, "user_nav_link").click
+    sleep 0.5
+    @browser.link(:id, "sign_out_link").click
   end
 
+
+  def click_profile
+    @browser.link(:id, "user_nav_link").click
+    sleep 0.5
+    @browser.link(:id, "profile_link").click
+  end
 
   def reset_database
     begin
