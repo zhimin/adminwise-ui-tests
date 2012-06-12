@@ -84,7 +84,7 @@ specification "Memebership" do
   story "[16] Can browse past member" do
     click_link("Bob Builder")
     enter_text("member[end_date]", "2010-08-20")
-    click_button("Update Member")
+    click_button("Save")
     click_link("Browse current members")
     assert_link_not_present_with_text("Bob Builder")
     click_link("Browse members (including past)")

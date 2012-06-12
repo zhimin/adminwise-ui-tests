@@ -7,7 +7,7 @@ specification "Memeber Login" do
     open_browser
     reset_database
     failsafe{ logout }
-    login_as("admin", "test")
+    login_as("bob")
   end
 
   after(:all) do
@@ -26,7 +26,7 @@ specification "Memeber Login" do
     click_link("dsmith") # click new link to member login
     assert_link_present_with_text("David Smith")
 
-    click_link("Member logins")
+    click_link("Member Logins")
     enter_text("search", "dsmith")
     click_button("Search")
     assert_link_present_with_text("dsmith")

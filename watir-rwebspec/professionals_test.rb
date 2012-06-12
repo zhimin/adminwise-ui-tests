@@ -7,11 +7,10 @@ specification "Professionals" do
     open_browser
     reset_database
     failsafe{ logout }
-    login_as("admin")
+    login_as("bob")
   end
 
   before(:each) do
-   click_link("Administration")
    click_link("Professionals")
   end
     
