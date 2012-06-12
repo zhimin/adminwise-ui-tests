@@ -14,8 +14,8 @@ specification "Create a new call register" do
 
   before(:each) do
     reset_database
-    login_as("admin")
-    click_link("Answer call")
+    login_as("bob")
+    click_link("Answer Call")
     answer_call_page = expect_page AnswerCallPage
     answer_call_page.select_call_category("Resources")
     answer_call_page.enter_caller("Jesse Stewart")
@@ -33,7 +33,7 @@ specification "Create a new call register" do
   end
 
   story "[35] Can edit existing call register" do
-    click_link("Call register list")
+    click_link("Call Register")
     link(:text => "Edit", :index => 0).click
     # link(:text => "Edit", :index => 5).click
     click_radio_option("call[non_member]", "false")

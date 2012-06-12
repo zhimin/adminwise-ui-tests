@@ -15,8 +15,8 @@ specification "Create a new user as admin" do
   story "[19] Create new user, then login" do
     login_as("admin")
     click_link("Control Panel")
-    click_link("Manage Users")
-    click_link("Add new user")
+    click_link("Manage users")
+    click_link("Add user")
     
     create_user_page = expect_page CreateUserPage
     create_user_page.enter_username("mike")
@@ -27,7 +27,7 @@ specification "Create a new user as admin" do
     
     logout
     login_as("mike", "pass")
-    assert_link_present_with_text("Logout") # checkpoint: login sucessuflly
+    page_text.should contain("Sign in successfully")
   end
 
 end

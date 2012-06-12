@@ -13,8 +13,8 @@ class NewCorrespondencePage < AbstractPage
       enter_text("correspondence[description]", correspondence_description)
   end
   
-  def click_add
-      click_button("Add")
+  def click_create
+      click_button("Create")
   end
   
   def enter_sender_receiver(sender_receiver)

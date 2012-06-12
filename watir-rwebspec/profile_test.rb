@@ -16,7 +16,7 @@ specification "User Profile" do
 
   story "[8] User can change password" do
     login_as("bob", "test")
-    click_link("Profile")
+    click_profile
     click_link("Change password")
     
     password_change_page = expect_page PasswordChangePage
@@ -27,12 +27,13 @@ specification "User Profile" do
     
     page_text.should contain("Password doesn't match confirmation")
     password_change_page.enter_current("test")    
+    password_change_page.enter_new("newpass")    
     password_change_page.enter_confirm("newpass")
     password_change_page.click_button("Change")
 
     logout
     login_as("bob", "newpass")
-    assert_link_present_with_text("Profile") # login Ok
+    page_text.should contain("Sign in successfully")
   end
 
 end

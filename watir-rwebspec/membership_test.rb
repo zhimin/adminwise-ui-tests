@@ -7,7 +7,7 @@ specification "Memebership" do
     open_browser
     reset_database
     failsafe{ logout }
-    login_as("admin", "test")
+    login_as("bob", "test")
   end
 
   after(:all) do

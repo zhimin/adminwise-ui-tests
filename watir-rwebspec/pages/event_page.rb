@@ -21,10 +21,11 @@ class EventPage < AbstractPage
     enter_text("event[date_from]", event_date_from)
   end
   
-  def click_update
-    click_button("Update")
+  def click_save
+    click_button("Save")
   end
-    def enter_name(name)
+  
+  def enter_name(name)
     enter_text("event[name]", name)
   end
     

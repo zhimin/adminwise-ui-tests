@@ -6,7 +6,7 @@ class MembershipPage < AbstractPage
   end
 
   def add_member
-    click_link("Add member")
+    click_link("New Member")
   end
 
   def enter_first_name(member_fname)
@@ -62,7 +62,7 @@ class MembershipPage < AbstractPage
   end
 
   def click_create_member
-    click_button("Create Member")
+    click_button("Create")
   end
 
   def click_membership
@@ -90,7 +90,7 @@ class MembershipPage < AbstractPage
   end
   
   def click_update_member
-      click_button("Update Member")
+      click_button("Save")
   end
   
   def enter_suburb(member_suburb)

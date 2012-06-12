@@ -15,8 +15,9 @@ specification "To Do List" do
 
   before(:each) do
     goto_page("/")
-    refresh 
-    click_link("Todo lists")
+    refresh
+    click_link("TODO Lists")
+    click_link("New TODO list")
   end
   
   after(:all) do
@@ -24,26 +25,22 @@ specification "To Do List" do
   end
 
   story "[37] Create a new Todo list" do
-    click_link("New Todo list")
     enter_text("todo_list[name]", "Office work")
     click_button("Create")
     assert_link_present_with_text("Office work")
   end
 
   story "[38] Can edit a Todo list name" do
-    click_link("New Todo list")
     enter_text("todo_list[name]", "Collect parcel")
     click_button("Create")    
-    click_link("Collect parcel")
     click_link("Collect parcel") # second link for is for editing
     enter_text("todo_list[name]", "Office work has to be done by Monday")
-    click_button("Update")
+    click_button("Save")
     refresh # IE not refresh
     assert_link_present_with_text("Office work has to be done by Monday")
   end
 
   story "[39] Can add a new task in existing todo list" do
-    click_link("New Todo list")
     enter_text("todo_list[name]", "Office work has to be done by Monday")    
     click_button("Create")        
 
@@ -59,10 +56,10 @@ specification "To Do List" do
   #
   # Also smart to calculate last entry
   story "[40] Can delete Todo list" do
-    click_link("New Todo list")
     enter_text("todo_list[name]", "Not important")    
     click_button("Create")    
     assert_link_present_with_text("Not important")
+    click_link("TODO Lists")
     # Alternative way is to use Popup Handler: http://testwisely.com/en/testwise/docs/recipes
     del_link_ids = []
     browser.links.each_with_index do |x, xid|

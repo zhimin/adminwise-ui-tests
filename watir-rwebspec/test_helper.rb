@@ -35,9 +35,17 @@ module TestHelper
   alias login login_as
 
   def logout
-    failsafe { click_link("Logout") }
+    click_link_with_id("user_nav_link")
+    sleep 0.5
+    click_link_with_id("sign_out_link")
   end
 
+  def click_profile
+    click_link_with_id("user_nav_link")
+    sleep 0.5
+    click_link_with_id("profile_link")
+  end
+  
   def reset_database(background = false)
     if background
       begin

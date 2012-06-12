@@ -19,7 +19,7 @@ specification "User Management" do
 
   story "[1] A registered user can login", :critical do
     login_as("bob", "test")
-    assert_link_present_with_text("Logout")
+    page_text.should contain("Sign in successfully")
   end
 
   story "[27] Admin user can login" do
@@ -27,15 +27,15 @@ specification "User Management" do
     assert_link_present_with_text("Control Panel")
   end
 
-  story "[28] Anonymous user cannot login - invalid password", :critical do
+  story "[28] Anonymous user cannot login - invalid password", :tag => "critical" do
     login_as("admin", "badpass")
-    page_text.should contain("Invalid email or password.")
+    page_text.should contain("Invalid password")
   end
 
   story "[29] Anonymous user cannot login - try go the protected url directly" do
     visit "/events"
     #sleep 1
-    page_text.should contain("You need to sign in or sign up before continuing.")
+    page_text.should contain("Not logged in")
   end
   
 end

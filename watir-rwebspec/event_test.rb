@@ -39,7 +39,7 @@ test_suite "Events" do
     event_page = event_list_page.edit(0)
     event_page.enter_name("2010 Agileway Testing Conference")
     event_page.enter_date_from("2011-07-27")
-    event_page.click_update
+    event_page.click_save
     assert_text_present("2010 Agileway Testing Conference")
     click_link("Events")
     refresh # if ie

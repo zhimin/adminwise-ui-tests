@@ -1,23 +1,22 @@
-
 class CreateUserPage < AbstractPage
 
-  def initialize(browser)
-    super(browser, "Register")
+  def initialize(driver)
+    super(driver, "Register")
   end
 
   def enter_username(username)
-    enter_text("username", username)
+    browser.text_field(:name, "user[username]").set username
   end
 
   def enter_email(email)
-    enter_text("email", email)
+    browser.text_field(:name, "user[email]").set email
   end
 
   def enter_password(password)
-    enter_text("password", password)
+    browser.text_field(:name, "user[password]").set password
   end
 
   def click_create
-    click_button("Create User")
+    browser.button(:value, "Create User").click
   end
 end
