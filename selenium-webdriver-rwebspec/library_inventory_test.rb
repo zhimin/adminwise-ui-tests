@@ -7,7 +7,7 @@ specification "Library: Add resourses" do
     open_browser
     reset_database
     failsafe{ logout }
-    login_as("admin")
+    login_as("bob")
   end
 
   after(:all) do
@@ -15,8 +15,8 @@ specification "Library: Add resourses" do
   end
 
   before(:each) do
-    visit "/home"
-    click_link("LIBRARY")
+    visit "/"
+    click_link("Library")
     # click_link("Library") # works for Watir
 #    browser.find_elements(:tag_name, "a").each do |x| 
 #      debug "|" + x.text + "|"

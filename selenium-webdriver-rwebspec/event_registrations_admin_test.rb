@@ -7,13 +7,12 @@ test_suite "Event Registrations as Admin" do
     open_browser
     reset_database
     failsafe{ logout }
-    login_as("admin")
+    login_as("bob")
   end
 
   before(:each) do
     visit "/home"
-#    click_link("Events")
-    click_link("EVENTS")
+    click_link("Events")
     event_list_page = expect_page EventListPage
     click_link("ABIQ 2011 Autism Conference")
   end

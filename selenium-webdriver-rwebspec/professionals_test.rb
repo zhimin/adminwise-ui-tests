@@ -28,7 +28,7 @@ specification "Professionals" do
     new_professional_page.enter_contact("Jenny")
     new_professional_page.enter_organisation_name("Focus Speech")
     new_professional_page.click_create
-    try(10) { page_text.should contain("Professionals List") }
+    try(10) { page_text.should contain("Professionals") }
     page_text.should contain("Jane Steel")
   end
   

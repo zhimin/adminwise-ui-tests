@@ -16,9 +16,8 @@ specification "Library: Borrowing and Lending" do
   end
 
   before(:each) do
-    visit "/home"
-    click_link("LIBRARY")
-#    click_link("Library")
+    visit "/"
+    click_link("Library")
   end
 
   after(:each) do
