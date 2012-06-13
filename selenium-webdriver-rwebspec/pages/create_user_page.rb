@@ -18,6 +18,6 @@ class CreateUserPage < AbstractPage
   end
 
   def click_create
-    click_button("Create User")
+    click_button("Create")
   end
 end

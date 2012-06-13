@@ -7,7 +7,7 @@ specification "Create a new call register" do
     open_browser
     reset_database
     failsafe{ logout }
-    login_as("admin")
+    login_as("bob")
   end
 
   after(:all) do
@@ -16,7 +16,7 @@ specification "Create a new call register" do
   end
 
   before(:each) do
-    click_link("Answer call")
+    click_link("Answer Call")
     answer_call_page = expect_page AnswerCallPage
     answer_call_page.select_call_category("Resources")
     answer_call_page.enter_caller("Jesse Stewart")
@@ -33,7 +33,7 @@ specification "Create a new call register" do
     click_link("Call register list")
     click_link("Edit")
     # link(:text => "Edit", :index => 5).click
-    click_radio_option("call[non_member]", "false")
+    click_radio_option("call_register[non_member]", "false")
     click_button("Update")
     # now shall not be a member
     click_link("Edit")

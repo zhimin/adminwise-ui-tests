@@ -20,8 +20,7 @@ specification "Memeber Login" do
   end
 
   story "[495] Admin can generate a login for an existing member" do
-    click_link("MEMBERSHIP")
-#    click_link("Membership")
+    click_link("Membership")
     click_link("David Smith")
     click_button("Generate login")
     sleep 1
