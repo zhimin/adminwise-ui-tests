@@ -44,7 +44,7 @@ test_suite "Event Registrations as Admin" do
     page_text.should include("Your registration for Wise Testing Conference has been received")
     visit"/events"
     click_link_with_text ("Wise Testing Conference")
-    assert_link_present_with_text("Pending 1")
+    assert_link_present_with_text("Pending (1)")
   end
 
   test "[33] Admin user can register a staff " do
