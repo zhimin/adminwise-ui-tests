@@ -41,7 +41,7 @@ specification "To Do List" do
   end
 
   story "[39] Can add a new task in existing todo list" do
-    enter_text("todo_list[name]", "Office work has to be done by Monday")    
+    enter_text("todo_list[name]", "Office work has to be done by Tuesday")    
     click_button("Create")        
 
     click_link("New task")
