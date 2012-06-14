@@ -15,7 +15,7 @@
       <base_url>http://adminwise.macmini</base_url>
     </entry>
     <entry default="true" name="test">
-      <base_url>http://adminwise.heroku.com</base_url>
+      <base_url>http://adminwise.herokuapp.com</base_url>
     </entry>
     <entry default="false" name="uat">
       <base_url>http://192.168.1.101:3000</base_url>

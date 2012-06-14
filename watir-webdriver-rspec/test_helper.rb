@@ -12,7 +12,7 @@ require "#{File.dirname(__FILE__)}/testwise_support.rb"
 
 # The default base URL for running from command line or continuous build process
 # pass ENV here, so that can be dynamcially changed when running in CI server such as BuildWise
-$BASE_URL =  ENV['ADMINWISE_URL'] || "http://adminwise.heroku.com"
+$BASE_URL =  ENV['ADMINWISE_URL'] || "http://adminwise.herokuapp.com"
 
 # This is the helper for your tests, every test file will include all the operation
 # defined here.
@@ -30,7 +30,7 @@ module TestHelper
   end
   alias the_browser browser_type
 
-  def site_url(default = "http://adminwise.heroku.com")
+  def site_url(default = "http://adminwise.herokuapp.com")
     $TESTWISE_PROJECT_BASE_URL || default
   end
 

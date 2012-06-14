@@ -15,7 +15,7 @@ require "#{File.dirname(__FILE__)}/rwebspec_utils.rb"
 require "#{File.dirname(__FILE__)}/testwise_support.rb"
 
 
-$BASE_URL = $TESTWISE_PROJECT_BASE_URL || ENV["ADMINWISE_URL"] || "http://adminwise.heroku.com"
+$BASE_URL = $TESTWISE_PROJECT_BASE_URL || ENV["ADMINWISE_URL"] || "http://adminwise.herokuapp.com"
 
 browser_type = $TESTWISE_BROWSER.downcase.to_sym rescue nil  # set by TestWise if running in TestWise
 browser_type ||= (RUBY_PLATFORM =~ /mingw/ ? :ie : :firefox)

@@ -15,7 +15,7 @@ require "#{File.dirname(__FILE__)}/rwebspec_utils.rb"
 require "#{File.dirname(__FILE__)}/testwise_support.rb"
 
 $BASE_URL = $TESTWISE_PROJECT_BASE_URL
-$BASE_URL ||= "http://adminwise.heroku.com" # Change here
+$BASE_URL ||= "http://adminwise.herokuapp.com" # Change here
 
 World(Test::Unit::Assertions)
 

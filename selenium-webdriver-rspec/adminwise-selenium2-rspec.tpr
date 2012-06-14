@@ -15,7 +15,7 @@
       <base_url>http://10.0.0.3:3000</base_url>
     </entry>
     <entry name="test" default="true">
-      <base_url>http://adminwise.heroku.com</base_url>
+      <base_url>http://adminwise.herokuapp.com</base_url>
     </entry>
     <entry name="uat" default="false">
       <base_url>http://192.168.1.101:3000</base_url>

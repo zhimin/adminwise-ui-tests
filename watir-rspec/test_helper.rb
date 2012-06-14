@@ -14,7 +14,7 @@ Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 Watir::Browser.default = 'ie'
 
 
-$BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.heroku.com"
+$BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.herokuapp.com"
 #localhost:2800"
 #$BASE_URL = "http://demo.adminwise.com"
 #$BASE_URL = "http://adminwise.macmini"
