@@ -30,14 +30,14 @@ specification "Create a new call register" do
   end
 
   story "Can edit existing call register" do
-    click_link("Call register list")
+    click_link("Call register")
     click_link("Edit")
     # link(:text => "Edit", :index => 5).click
     click_radio_option("call_register[non_member]", "false")
-    click_button("Update")
+    click_button("Save")
     # now shall not be a member
     click_link("Edit")
-    assert_radio_option_checked("call[non_member]", "false")
+    assert_radio_option_checked("call_register[non_member]", "false")
   end
 
   # end of all test cases in this file
