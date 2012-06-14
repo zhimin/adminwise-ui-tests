@@ -45,8 +45,8 @@ class MembershipPage < AbstractPage
     enter_text("member[email]", member_email)
   end
 
-  def click_member_type(member_member_type)
-    click_radio_option("member[member_type]", member_member_type)
+  def select_member_type(member_member_type)
+    select_option("member[member_type]", member_member_type)
   end
 
   def click_mail_out(member_mail_out)

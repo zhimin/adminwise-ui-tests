@@ -33,15 +33,15 @@ specification "Create a new call register" do
   end
 
   story "[35] Can edit existing call register" do
-    click_link("Call Register")
+    click_link("Call register")
     link(:text => "Edit", :index => 0).click
     # link(:text => "Edit", :index => 5).click
-    click_radio_option("call[non_member]", "false")
-    click_button("Update")
+    click_radio_option("call_register[non_member]", "false")
+    click_button("Save")
     # now shall not be a member
     link(:text => "Edit", :index => 0).click
     refresh # sometimes IE caches it
-    assert_radio_option_checked("call[non_member]", "false")
+    assert_radio_option_checked("call_register[non_member]", "false")
   end
 
 

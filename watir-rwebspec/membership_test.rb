@@ -43,7 +43,7 @@ specification "Memebership" do
     membership_page.enter_phone("33440566")
     membership_page.enter_mobile("0411231764")
     membership_page.enter_email("cindy@agileway.com.au")
-    membership_page.click_member_type("family_1")
+    membership_page.select_member_type("Family")
     membership_page.click_mail_out("true")
     membership_page.click_doing_aba("true")
     membership_page.select_aware_from("family/ friend")
@@ -64,7 +64,7 @@ specification "Memebership" do
     membership_page.enter_postcode("4054")
     membership_page.enter_phone("3972 5844")
     membership_page.enter_email("mwind@carelink.com.au")
-    membership_page.click_member_type("school")
+    membership_page.select_member_type("School/Organisation")
     membership_page.select_aware_from("conference/ workshop")
     membership_page.click_create_member
     membership_page.click_membership
