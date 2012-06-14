@@ -14,7 +14,7 @@ test_suite "Event Registrations as Admin" do
     visit "/home"
     click_link("Events")
     event_list_page = expect_page EventListPage
-    click_link("ABIQ 2011 Autism Conference")
+    click_link("Wise Testing Conference")
   end
 
   after(:each) do
@@ -39,7 +39,7 @@ test_suite "Event Registrations as Admin" do
     event_registration_page.click_register
 
     click_button("Confirm")
-    page_text.should include("Your registration for ABIQ 2011 Autism Conference has been received")
+    page_text.should include("Your registration for Wise Testing Conference has been received")
   end
 
 #  test "Admin user can register a staff " do

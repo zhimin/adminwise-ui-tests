@@ -10,7 +10,7 @@ class LibraryPage < AbstractPage
   end
 
   def add_new_resources
-    click_link("Add new resources")
+    click_link("New Resource")
   end
 
   def enter_query(q)

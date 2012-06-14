@@ -31,15 +31,14 @@ specification "Library: Add resourses" do
   story "[489] Admin user can add a new library resource manually" do
     library_page = expect_page LibraryPage
     library_page.add_new_resources
-    library_page.add_manually
+    #    library_page.add_manually
     new_resource_page = expect_page NewResourcePage
     new_resource_page.enter_title("The Other Country")
     new_resource_page.enter_authors("Michael Whelan")
     new_resource_page.select_subject("Families")
     new_resource_page.click_create
     click_button("Save")
-    # click_link("Library")
-    click_link("LIBRARY")
+    click_link("Library")
     enter_text("q", "The Other Country")
     click_button("search")
     try(3) { page_text.should include("matches for 'The Other Country'")}
