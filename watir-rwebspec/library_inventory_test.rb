@@ -27,7 +27,7 @@ specification "Library: Add resourses" do
   story "[20] Admin user can add a new library resource manually" do
     library_page = expect_page LibraryPage
     library_page.add_new_resources
-    library_page.add_manually
+#    library_page.add_manually
     new_resource_page = expect_page NewResourcePage
     new_resource_page.enter_title("The Other Country")
     new_resource_page.enter_authors("Michael Whelan")

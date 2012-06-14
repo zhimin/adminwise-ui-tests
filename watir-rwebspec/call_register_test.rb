@@ -46,10 +46,8 @@ specification "Create a new call register" do
 
 
   story "[36] Can create an Excel report from Call Register" do
-    link(:text => "Reports", :index => 1).click
-    assert_link_present_with_text("Export to Excel")
-    # click_link("Export to Excel")
-    # page_text.should include("DATE_TIME")
+    click_link("Call register")
+    assert_link_present_with_text("Export")
   end  
    
 
