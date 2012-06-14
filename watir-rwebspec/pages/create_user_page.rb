@@ -17,6 +17,6 @@ class CreateUserPage < AbstractPage
   end
 
   def click_create
-    browser.button(:value, "Create User").click
+    browser.button(:value, "Create").click
   end
 end

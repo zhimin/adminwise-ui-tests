@@ -44,7 +44,6 @@ specification "To Do List" do
     enter_text("todo_list[name]", "Office work has to be done by Monday")    
     click_button("Create")        
 
-    click_link("Office work has to be done by Monday")
     click_link("New task")
     enter_text("task[description]", "agenda for Tuesday meeting ")
     enter_text("task[notes]", "Write up agenda for Tuesday meeting including new business from last meeting ")
