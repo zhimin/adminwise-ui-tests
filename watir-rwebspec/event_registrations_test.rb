@@ -72,7 +72,7 @@ test_suite "Event Registrations" do
     login_as("admin")
     click_link("Events")
     click_link("CITCON 2011")
-    click_link("Pending #{$pending_count}")
+    click_link("Pending (#{$pending_count})")
     page_text.should contain("Eileen Fa")
 
   end
