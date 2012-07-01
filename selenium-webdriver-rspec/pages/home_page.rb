@@ -7,15 +7,15 @@ class HomePage < AbstractPage
   end
   
   def enter_login(username)
-    browser.find_element(:name, "user[username]").send_keys(username)
+    browser.find_element(:name, "username").send_keys(username)
   end
 
   def enter_password(password)
-    browser.find_element(:name, "user[password]").send_keys(password)
+    browser.find_element(:name, "password").send_keys(password)
   end
   
   def click_login
-    browser.find_element(:name, "user[password]").submit();
+    browser.find_element(:name, "password").submit();
   end
   
 end

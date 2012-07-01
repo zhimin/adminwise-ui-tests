@@ -1,6 +1,10 @@
 # Extract from RWebSpec to use 
 module RWebSpecUtils
 
+  def use_current_browser
+    @browser = @driver = $browser
+  end
+  
 	# Try the operation up to specified timeout (in seconds), and sleep given interval (in seconds).
   # Error will be ignored until timeout
   # Example

@@ -7,7 +7,11 @@ Given /^I login as "(.*?)" and on Password Change Page$/ do |username|
   home_page.enter_login(username)
   home_page.enter_password("test")
   home_page.click_login
-  @browser.link(:text, "Profile").click
+
+  @browser.link(:id, "user_nav_link").click
+  sleep 0.5
+  @browser.link(:id, "profile_link").click
+
   @browser.link(:text, "Change password").click        
   @password_change_page = PasswordChangePage.new(@browser)
   # @password_change_page = Object.const_get(page_name.gsub(" ","")).new(@browser)

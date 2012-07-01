@@ -24,7 +24,7 @@ describe "User Management" do
 
   it "[480] Admin user can login" do
     login_as("admin", "test")
-    assert_link_present_with_text("Control Panel")
+    assert_link_present_with_text("Administration")
   end
 
   it "[480] Admin user can login - invalid password", :tag => "critical" do

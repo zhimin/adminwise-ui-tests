@@ -4,7 +4,7 @@ require 'httpclient'
 require 'timeout'
 
 # use utils in RWebSpec and better integration with TestWise
-require "#{File.dirname(__FILE__)}/rwebspec_utils.rb"
+load "#{File.dirname(__FILE__)}/rwebspec_utils.rb"
 require "#{File.dirname(__FILE__)}/testwise_support.rb"
 
 require File.join(File.dirname(__FILE__), "pages", "abstract_page.rb")
@@ -58,7 +58,7 @@ module TestHelper
     if throw_errror
       # Somehoe: Selenium-webdriver 2.2 does not click the logout link (by text or id)
       # @browser.find_element(:id, "logout_link").click
-      visit("/users/sign_out")
+      visit("/sign_out")
     else
       fail_safe { @browser.find_element(:id, "logout_link").click }
     end
