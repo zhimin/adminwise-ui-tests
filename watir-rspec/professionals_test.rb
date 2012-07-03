@@ -7,11 +7,10 @@ describe "Professionals" do
     @browser = Watir::Browser.new
     reset_database
     logout
-    login_as("admin")
+    login_as("bob")
   end
 
   before(:each) do
-   @browser.link(:text, "Administration").click
    @browser.link(:text, "Professionals").click
   end
     

@@ -8,7 +8,7 @@ describe "Event Registrations" do
   before(:all) do
     @browser = Watir::Browser.new
     reset_database
-     logout 
+    logout 
     $pending_count = 1 # default
   end
 
@@ -71,7 +71,7 @@ describe "Event Registrations" do
     
     @browser.link(:text, "Events").click
     @browser.link(:text, "CITCON 2011").click
-    @browser.link(:text, "Pending #{$pending_count}").click
+    @browser.link(:text, "Pending (#{$pending_count})").click
     @browser.text.should include("Eileen Fa")
   end
 
