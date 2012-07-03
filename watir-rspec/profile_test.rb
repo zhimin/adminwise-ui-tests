@@ -16,10 +16,13 @@ describe "User Profile" do
 
   it "[481] User can change password", :tag => "must" do
     login_as("bob", "test")
-    @browser.link(:text, "Profile").click    
+    @browser.link(:id, "user_nav_link").click;
+    sleep 0.5
+    @browser.link(:id, "profile_link").click;
+
     @browser.link(:text, "Change password").click    
     
-    password_change_page =  PasswordChangePage.new(@browser)
+    password_change_page = PasswordChangePage.new(@browser)
     password_change_page.enter_current("test")
     password_change_page.enter_new("newpass")
     password_change_page.enter_confirm("newpass2")
@@ -27,12 +30,13 @@ describe "User Profile" do
     
     @browser.text.should include("Password doesn't match confirmation")
     password_change_page.enter_current("test")
+    password_change_page.enter_new("newpass")
     password_change_page.enter_confirm("newpass")
     password_change_page.click_change
 
     logout
     login_as("bob", "newpass")
-    assert_link_present_with_text("Profile") # login Ok
+    @browser.text.should include("Sign in successfully")
   end
 
 end

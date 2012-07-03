@@ -13,7 +13,6 @@ Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 
 Watir::Browser.default = 'ie'
 
-
 $BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.herokuapp.com"
 #localhost:2800"
 #$BASE_URL = "http://demo.adminwise.com"
@@ -40,7 +39,11 @@ module TestHelper
   alias login login_as
 
   def logout
-    begin; @browser.link(:text, "Logout").click;  rescue => e; end
+    begin;
+      @browser.link(:id, "user_nav_link").click;
+      sleep 0.5
+      @browser.link(:id, "sign_out_link").click;
+    rescue => e; end
   end
 
 

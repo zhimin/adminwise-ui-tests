@@ -23,7 +23,7 @@ class EventPage < AbstractPage
   end
 
   def click_update
-    browser.button(:value, "Update").click
+    browser.button(:value, "Save").click
   end
 
   def enter_name(name)

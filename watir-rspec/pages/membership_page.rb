@@ -44,8 +44,8 @@ class MembershipPage < AbstractPage
     browser.text_field(:name, "member[email]").set member_email
   end
 
-  def click_member_type(member_member_type)
-    browser.radio(:name => "member[member_type]", :value => member_member_type).set
+  def select_member_type(member_member_type)
+    browser.select_list(:name, "member[member_type]").select member_member_type
   end
 
   def click_mail_out(member_mail_out)
@@ -61,7 +61,7 @@ class MembershipPage < AbstractPage
   end
 
   def click_create_member
-    browser.button(:value, "Create Member").click
+    browser.button(:value, "Create").click
   end
 
   def click_membership
