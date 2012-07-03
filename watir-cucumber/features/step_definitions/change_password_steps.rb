@@ -43,9 +43,13 @@ Then /^I can relogin as "(.*?)" with new password "(.*?)"$/ do |username, new_pa
   home_page.enter_login(username)
   home_page.enter_password(new_pass)
   home_page.click_login
-  @browser.link(:text, "Profile").click
+  @browser.link(:id, "user_nav_link").click;
+  sleep 0.5
+  @browser.link(:id, "profile_link").click;
 end
 
 def logout
-  @browser.link(:text, "Logout").click;
+  @browser.link(:id, "user_nav_link").click;
+  sleep 0.5
+  @browser.link(:id, "sign_out_link").click;
 end

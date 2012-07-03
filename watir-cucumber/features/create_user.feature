@@ -3,7 +3,7 @@ Feature: Create a new user
   I want to create a new user
 
 Scenario: Admin can create a new user
-  Given I login as "admin" and on Control Panel page then on manage user page
-  And I click link "Add new user"
-  And I enter username "KDay" and email "kellyD@gmail.com" and enter password "letme" then I click "Create User"
+  Given I login as "admin" and on manage user page
+  And I click link "Add user"
+  And I enter username "KDay" and email "kellyD@gmail.com" and enter password "letme" then I click "Create"
   Then I can click link "KDay" in Users
