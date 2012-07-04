@@ -8,7 +8,7 @@ describe "Memebership" do
     @browser.navigate.to($BASE_URL)
     reset_database
     fail_safe{ logout }
-    login_as("admin", "test")
+    login_as("bob", "test")
   end
 
   after(:all) do
@@ -22,18 +22,18 @@ describe "Memebership" do
 
   it "Admin user can search an existing member by surname " do
     @browser.find_element(:name, "search").send_keys("Smith")
-    @browser.find_element(:id, "member_search_btn").click
+    @browser.find_element(:name, "search").submit
     @browser.page_source.should include("David Smith")
   end
-  
+
   it "Admin user can search an existing member by membership number" do
     @browser.find_element(:name, "search").send_keys("30002")
     @browser.find_element(:name, "search").submit # use different way from above
     assert_link_present_with_text("David Smith")
   end
-  
+
   it "[493] Admin user can create a new family member" do
-    @browser.find_element(:link_text, "MEMBERSHIP").click # NOTES [Watir] 'Membership'
+    @browser.find_element(:link_text, "Membership").click
     membership_page = MembershipPage.new(@browser)
     membership_page.add_member
     membership_page.enter_first_name("Cindy")
@@ -45,9 +45,8 @@ describe "Memebership" do
     membership_page.enter_phone("33440566")
     membership_page.enter_mobile("0411231764")
     membership_page.enter_email("cindy@agileway.com.au")
-    membership_page.click_member_type("family_1")
+    membership_page.select_member_type("Family")
     membership_page.click_mail_out("true")
-    membership_page.click_doing_aba("true")
     membership_page.select_aware_from("family/ friend")
     membership_page.click_create_member
     membership_page.click_membership
@@ -66,7 +65,7 @@ describe "Memebership" do
     membership_page.enter_postcode("4054")
     membership_page.enter_phone("3972 5844")
     membership_page.enter_email("mwind@carelink.com.au")
-    membership_page.click_member_type("school")
+    membership_page.select_member_type("School/Organisation")
     membership_page.select_aware_from("conference/ workshop")
     membership_page.click_create_member
     membership_page.click_membership

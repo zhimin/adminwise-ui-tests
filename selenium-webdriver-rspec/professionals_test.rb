@@ -12,7 +12,6 @@ describe "Professionals" do
   end
 
   before(:each) do
-   @browser.find_element(:link_text, "ADMINISTRATION").click
    @browser.find_element(:link_text, "Professionals").click
   end
     
@@ -34,9 +33,9 @@ describe "Professionals" do
   end
   
   it "[497] Admin user sort professional by category" do
-    @browser.find_element(:link_text, "CATEGORY").click # NOTEs [Watir]  'Category' 
+    @browser.find_element(:link_text, "Category").click
     try_until(3) { @browser.find_element(:id, "category_0").text.should == "Speech Pathlogists" }
-    @browser.find_element(:link_text, "CATEGORY").click  
+    @browser.find_element(:link_text, "Category").click  
     try_until(3) { @browser.find_element(:id, "category_0").text.should == "Auditory Integration Training" }
   end
   

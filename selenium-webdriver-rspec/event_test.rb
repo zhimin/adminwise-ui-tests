@@ -8,13 +8,13 @@ describe "Events" do
     @browser.navigate.to($BASE_URL)
     reset_database
     fail_safe{ logout }
-    login_as("admin")
+    login_as("bob")
   end
 
 
   before(:each) do
     visit "/"
-    @browser.find_element(:link_text, "EVENTS").click
+    @browser.find_element(:link_text, "Events").click
   end
 
   after(:all) do

@@ -20,23 +20,23 @@ describe "User Management" do
 
   it "[480] A registered user can login" do
     login_as("bob", "test")
-    assert_link_present_with_text("logout") # NOTE [Watir] link shown as Logout
+    @browser.page_source.should include("Sign in successfully")
   end
 
   it "[480] Admin user can login" do
     login_as("admin", "test")
-    assert_link_present_with_text("control panel") # NOTE [Watir] link shown as Control Panel
+    assert_link_present_with_text("Administration") 
   end
 
   it "[480] Admin user can login - invalid password" do
     login_as("admin", "badpass")
-    @browser.page_source.should include("Invalid email or password.")
+    @browser.page_source.should include("Invalid password")
   end
 
   it "[480] Admin user can login - try go the protected url" do
     visit "/events"
     sleep 1
-    @browser.page_source.should include("You need to sign in or sign up before continuing.")
+    @browser.page_source.should include("Not logged in")
   end
   
 end

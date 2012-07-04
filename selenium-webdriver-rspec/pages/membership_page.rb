@@ -49,10 +49,8 @@ class MembershipPage < AbstractPage
     browser.find_element(:name, "member[email]").send_keys(member_email)
   end
 
-  def click_member_type(member_type)
-    radio_group =  "member[member_type]"
-    radio_option = member_type
-    browser.find_element(:xpath, "//input[@type='radio' and @name='#{radio_group}' and @value='#{radio_option}']").click
+  def select_member_type(member_type)
+    Selenium::WebDriver::Support::Select.new(browser.find_element(:id, "member_member_type")).select_by(:text, member_type)
   end
 
   def click_mail_out(member_mail_out)
@@ -73,12 +71,11 @@ class MembershipPage < AbstractPage
   end
 
   def click_create_member
-    browser.find_element(:id, "member_submit").click
-    # click_button("Create Member")
+    browser.find_element(:name, "commit").click
   end
 
   def click_membership
-    browser.find_element(:link_text, "MEMBERSHIP").click
+    browser.find_element(:link_text, "Membership").click
   end
 
   def enter_organisation_name(member_oname)

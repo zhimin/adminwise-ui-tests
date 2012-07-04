@@ -3,11 +3,11 @@
 class EventListPage < AbstractPage
 
   def initialize(driver)
-    super(driver, "Listing events") # <= 
+    super(driver, "Events")
   end
 
   def edit(index)
-    browser.find_element(:id,"edit_#{index}").click
+    browser.find_element(:id, "edit_#{index}").click
     EventPage.new(browser)
   end
   
