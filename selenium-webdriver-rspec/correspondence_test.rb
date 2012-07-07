@@ -5,7 +5,7 @@ describe "Correspondence" do
 
   before(:all) do
     @browser = $browser = Selenium::WebDriver.for(browser_type) # or :ie, :firefox, :chrome
-    @browser.navigate.to($BASE_URL)
+    @browser.navigate.to($TESTWISE_PROJECT_BASE_URL || $BASE_URL)
     reset_database
     failsafe{ logout }
     login_as("bob")

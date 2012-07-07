@@ -7,7 +7,7 @@ describe "Event Registrations" do
 
   before(:all) do
     @browser = $browser = Selenium::WebDriver.for(browser_type) 
-    @browser.navigate.to($BASE_URL)
+    @browser.navigate.to($TESTWISE_PROJECT_BASE_URL || $BASE_URL)
     reset_database
     fail_safe { logout }
     $pending_count = 1 # default

@@ -5,7 +5,7 @@ describe "Library: Add resourses" do
 
   before(:all) do
     @browser = $browser = Selenium::WebDriver.for(browser_type)
-    @browser.navigate.to($ITEST2_PROJECT_BASE_URL || $BASE_URL)
+    @browser.navigate.to($TESTWISE_PROJECT_BASE_URL || $BASE_URL)
     reset_database
     fail_safe{ logout }
     login_as("bob")
@@ -17,7 +17,7 @@ describe "Library: Add resourses" do
   end
 
   before(:each) do
-    visit "/home"
+    visit "/"
     @browser.find_element(:link_text, "Library").click
   end
 

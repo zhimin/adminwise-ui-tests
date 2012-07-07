@@ -5,7 +5,7 @@ describe "User Management" do
 
   before(:all) do
     @browser = Selenium::WebDriver.for(browser_type)
-    @browser.navigate.to($BASE_URL)
+    @browser.navigate.to($TESTWISE_PROJECT_BASE_URL || $BASE_URL)
     fail_safe{ logout }
     reset_database
   end
