@@ -1,13 +1,12 @@
-# load File.dirname(__FILE__) + '/maybe_your_template_page.rb'
 
 class LibraryReturnPage < AbstractPage
 
   def initialize(driver)
-    super(driver, "") # <= 
+    super(driver, "Library - Return Resources")
   end
 
   def click_process
-    click_button("Process")
+    browser.find_element(:id, "process_btn").click
   end
   
   def enter_resource(resource)
@@ -15,7 +14,7 @@ class LibraryReturnPage < AbstractPage
   end
   
   def click_find
-    click_button("Find")
+    browser.find_element(:id, "find_resource_item").click
   end
 
 end

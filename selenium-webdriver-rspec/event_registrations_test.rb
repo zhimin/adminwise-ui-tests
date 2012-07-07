@@ -6,7 +6,7 @@ describe "Event Registrations" do
   include TestHelper
 
   before(:all) do
-    @browser = Selenium::WebDriver.for(browser_type) 
+    @browser = $browser = Selenium::WebDriver.for(browser_type) 
     @browser.navigate.to($BASE_URL)
     reset_database
     fail_safe { logout }
@@ -72,9 +72,10 @@ describe "Event Registrations" do
     visit "/"
     # refresh
     login_as("admin")
-    @browser.find_element(:link_text, "EVENTS").click
+    @browser.find_element(:link_text, "Events").click
     @browser.find_element(:link_text, "CITCON 2011").click
-    @browser.find_element(:link_text, "Pending #{$pending_count}").click
+    sleep 0.5
+    @browser.find_element(:link_text, "Pending (#{$pending_count})").click
     @browser.page_source.should include("Eileen Fa")
   end
 

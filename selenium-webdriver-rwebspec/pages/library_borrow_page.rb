@@ -6,7 +6,7 @@ class LibraryBorrowPage < AbstractPage
   end
 
   def click_find_member
-    click_button("Find member")
+    click_button("Find")
   end
   
   def enter_resource(resource)
@@ -18,6 +18,7 @@ class LibraryBorrowPage < AbstractPage
   end
 
   def click_select
+    sleep 1
     click_link("Select")
   end
 

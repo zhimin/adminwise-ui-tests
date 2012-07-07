@@ -4,11 +4,11 @@ describe "Create a new call register" do
   include TestHelper
 
   before(:all) do
-    @browser = Selenium::WebDriver.for(browser_type) # or :ie, :firefox, :chrome
+    @browser = $browser = Selenium::WebDriver.for(browser_type) # or :ie, :firefox, :chrome
     @browser.navigate.to($BASE_URL)
     reset_database
     failsafe{ logout }
-    login_as("admin")
+    login_as("bob")
   end
 
   after(:all) do
@@ -18,7 +18,7 @@ describe "Create a new call register" do
 
   before(:each) do
     sleep 1
-    @browser.find_element(:link_text, "Answer call").click
+    @browser.find_element(:link_text, "Answer Call").click
     answer_call_page = AnswerCallPage.new(@browser)
     answer_call_page.select_call_category("Resources")
     answer_call_page.enter_caller("Jesse Stewart")
@@ -32,7 +32,7 @@ describe "Create a new call register" do
   end
 
   it "Can edit existing call register" do
-    @browser.find_element(:link_text, "Call register list").click
+    @browser.find_element(:link_text, "Call register").click
     @browser.find_element(:link_text, "Edit").click
 
     edit_call_register_page = EditCallRegisterPage.new(@browser)

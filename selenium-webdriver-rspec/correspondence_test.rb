@@ -4,16 +4,15 @@ describe "Correspondence" do
   include TestHelper
 
   before(:all) do
-    @browser = Selenium::WebDriver.for(browser_type) # or :ie, :firefox, :chrome
+    @browser = $browser = Selenium::WebDriver.for(browser_type) # or :ie, :firefox, :chrome
     @browser.navigate.to($BASE_URL)
     reset_database
     failsafe{ logout }
-    login_as("admin")
+    login_as("bob")
   end
 
   before(:each) do
-    @browser.find_element(:link_text, "ADMINISTRATION").click
-    @browser.find_element(:link_text,"Correspondence").click
+    @browser.find_element(:link_text,"Correspondences").click
     @browser.find_element(:link_text,"New Correspondence").click
 
     new_correspondence_page = NewCorrespondencePage.new(@browser)

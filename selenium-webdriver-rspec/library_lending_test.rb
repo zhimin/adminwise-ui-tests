@@ -4,11 +4,11 @@ describe "Library: Borrowing and Lending" do
   include TestHelper
 
   before(:all) do
-    @browser = Selenium::WebDriver.for(browser_type)
+    @browser = $browser = Selenium::WebDriver.for(browser_type)
     @browser.navigate.to($BASE_URL)
     reset_database
     fail_safe{ logout }
-    login_as("admin")
+    login_as("bob")
   end
 
   after(:all) do
@@ -18,12 +18,12 @@ describe "Library: Borrowing and Lending" do
 
   before(:each) do
     visit "/home"
-    @browser.find_element(:link_text, "LIBRARY").click
+    @browser.find_element(:link_text, "Library").click
   end
 
   after(:each) do
     #@browser.find_element(:link_text, "Logout") unless debugging?
-    goto_page("/home") unless debugging?
+    visit("/home") unless debugging?
   end
 
 
@@ -57,13 +57,13 @@ describe "Library: Borrowing and Lending" do
     library_borrow_page.click_find_member
     library_borrow_page.enter_resource("100001")
     library_borrow_page.click_find_resource
-    try(10) { library_borrow_page.click_select }
+    try_until(10) { library_borrow_page.click_select }
     library_borrow_page = LibraryBorrowPage.new(@browser)
     library_borrow_page.click_process
 
     #   search 100001
     #   assert status checkedout, using id
-    @browser.find_element(:link_text, "LIBRARY").click
+    @browser.find_element(:link_text, "Library").click
     library_page = LibraryPage.new(@browser)
     library_page.enter_query("100001")
     library_page.click_search
@@ -72,7 +72,7 @@ describe "Library: Borrowing and Lending" do
     sleep 2
     @browser.find_element(:id, "item_status_100001").text.strip.should == "Checked out"
 
-    @browser.find_element(:link_text, "LIBRARY").click
+    @browser.find_element(:link_text, "Library").click
     library_page = LibraryPage.new(@browser)
     library_page.click_return
     sleep 0.5
@@ -83,13 +83,13 @@ describe "Library: Borrowing and Lending" do
     try_until(10) { assert_link_present_with_text("Let Me Hear Your Voice: A Family's Triumph over Autism") }
     library_return_page.click_process
 
-    @browser.find_element(:link_text, "LIBRARY").click
+    @browser.find_element(:link_text, "Library").click
     library_page = LibraryPage.new(@browser)
     library_page.enter_query("100001")
     library_page.click_search
     sleep 1
     @browser.find_element(:link_text, "Let Me Hear Your Voice: A Family's Triumph over Autism").click
-    cell(:id, "item_status_100001").text.strip.should == "Available"
+    @browser.find_element(:id, "item_status_100001").text.strip.should == "Available"
   end
 
   

@@ -4,16 +4,16 @@ describe "Event Registrations as Admin" do
   include TestHelper
 
   before(:all) do
-    @browser = Selenium::WebDriver.for(browser_type)
+    @browser = $browser =  Selenium::WebDriver.for(browser_type)
     @browser.navigate.to( $BASE_URL)
     reset_database
     fail_safe{ logout }
-    login_as("admin")
+    login_as("bob")
   end
 
   before(:each) do
     visit "/home"
-    @browser.find_element(:link_text, "EVENTS").click
+    @browser.find_element(:link_text, "Events").click
     event_list_page = EventListPage.new(@browser)
     @browser.find_element(:link_text, "Wise Testing Conference").click
   end

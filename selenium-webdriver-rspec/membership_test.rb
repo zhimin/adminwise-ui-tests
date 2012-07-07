@@ -4,7 +4,7 @@ describe "Memebership" do
   include TestHelper
 
   before(:all) do
-    @browser = Selenium::WebDriver.for(browser_type)
+    @browser = $browser = Selenium::WebDriver.for(browser_type)
     @browser.navigate.to($BASE_URL)
     reset_database
     fail_safe{ logout }

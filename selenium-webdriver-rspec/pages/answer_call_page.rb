@@ -3,36 +3,27 @@ class AnswerCallPage < AbstractPage
 
   def initialize(driver)
     debug driver.find_element(:tag_name, "body").text
-    super(driver, "Call Register - New Call")
+    super(driver, "New Call")
   end
 
   def select_call_category(call_category)
-    select = browser.find_element(:name, "call[category]")
-    options = select.find_elements(:tag_name, "option")
-    options.each do |opt|
-      if opt.text == call_category then
-        opt.click
-        return
-      end
-    end
+    Selenium::WebDriver::Support::Select.new(browser.find_element(:id, "call_register_category")).select_by(:text, call_category)
   end
 
   def enter_caller(call_caller)
-    browser.find_element(:name, "call[caller]").send_keys(call_caller)
+    browser.find_element(:id, "call_register_caller").send_keys(call_caller)
   end
 
   def enter_caller_phone(call_caller_phone)
-    browser.find_element(:name, "call[caller_phone]").send_keys(call_caller_phone)
+    browser.find_element(:id, "call_register_caller_phone").send_keys(call_caller_phone)
   end
 
   def click_non_member(call_non_member)
-    radios = browser.find_elements(:name, "call[non_member]")
-    radios.each do |radio|
-      radio.click if radio.attribute("value") == call_non_member
-    end
+    browser.find_element(:id, "call_register_non_member_true").click
   end
 
   def click_hang_up
-    browser.find_element(:name, "call[caller]").submit
+    browser.find_element(:name, "commit").click
   end
+
 end

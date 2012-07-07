@@ -46,7 +46,6 @@ specification "Memebership" do
     membership_page.enter_email("cindy@agileway.com.au")
     membership_page.select_member_type("Family")
     membership_page.click_mail_out("true")
-    membership_page.click_doing_aba("true")
     membership_page.select_aware_from("family/ friend")
     membership_page.click_create_member
     membership_page.click_membership

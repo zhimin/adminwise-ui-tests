@@ -4,11 +4,11 @@ describe "Library: Add resourses" do
   include TestHelper
 
   before(:all) do
-    @browser = Selenium::WebDriver.for(browser_type)
+    @browser = $browser = Selenium::WebDriver.for(browser_type)
     @browser.navigate.to($ITEST2_PROJECT_BASE_URL || $BASE_URL)
     reset_database
     fail_safe{ logout }
-    login_as("admin")
+    login_as("bob")
   end
 
   after(:all) do
@@ -18,24 +18,24 @@ describe "Library: Add resourses" do
 
   before(:each) do
     visit "/home"
-    @browser.find_element(:link_text, "LIBRARY").click
+    @browser.find_element(:link_text, "Library").click
   end
 
   after(:each) do    
-    goto_page("/home") unless debugging?
+    visit("/") unless debugging?
   end
 
   it "[489] Admin user can add a new library resource manually" do
     library_page = LibraryPage.new(@browser)
     library_page.add_new_resources
-    library_page.add_manually
+    #    library_page.add_manually
     new_resource_page = NewResourcePage.new(@browser)
     new_resource_page.enter_title("The Other Country")
     new_resource_page.enter_authors("Michael Whelan")
     new_resource_page.select_subject("Families")
     new_resource_page.click_create
     @browser.find_element(:name, "commit").click # click_button("Save")
-    @browser.find_element(:link_text, "LIBRARY").click
+    @browser.find_element(:link_text, "Library").click
     
     library_search_page = LibrarySearchPage.new(@browser)
     library_search_page.enter_query("The Other Country")

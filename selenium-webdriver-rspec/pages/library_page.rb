@@ -11,7 +11,7 @@ class LibraryPage < AbstractPage
   end
 
   def add_new_resources
-    browser.find_element(:link_text, "Add new resources").click
+    browser.find_element(:link_text, "New Resource").click
   end
 
   def enter_query(q)
