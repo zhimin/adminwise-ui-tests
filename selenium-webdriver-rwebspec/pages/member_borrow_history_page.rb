@@ -2,7 +2,7 @@
 class MemberBorrowHistoryPage < AbstractPage
 
   def initialize(browser)
-    super(browser, "Member - Borrowing History ") # <= 
+    super(browser, "Member - Borrowing History") # <= 
   end
 
 

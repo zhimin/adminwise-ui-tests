@@ -7,7 +7,7 @@ class EditCallRegisterPage < AbstractPage
   end
 
   def select_member_yes
-    browser.find_element(:id, "call_register_non_member_false").click
+    browser.find_element(:id, "call_non_member_false").click
   end
 
   def click_update
@@ -15,7 +15,7 @@ class EditCallRegisterPage < AbstractPage
   end
   
   def assert_member_yes
-    radios = browser.find_elements(:name, "call_register[non_member]")
+    radios = browser.find_elements(:name, "call[non_member]")
     radios.each do |radio|
       if radio.attribute("value") == "false"
         raise "expected radio option not selected" unless radio.selected?

@@ -61,8 +61,7 @@ specification "Library: Borrowing and Lending" do
 
     #   search 100001
     #   assert status checkedout, using id
-    click_link("LIBRARY")
-#    click_link("Library")
+    click_link("Library")
     library_page = expect_page LibraryPage
     library_page = expect_page LibraryPage
     library_page.enter_query("100001")

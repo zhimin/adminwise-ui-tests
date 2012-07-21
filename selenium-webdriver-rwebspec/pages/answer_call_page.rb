@@ -6,11 +6,11 @@ class AnswerCallPage < AbstractPage
   end
 
   def select_call_category(call_category)
-    select_option("call_register[category]", call_category)
+    select_option("call[category]", call_category)
   end
 
   def enter_caller(call_caller)
-    enter_text("call_register[caller]", call_caller)
+    enter_text("call[caller]", call_caller)
   end
 
   def enter_caller_phone
@@ -18,11 +18,11 @@ class AnswerCallPage < AbstractPage
   end
 
   def enter_caller_phone(call_caller_phone)
-    enter_text("call_register[caller_phone]", call_caller_phone)
+    enter_text("call[caller_phone]", call_caller_phone)
   end
 
   def click_non_member(call_non_member)
-    click_radio_option("call_register[non_member]", call_non_member)
+    click_radio_option("call[non_member]", call_non_member)
   end
 
   def click_hang_up

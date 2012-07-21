@@ -6,7 +6,7 @@ class LibraryBorrowPage < AbstractPage
   end
 
   def click_find_member
-    click_button("Find")
+    click_button("Find member")
   end
   
   def enter_resource(resource)
