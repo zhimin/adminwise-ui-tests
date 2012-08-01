@@ -30,7 +30,7 @@ test_suite "Events" do
     event_page.enter_presenters("Many")
     event_page.enter_date("10/12/2010")
     event_page.click_create
-    assert_text_present("3 events")
+    assert_text_present("Event was successfully created.")
   end
 
   test "[488] Can edit an existing event" do

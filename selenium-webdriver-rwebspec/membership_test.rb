@@ -56,6 +56,8 @@ specification "Memebership" do
     click_link("Membership")
     membership_page = expect_page MembershipPage
     membership_page.click_add_member
+    page_text.should contain("You must enter an organisation name or person name")
+    membership_page.click_create_member
     membership_page.enter_organisation_name("CareLink Pty Ltd")
     membership_page.enter_first_name("Michele")
     membership_page.enter_last_name("Wind")

@@ -70,8 +70,7 @@ specification "Library: Borrowing and Lending" do
     click_link("Let Me Hear Your Voice: A Family's Triumph over Autism")
     cell(:id, "item_status_100001").text.strip.should == "Checked out"
 
-    click_link("LIBRARY")
-#    click_link("Library")
+    click_link("Library")
     library_page = expect_page LibraryPage
     library_page.click_return
     sleep 0.5
