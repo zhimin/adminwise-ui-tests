@@ -81,7 +81,7 @@ specification "Library: Borrowing and Lending" do
     try { assert_link_present_with_text("Let Me Hear Your Voice: A Family's Triumph over Autism") }
     library_return_page.click_process
 
-    click_link("LIBRARY")
+    click_link("Library")
 #    click_link("Library")
     library_page = expect_page LibraryPage
     library_page.enter_query("100001")

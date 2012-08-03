@@ -10,7 +10,7 @@ require 'ci/reporter/rake/rspec' # use this if you're using RSpec
 BUILDWISE_URL = ENV["BUILDWISE_MASTER"] || "http://localhost:3618"
 BUILDWISE_PROJECT_IDENTIFIER = "adminwise"
 
-$test_dir = File.dirname(__FILE__)
+$test_dir = File.expand_path File.dirname(__FILE__)
 task :default => ["go_all"]
 load File.join($test_dir, "buildwise.rake")
 
@@ -31,7 +31,7 @@ RSpec::Core::RakeTask.new("test:ui") do |t|
   puts "[ORDER 1]: call buildwise #{ordered_specs}"
   ordered_specs = ordered_specs.collect { |x| "#{$test_dir}/#{x}" } rescue nil
   puts "[ORDER 2]: add full path #{ordered_specs.inspect}"
-  if ordered_specs.nil? || ordered_specs.compact.empty? || ordered_specs.class != Array
+  if ordered_specs.nil? || ordered_specs.compact.empty? || ordered_specs.class != Array || (ordered_specs.size == 1 && ordered_specs.first.include?("Not Found"))
     specs_to_be_executed = all_specs
   else
     unknown_specs = all_specs - ordered_specs
@@ -58,7 +58,7 @@ end
 
 task :go_all => ["ci:setup:rspec"] do
   build_id = buildwise_start_build(:project_name => "adminwise",
-                                   :working_dir => File.expand_path(File.join(File.dirname(__FILE__), "test", "acceptance")),
+                                   :working_dir => File.expand_path(File.join(File.dirname(__FILE__))),
                                    :spec_dir => ["."],
                                    :excluded => excluded_test_files || []
   )
@@ -79,7 +79,7 @@ end
 
 task :go_quick => ["ci:setup:rspec"] do
   build_id = buildwise_start_build(:project_name => "adminwise",
-                                   :working_dir => File.expand_path(File.join(File.dirname(__FILE__), "test", "acceptance")),
+                                   :working_dir => File.expand_path(File.join(File.dirname(__FILE__))),
                                    :spec_dir => ["."],
                                    :excluded => excluded_test_files || []
   )
