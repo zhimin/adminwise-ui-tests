@@ -16,7 +16,6 @@ describe "Create a new user as admin" do
   it "[482] Create new user, then login" do
     login_as("admin")
     @browser.link(:text, "Administration").click
-    @browser.link(:text, "Manage users").click
     @browser.link(:text, "Add user").click
     
     create_user_page = CreateUserPage.new(@browser)
@@ -28,7 +27,7 @@ describe "Create a new user as admin" do
     
     logout
     login_as("mike", "pass")
-    logout
+    @browser.text.should include("Sign in successfully")
   end
 
 end
