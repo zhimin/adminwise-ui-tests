@@ -7,7 +7,7 @@ describe "Library: Borrowing and Lending" do
     @browser = Watir::Browser.new
     reset_database
     logout
-    login_as("admin")
+    login_as("bob")
   end
 
   after(:all) do
@@ -65,7 +65,7 @@ describe "Library: Borrowing and Lending" do
     library_page = LibraryPage.new(@browser)
     library_page.enter_query("100001")
     library_page.click_search
-    sleep 0.5
+    sleep 1.5
     @browser.link(:text,"Let Me Hear Your Voice: A Family's Triumph over Autism").click
     @browser.td(:id, "item_status_100001").text.strip.should == "Checked out"
 

@@ -19,7 +19,7 @@ describe "User Management" do
 
   it "[480] A registered user can login", :tag => "must" do
     login_as("bob", "test")
-    assert_link_present_with_text("Logout")
+    @browser.text.should include("Sign in successfully")
   end
 
   it "[480] Admin user can login" do
@@ -29,13 +29,13 @@ describe "User Management" do
 
   it "[480] Admin user can login - invalid password", :tag => "critical" do
     login_as("admin", "badpass")
-    @browser.text.should include("Invalid email or password.")
+    @browser.text.should include("Invalid password")
   end
 
   it "[480] Admin user can login - try go the protected url", :tag => "must" do
     visit "/events"
     sleep 1
-    @browser.text.should include("You need to sign in or sign up before continuing.")
+    @browser.text.should include("Not logged in")
   end
   
 end

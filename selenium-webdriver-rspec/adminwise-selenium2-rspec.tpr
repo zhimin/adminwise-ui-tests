@@ -5,19 +5,19 @@
   <test_framework>Selenium2</test_framework>
   <syntax_framework>RSpec</syntax_framework>
   <environments>
-    <entry default="false" name="dev">
+    <entry name="dev" default="false">
       <base_url>http://10.0.0.6:3000</base_url>
     </entry>
-    <entry default="false" name="development">
+    <entry name="development" default="false">
       <base_url>http://localhost:3000</base_url>
     </entry>
-    <entry default="false" name="standalone">
+    <entry name="standalone" default="false">
       <base_url>http://10.0.0.3:3000</base_url>
     </entry>
-    <entry default="true" name="test">
+    <entry name="test" default="true">
       <base_url>http://adminwise.herokuapp.com</base_url>
     </entry>
-    <entry default="false" name="uat">
+    <entry name="uat" default="false">
       <base_url>http://192.168.1.101:3000</base_url>
     </entry>
   </environments>

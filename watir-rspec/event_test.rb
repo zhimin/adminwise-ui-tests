@@ -29,7 +29,7 @@ describe "Events" do
     event_page.enter_presenters("Many")
     event_page.enter_date("10/12/2010")
     event_page.click_create
-    @browser.text.should include("3 events")
+    @browser.text.should include("Event details - ABA Workshop")
   end
 
   it "[488] Can edit an existing event" do

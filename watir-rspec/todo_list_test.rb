@@ -11,8 +11,8 @@ describe "To Do List" do
   before(:each) do
     reset_database
     login_as("bob")
-    @browser.link(:text, "Todo lists").click
-    @browser.link(:text, "New Todo list").click
+    @browser.link(:text, "TODO Lists").click
+    @browser.link(:text, "New TODO list").click
     @browser.text_field(:name, "todo_list[name]").set("Collect parcel")
     @browser.button(:value, "Create").click
   end
@@ -27,18 +27,18 @@ describe "To Do List" do
 
   it "can edit a Todo list name" do
     @browser.link(:text, "Collect parcel").click
-    @browser.link(:text, "Collect parcel").click
     @browser.text_field(:name, "todo_list[name]").set("Collect returned resources")
-    @browser.button(:value, "Update").click
+    @browser.button(:value, "Save").click
     assert_link_present_with_text("Collect returned resources")
   end
 
   # JavaScript Popup
   it "can delete Todo list" do
     # Alternative way is use Popup Handler: http://testwisely.com/en/testwise/docs/recipes
-    @browser.image(:src, /delete\.png/).click_no_wait
+    # @browser.image(:src, /delete\.png/).click_no_wait
+    @browser.link(:text, "Delete").click_no_wait
     @browser.javascript_dialog.button('OK').click
-    # TODO checkpoint    
+    # TODO checkpoint
   end
 
 end

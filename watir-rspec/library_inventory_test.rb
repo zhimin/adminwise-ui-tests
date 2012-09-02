@@ -7,7 +7,7 @@ describe "Library: Add resourses" do
     @browser = Watir::Browser.new
     reset_database
      logout 
-    login_as("admin")
+    login_as("bob")
   end
 
   after(:all) do
@@ -27,7 +27,7 @@ describe "Library: Add resourses" do
   it "[489] Admin user can add a new library resource manually" do
     library_page = LibraryPage.new(@browser)
     library_page.add_new_resources
-    library_page.add_manually
+    # library_page.add_manually
     new_resource_page = NewResourcePage.new(@browser)
     new_resource_page.enter_title("The Other Country")
     new_resource_page.enter_authors("Michael Whelan")
