@@ -7,7 +7,7 @@ describe "Memeber Login" do
     @browser = Watir::Browser.new
     reset_database
     logout
-    login_as("admin", "test")
+    login_as("bob", "test")
   end
 
   after(:all) do
@@ -27,7 +27,7 @@ describe "Memeber Login" do
     @browser.link(:text,"dsmith").click # click new link to member login
     assert_link_present_with_text("David Smith")
 
-    @browser.link(:text,"Member logins").click
+    @browser.link(:text,"Member Logins").click
     @browser.text_field(:name, "search").set "dsmith"
     @browser.button(:value, "Search").click
     assert_link_present_with_text("dsmith")
