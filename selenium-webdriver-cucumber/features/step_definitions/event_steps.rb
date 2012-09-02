@@ -10,7 +10,7 @@ Given /^I logged in$/ do
 end
 
 When /^click new event link$/ do
-  @browser.find_element(:link_text, "EVENTS").click
+  @browser.find_element(:link_text, "Events").click
   event_list_page =  EventListPage.new(@browser)
   @event_page = event_list_page.click_new
 end
@@ -26,6 +26,6 @@ When /^I click "(.*?)"$/ do |arg1|
    @event_page.click_create
 end
 
-Then /^I shall see the new event shown in the list$/ do
-  assert @browser.page_source.include?("3 events")
+Then /^I shall see "(.*?)"$/ do |arg1|
+  assert @browser.page_source.include?(arg1)
 end

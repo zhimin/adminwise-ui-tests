@@ -7,6 +7,6 @@ Feature: Event
     When click new event link
     And enter event name and details
     When I click "Create"
-    Then I shall see the new event shown in the list
+    Then I shall see "Event was successfully created."
   
   

@@ -11,7 +11,7 @@ class EventPage < AbstractPage
   end
 
   def click_create
-    browser.find_element(:id, "event_submit").click
+    browser.find_element(:name, "commit").click
   end
 
   def enter_presenters(event_presenters)
