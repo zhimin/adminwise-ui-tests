@@ -36,7 +36,7 @@ specification "Create a new call register" do
     click_link("Call register")
     link(:text => "Edit", :index => 0).click
     # link(:text => "Edit", :index => 5).click
-    click_radio_option("call_register[non_member]", "false")
+    click_radio_option("call[non_member]", "false")
     click_button("Save")
     # now shall not be a member
     link(:text => "Edit", :index => 0).click

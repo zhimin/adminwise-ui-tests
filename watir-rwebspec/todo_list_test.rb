@@ -64,7 +64,8 @@ specification "To Do List" do
     browser.links.each_with_index do |x, xid|
       del_link_ids << x.id if x.id && x.id =~ /del_todo_\d+/
     end
-    link(:id, del_link_ids.last).click_no_wait
+    click_link("Not important")
+    link(:id, "delete_link").click_no_wait
     browser.javascript_dialog.button('OK').click
     sleep 2
     refresh

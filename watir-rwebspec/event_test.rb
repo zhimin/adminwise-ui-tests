@@ -30,6 +30,7 @@ test_suite "Events" do
     event_page.enter_presenters("Many")
     event_page.enter_date("10/12/2010")
     event_page.click_create
+    goto_page("/events")
     assert_text_present("3 events")
   end
 #

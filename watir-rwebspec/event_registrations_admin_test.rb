@@ -62,7 +62,7 @@ test_suite "Event Registrations as Admin" do
     register_staff_page.enter_state("QLD")
     register_staff_page.enter_postcode("4013")
     register_staff_page.enter_country("Australia")
-    register_staff_page.check_day_1
+    # register_staff_page.check_day_1
     register_staff_page.select_level("Volunteer")
     register_staff_page.click_register
     page_text.should include("Staff registration details confirmation")

@@ -74,11 +74,12 @@ specification "Memebership" do
   story "[15] Admin user can update an existing member details" do
     membership_page = expect_page MembershipPage
     membership_page.click_name("David Smith")
+    click_link_with_id("edit_link") 
     membership_page.enter_member_end_date("2012-08-20")
-    membership_page.enter_suburb("Norman Park")
+    membership_page.enter_suburb("Norman Park 2")
     membership_page.click_update_member
-    page_text.should include("20/08/2012")
-    page_text.should contain("Norman Park")
+    page_source.should include("2012-08-25")
+    page_source.should contain("Norman Park 2")
   end
 
   story "[16] Can browse past member" do  
