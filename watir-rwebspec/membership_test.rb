@@ -45,7 +45,7 @@ specification "Memebership" do
     membership_page.enter_email("cindy@agileway.com.au")
     membership_page.select_member_type("Family")
     membership_page.click_mail_out("true")
-    membership_page.click_doing_aba("true")
+#    membership_page.click_doing_aba("true")
     membership_page.select_aware_from("family/ friend")
     membership_page.click_create_member
     membership_page.click_membership
@@ -75,7 +75,7 @@ specification "Memebership" do
     membership_page = expect_page MembershipPage
     membership_page.click_name("David Smith")
     click_link_with_id("edit_link") 
-    membership_page.enter_member_end_date("2012-08-20")
+    membership_page.enter_member_end_date("2012-08-25")
     membership_page.enter_suburb("Norman Park 2")
     membership_page.click_update_member
     page_source.should include("2012-08-25")
@@ -84,8 +84,12 @@ specification "Memebership" do
 
   story "[16] Can browse past member" do  
     click_link("Bob Builder")
-    enter_text("member[end_date]", "2010-08-20")
-    click_button("Save")
+    membership_page = expect_page MembershipPage
+    click_link_with_id("edit_link")   
+    membership_page.enter_member_end_date("2010-08-25") # past date
+    membership_page.click_update_member
+    goto_page("/members")
+    member_list_page = expect_page MemberListPage
     assert_link_not_present_with_text("Bob Builder")
     click_link("Past members")
     assert_link_present_with_text("Bob Builder")
