@@ -31,6 +31,15 @@ specification "Professionals" do
     try(10) { page_text.should contain("Professionals") }
     page_text.should contain("Jane Steel")
   end
+
+  story "User can edit a professional" do
+    click_link("Edit")
+    edit_professional_page = expect_page EditProfessionalPage
+    edit_professional_page.enter_organisation_name("Focus Speech 2")
+    edit_professional_page.click_save
+    page_text.should contain("Professional updated successfully")
+    page_text.should contain("Focus Speech 2")
+  end
   
   story "[497] Admin user sort professional by category" do
     click_link("Category")  
