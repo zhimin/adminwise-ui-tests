@@ -2,3 +2,5 @@ rwebspec-watir/adminwise.tws
 selenium-webdriver-rspec/adminwise-selenium-webdriver.tws
 watir-rspec/adminwise-watir.tws
 *.tws
+selenium-webdriver-rspec/selected_scripts_spec.rb
+**/chromedriver.log
