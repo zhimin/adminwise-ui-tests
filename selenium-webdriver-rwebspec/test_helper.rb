@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'rwebspec-webdriver'
+require 'rwebspec'
 require 'httpclient'
 require 'timeout'
 
@@ -12,8 +12,8 @@ $BASE_URL = $TESTWISE_PROJECT_BASE_URL || ENV['ADMINWISE_URL'] || "http://adminw
 # defined here.
 module TestHelper
 
-  include RWebSpec::WebDriver::RSpecHelper
-  include RWebSpec::WebDriver::Assert
+  include RWebSpec::RSpecHelper
+  include RWebSpec::Assert
 
   # In you test case, you can use
   #

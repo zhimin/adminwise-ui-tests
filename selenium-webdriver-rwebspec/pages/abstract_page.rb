@@ -1,6 +1,6 @@
-require 'rwebspec-webdriver'
+require 'rwebspec'
 
-class AbstractPage < RWebSpec::WebDriver::AbstractWebPage
+class AbstractPage < RWebSpec::AbstractWebPage
 
   def initialize(browser, text = "")
     super(browser, text)

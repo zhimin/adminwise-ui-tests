@@ -7,8 +7,6 @@ require 'timeout'
 require "#{File.dirname(__FILE__)}/pages/abstract_page.rb"
 Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 
-FireWatir::Firefox.firefox_started = true if RUBY_PLATFORM.downcase.include?("darwin")
-
 $BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.herokuapp.com"
 #localhost:2800"
 #$BASE_URL = "http://demo.adminwise.com"
