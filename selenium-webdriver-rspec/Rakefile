@@ -48,10 +48,20 @@ end
 
 desc "run selected quick tests"
 RSpec::Core::RakeTask.new("test:ui:quick") do |t|
+	puts "XXXXX 1"
   quick_specs = ["membership_test.rb", "event_test.rb"]
-  ordered_specs = buildwise_ui_test_order(BUILDWISE_PROJECT_IDENTIFIER)
-	puts "XXX: #{ordered_specs.inspect}"
-	specs_to_be_executed = ordered_specs & quick_specs
+	begin
+  	ordered_specs = buildwise_ui_test_order(BUILDWISE_PROJECT_IDENTIFIER)
+	rescue => e
+		# test order not defined
+		ordered_specs = []
+	ensure
+		ordered_specs ||= []
+	end
+	puts "XXXXX 2"
+	# puts "XXX: #{ordered_specs.inspect}"
+	specs_to_be_executed = (ordered_specs + quick_specs).flatten.uniq
+	puts "XXXXX 3 => #{specs_to_be_executed}"
 	specs_to_be_executed = specs_to_be_executed.collect { |x| "#{$test_dir}/#{x}" } rescue nil
   t.pattern = [specs_to_be_executed]
 end

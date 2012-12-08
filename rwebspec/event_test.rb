@@ -22,7 +22,7 @@ test_suite "Events" do
   end
 
   # Press key Ctrl+Shift+T, then enter 123 quickly navigate you here
-  story "[487] Can create a new event" do
+  story "[123] Can create a new event" do
     event_list_page = expect_page EventListPage
     event_page = event_list_page.click_new
     event_page.enter_name("ABA Workshop")
