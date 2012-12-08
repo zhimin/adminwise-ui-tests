@@ -22,19 +22,18 @@ module TestHelper
   include RWebSpecUtils
   include TestWiseSupport
 
+	# Change your target browser here
   def browser_type
-    if $ITEST2_BROWSER
-      return $ITEST2_BROWSER.downcase.to_sym
-    elsif $TESTWISE_BROWSER
+    if $TESTWISE_BROWSER # runnning in TestWise
       return $TESTWISE_BROWSER.downcase.to_sym
 		else
 			if RUBY_PLATFORM =~ /mingw/ 
-				:ie
+				:firefox 
 			else
 				:chrome
 			end
     end
-    #:ie
+    # :ie
     # :firefox
     # :chrome
   end
