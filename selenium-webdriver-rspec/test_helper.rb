@@ -106,5 +106,9 @@ module TestHelper
     raise ("can't find the link containing text: #{link_text}") unless the_link
   end
 
-
+  def browser_width
+    1024  end
+  def browser_height
+    640
+  end
 end

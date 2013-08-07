@@ -2,11 +2,11 @@
 <project>
   <name>AdminWise-Selenium2</name>
   <default_browser>Chrome</default_browser>
-  <test_framework>Selenium2</test_framework>
+  <test_framework>Selenium</test_framework>
   <syntax_framework>RSpec</syntax_framework>
   <environments>
-    <entry name="dev" default="false">
-      <base_url>http://10.0.0.6:3000</base_url>
+    <entry name="dev" default="true">
+      <base_url>http://10.0.0.1:3000</base_url>
     </entry>
     <entry name="development" default="false">
       <base_url>http://localhost:3000</base_url>
@@ -14,7 +14,7 @@
     <entry name="standalone" default="false">
       <base_url>http://10.0.0.3:3000</base_url>
     </entry>
-    <entry name="test" default="true">
+    <entry name="test" default="false">
       <base_url>http://adminwise.herokuapp.com</base_url>
     </entry>
     <entry name="uat" default="false">
@@ -27,6 +27,7 @@
   <spec_template></spec_template>
   <page_template></page_template>
   <storywise_url></storywise_url>
+  <storywise_access_token></storywise_access_token>
   <jira_url></jira_url>
   <jira_project></jira_project>
   <jira_login></jira_login>
