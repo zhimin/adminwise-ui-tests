@@ -11,8 +11,6 @@ require "#{File.dirname(__FILE__)}/testwise_support.rb"
 require "#{File.dirname(__FILE__)}/pages/abstract_page.rb"
 Dir["#{File.dirname(__FILE__)}/pages/*_page.rb"].each { |file| load file }
 
-Watir::Browser.default = 'ie'
-
 $BASE_URL = ENV['ADMINWISE_URL'] || "http://adminwise.herokuapp.com"
 #localhost:2800"
 #$BASE_URL = "http://demo.adminwise.com"
