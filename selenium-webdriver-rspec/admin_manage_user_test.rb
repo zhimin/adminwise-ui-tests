@@ -6,6 +6,7 @@ describe "Create a new user as admin" do
   before(:all) do
     # by using browser_type (defined in helper), it can be chosen in TestWise
     @browser = $browser = Selenium::WebDriver.for(browser_type) # or :ie, :firefox, :chrome
+    @browser.manage().window().resize_to(browser_width, browser_height)
     @browser.navigate.to($BASE_URL)
     reset_database
     login_as("admin")

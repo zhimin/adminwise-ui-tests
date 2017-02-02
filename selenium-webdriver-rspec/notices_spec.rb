@@ -7,6 +7,7 @@ describe "Notices" do
   before(:all) do
     @browser = $browser = Selenium::WebDriver.for(browser_type)
     @browser.navigate.to($TESTWISE_PROJECT_BASE_URL || $BASE_URL)
+    @browser.manage().window().resize_to(browser_width, browser_height)
     reset_database
     fail_safe{ logout }
   end
@@ -80,8 +81,8 @@ describe "Notices" do
     notice_page.click_edit
 
     edit_notice_page = EditNoticePage.new(@browser)
-    edit_notice_page.select_start_year(2012)
-    edit_notice_page.select_end_year(2012)
+    edit_notice_page.select_start_year(2013)
+    edit_notice_page.select_end_year(2013)
     edit_notice_page.click_save
 
     logout
