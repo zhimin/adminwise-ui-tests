@@ -25,7 +25,7 @@ describe "Event Registrations" do
     @browser.quit unless debugging?
   end
 
-  it "[485] User can sign up for events - member - populate info" do
+  it "[10] User can sign up for events - member - populate info" do
     visit "/events/register/2"
     event_registration_page =  EventRegistrationPage.new(@browser)
     event_registration_page.select_is_member("yes")
@@ -45,7 +45,7 @@ describe "Event Registrations" do
     $pending_count += 1
   end
 
-  it "[486] User can sign up for events - non member" do
+  it "[11] User can sign up for events - non member" do
     visit "/events/register/2"
 
     #    click_radio_option("payment_via_eft", "yes")

@@ -27,7 +27,7 @@ describe "Event Registrations as Admin" do
     @browser.quit unless debugging?
   end
 
-  it "[483] Admin User can register on behalf someone" do
+  it "[12] Admin User can register on behalf someone" do
     @browser.find_element(:link_text, "Register on applicant's behalf").click
     event_registration_page = EventRegistrationPage.new(@browser)
     event_registration_page.select_is_member("yes")

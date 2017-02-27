@@ -26,7 +26,7 @@ describe "Library: Add resourses" do
     visit("/") unless debugging?
   end
 
-  it "[489] Admin user can add a new library resource manually" do
+  it "[19] Admin user can add a new library resource manually" do
     library_page = LibraryPage.new(@browser)
     library_page.add_new_resources
     #    library_page.add_manually

@@ -16,7 +16,7 @@ describe "User Profile" do
     @browser.quit unless debugging?
   end
 
-  it "[481] User can change password" do
+  it "[3] User can change password" do
     login_as("bob", "test")
     @browser.find_element(:id, "user_nav_link").click 
     sleep 0.5

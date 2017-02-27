@@ -21,7 +21,7 @@ describe "Professionals" do
     @browser.quit unless debugging?
   end
 
-  it "[496] Admin User can add a professional" do
+  it "[20] Admin User can add a professional" do
     @browser.find_element(:link_text, "New Professional").click
     new_professional_page = NewProfessionalPage.new(@browser)
     new_professional_page.select_category("Centre Based Early Intervention Programs")
@@ -33,7 +33,7 @@ describe "Professionals" do
     @browser.page_source.should include("Jane Steel")
   end
   
-  it "[497] Admin user sort professional by category" do
+  it "[21] Admin user sort professional by category" do
     @browser.find_element(:link_text, "Category").click
     try_until(3) { @browser.find_element(:id, "category_0").text.should == "Speech Pathlogists" }
     @browser.find_element(:link_text, "Category").click  

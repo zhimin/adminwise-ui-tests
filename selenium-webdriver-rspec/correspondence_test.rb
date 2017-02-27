@@ -27,11 +27,11 @@ describe "Correspondence" do
     @browser.quit unless debugging?
   end
 
-  it "Can create a new correspondence" do
+  it "[15] Can create a new correspondence" do
     @browser.page_source.should include("Ashgrove State School")
   end
 
-  it "can edit existing correspondence" do
+  it "[16] can edit existing correspondence" do
     @browser.find_element(:link_text, "Edit").click
     @browser.find_element(:name, "correspondence[description]").send_keys("Wrote a cover letter and post out the information booklet to Ashgrove West State School Support Services")
     @browser.find_element(:name, "commit").click # "Update"

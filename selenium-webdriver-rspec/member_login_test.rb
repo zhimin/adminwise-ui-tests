@@ -21,7 +21,7 @@ describe "Memeber Login" do
     visit "/home"
   end
 
-  it "[495] Admin can generate a login for an existing member" do
+  it "[7] Admin can generate a login for an existing member" do
     @browser.find_element(:link_text, "Membership").click
     @browser.find_element(:link_text, "David Smith").click
     @browser.find_element(:id, "generate_login").click

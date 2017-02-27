@@ -28,11 +28,11 @@ describe "Create a new call register" do
     answer_call_page.click_hang_up
   end
 
-  it "Can create a new call register" do
+  it "[13] Can create a new call register" do
     @browser.page_source.should include("Jesse Stewart")
   end
 
-  it "Can edit existing call register" do
+  it "[14] Can edit existing call register" do
     @browser.find_element(:link_text, "Call register").click
     @browser.find_element(:link_text, "Edit").click
 

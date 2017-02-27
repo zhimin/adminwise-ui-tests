@@ -28,7 +28,7 @@ describe "Library: Borrowing and Lending" do
   end
 
 
-  it "[491] Admin user can process a member borrowing a book" do
+  it "[17] Admin user can process a member borrowing a book" do
     library_page = LibraryPage.new(@browser)
     library_page.click_borrow
     library_borrow_page = LibraryBorrowPage.new(@browser)
@@ -50,7 +50,7 @@ describe "Library: Borrowing and Lending" do
     #
   end
 
-  it "[492] Admin user can process returning a book" do
+  it "[18] Admin user can process returning a book" do
     library_page = LibraryPage.new(@browser)
     library_page.click_borrow
     library_borrow_page = LibraryBorrowPage.new(@browser)

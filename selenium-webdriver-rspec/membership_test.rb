@@ -21,19 +21,19 @@ describe "Memebership" do
     visit "/home"
   end
 
-  it "Admin user can search an existing member by surname " do
+  it "[4] Admin user can search an existing member by surname " do
     @browser.find_element(:name, "search").send_keys("Smith")
     @browser.find_element(:name, "search").submit
     @browser.page_source.should include("David Smith")
   end
 
-  it "Admin user can search an existing member by membership number" do
+  it "[4] Admin user can search an existing member by membership number" do
     @browser.find_element(:name, "search").send_keys("30002")
     @browser.find_element(:name, "search").submit # use different way from above
     assert_link_present_with_text("David Smith")
   end
 
-  it "[493] Admin user can create a new family member" do
+  it "[5] Admin user can create a new family member" do
     @browser.find_element(:link_text, "Membership").click
     membership_page = MembershipPage.new(@browser)
     membership_page.add_member
@@ -54,7 +54,7 @@ describe "Memebership" do
     @browser.page_source.should include("Cindy Fu")
   end
 
-  it "[494] Admin user can create a new organisation member" do
+  it "[6] Admin user can create a new organisation member" do
     membership_page =  MembershipPage.new(@browser)
     membership_page.click_add_member
     membership_page.enter_organisation_name("CareLink Pty Ltd")

@@ -21,7 +21,7 @@ describe "Notices" do
     failsafe{ logout } unless debugging?
   end
 
-  it "Admin can create a new active notice and display" do
+  it "[22] Admin can create a new active notice and display" do
     login_as("admin")
     @browser.find_element(:link_text, "Administration").click
     @browser.find_element(:link_text, "Notices").click
@@ -54,7 +54,7 @@ describe "Notices" do
     @browser.page_source.should_not include("Evacuate in 10 minutes")
   end
 
-  it "Admin can create one future notice then change to now" do
+  it "[22] Admin can create one future notice then change to now" do
     visit "/"
     login_as("admin")
     @browser.find_element(:link_text, "Notices").click
@@ -90,7 +90,7 @@ describe "Notices" do
     @browser.page_source.should include("Evacuate in 20 minutes")
   end
 
-  it "Only Admin User can publish notices" do
+  it "[23] Only Admin User can publish notices" do
     login_as("bob")
     visit("/notices")
     @browser.page_source.should include("Only admin user can preform")

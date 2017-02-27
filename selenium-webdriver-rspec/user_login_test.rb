@@ -19,22 +19,22 @@ describe "User Management" do
     @browser.close unless debugging?
   end
 
-  it "[480] A registered user can login" do
+  it "[1] A registered user can login" do
     login_as("bob", "test")
     @browser.page_source.should include("Sign in successfully")
   end
 
-  it "[480] Admin user can login" do
+  it "[2] Admin user can login" do
     login_as("admin", "test")
     assert_link_present_with_text("Administration") 
   end
 
-  it "[480] Admin user can login - invalid password" do
+  it "[2] Admin user can login - invalid password" do
     login_as("admin", "badpass")
     @browser.page_source.should include("Invalid password")
   end
 
-  it "[480] Admin user can login - try go the protected url" do
+  it "[2] Admin user can login - try go the protected url" do
     visit "/events"
     sleep 1
     @browser.page_source.should include("Not logged in")

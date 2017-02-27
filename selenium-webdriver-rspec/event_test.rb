@@ -24,7 +24,7 @@ describe "Events" do
   end
 
   # Press key Ctrl+Shift+T, then enter 123 quickly navigate you here
-  it "[487] Can create a new event" do
+  it "[8] Can create a new event" do
     event_list_page =  EventListPage.new(@browser)
     event_page = event_list_page.click_new
     event_page.enter_name("ABA Workshop")
@@ -35,7 +35,7 @@ describe "Events" do
     @browser.page_source.should include("Event was successfully created.")
   end
 
-  it "[488] Can edit an existing event" do
+  it "[9] Can edit an existing event" do
     event_list_page = EventListPage.new(@browser)
     event_page = event_list_page.edit(1)
     event_page.enter_name("2010 Agileway Testing Conference")
